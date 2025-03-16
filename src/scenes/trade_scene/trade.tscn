@@ -1,16 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://ddmo4bwcojgyl"]
+[gd_scene load_steps=5 format=3 uid="uid://ddmo4bwcojgyl"]
 
 [ext_resource type="Script" uid="uid://de6xbtotejkxl" path="res://src/scenes/trade_scene/trade.gd" id="1_08on2"]
 [ext_resource type="PackedScene" uid="uid://dnhsscnbu1k31" path="res://src/scenes/trade_scene/coin/coin.tscn" id="1_s8xmh"]
 [ext_resource type="PackedScene" uid="uid://dk6rqdlu8v6t5" path="res://src/scenes/trade_scene/floor/floor.tscn" id="3_cll2m"]
+[ext_resource type="PackedScene" uid="uid://dthhbje3265yb" path="res://src/scenes/trade_scene/scale/scale.tscn" id="4_v15gx"]
 
 [node name="Trade" type="Node2D"]
 script = ExtResource("1_08on2")
 
 [node name="Coin" parent="." instance=ExtResource("1_s8xmh")]
-position = Vector2(622, 224)
+position = Vector2(209, 171)
+
+[node name="Coin2" parent="." instance=ExtResource("1_s8xmh")]
+position = Vector2(209, 171)
 
 [node name="Floor" parent="." instance=ExtResource("3_cll2m")]
 position = Vector2(1, 616)
 
+[node name="Scale" parent="." instance=ExtResource("4_v15gx")]
+position = Vector2(631, 263)
+
 [connection signal="clicked" from="Coin" to="." method="_on_pickable_object_clicked"]
+[connection signal="clicked" from="Coin2" to="." method="_on_pickable_object_clicked"]

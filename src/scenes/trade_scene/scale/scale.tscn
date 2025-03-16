@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://dthhbje3265yb"]
+
+[ext_resource type="PackedScene" uid="uid://c2x2jgcjgw0o" path="res://src/scenes/trade_scene/scale/scale_platform/scale_platform.tscn" id="1_jnbmu"]
+[ext_resource type="PackedScene" uid="uid://ceyrlkfbsxx33" path="res://src/scenes/trade_scene/scale/scale_beam/scale_beam.tscn" id="2_8ksth"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_8ksth"]
+
+[node name="Scale" type="Node2D"]
+
+[node name="ScalePlatformSelf" parent="." instance=ExtResource("1_jnbmu")]
+position = Vector2(-292, 169)
+
+[node name="ScalePlatformOther" parent="." instance=ExtResource("1_jnbmu")]
+position = Vector2(147, 169)
+
+[node name="ScaleBeamVertical" parent="." instance=ExtResource("2_8ksth")]
+position = Vector2(-20, 6)
+freeze = true
+
+[node name="ScaleBeamHorizontal" parent="." instance=ExtResource("2_8ksth")]
+position = Vector2(220, 0)
+rotation = 1.5708
+physics_material_override = SubResource("PhysicsMaterial_8ksth")
+
+[node name="PinJoint2D2" type="PinJoint2D" parent="."]
+position = Vector2(220, 40)
+node_a = NodePath("../ScalePlatformOther")
+node_b = NodePath("../ScaleBeamHorizontal")
+
+[node name="PinJoint2D3" type="PinJoint2D" parent="."]
+position = Vector2(-219, 40)
+node_a = NodePath("../ScalePlatformSelf")
+node_b = NodePath("../ScaleBeamHorizontal")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="."]
+position = Vector2(0, 5)
+node_a = NodePath("../ScaleBeamVertical")
+node_b = NodePath("../ScaleBeamHorizontal")
