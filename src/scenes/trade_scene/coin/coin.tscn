@@ -17,6 +17,8 @@ input_pickable = true
 mass = 0.2
 physics_material_override = SubResource("PhysicsMaterial_yyjhv")
 freeze_mode = 1
+contact_monitor = true
+max_contacts_reported = 10
 script = ExtResource("1_yyjhv")
 
 [node name="Sprite" type="Sprite2D" parent="."]

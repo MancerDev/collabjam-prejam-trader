@@ -37,8 +37,6 @@ length = 150.0
 
 [node name="Platform" type="RigidBody2D" parent="."]
 lock_rotation = true
-contact_monitor = true
-max_contacts_reported = 100
 script = ExtResource("2_a6err")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform"]
