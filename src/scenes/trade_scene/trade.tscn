@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://ddmo4bwcojgyl"]
+[gd_scene load_steps=6 format=3 uid="uid://ddmo4bwcojgyl"]
 
 [ext_resource type="Script" uid="uid://de6xbtotejkxl" path="res://src/scenes/trade_scene/trade.gd" id="1_08on2"]
 [ext_resource type="PackedScene" uid="uid://dnhsscnbu1k31" path="res://src/scenes/trade_scene/coin/coin.tscn" id="1_s8xmh"]
 [ext_resource type="PackedScene" uid="uid://dk6rqdlu8v6t5" path="res://src/scenes/trade_scene/floor/floor.tscn" id="3_cll2m"]
 [ext_resource type="PackedScene" uid="uid://dthhbje3265yb" path="res://src/scenes/trade_scene/scale/scale.tscn" id="4_v15gx"]
+[ext_resource type="PackedScene" uid="uid://dwcygm3ploh44" path="res://src/scenes/trade_scene/weight/weight.tscn" id="5_6yv3a"]
 
 [node name="Trade" type="Node2D"]
 script = ExtResource("1_08on2")
@@ -11,8 +12,11 @@ script = ExtResource("1_08on2")
 [node name="Coin" parent="." instance=ExtResource("1_s8xmh")]
 position = Vector2(209, 171)
 
+[node name="Coin6" parent="." instance=ExtResource("1_s8xmh")]
+position = Vector2(177, 216)
+
 [node name="Coin2" parent="." instance=ExtResource("1_s8xmh")]
-position = Vector2(209, 171)
+position = Vector2(220, 217)
 
 [node name="Floor" parent="." instance=ExtResource("3_cll2m")]
 position = Vector2(1, 616)
@@ -20,5 +24,27 @@ position = Vector2(1, 616)
 [node name="Scale" parent="." instance=ExtResource("4_v15gx")]
 position = Vector2(631, 263)
 
+[node name="Coin3" parent="." instance=ExtResource("1_s8xmh")]
+position = Vector2(139, 136)
+
+[node name="Coin5" parent="." instance=ExtResource("1_s8xmh")]
+position = Vector2(107, 181)
+
+[node name="Coin4" parent="." instance=ExtResource("1_s8xmh")]
+position = Vector2(150, 182)
+
+[node name="RigidBody2D" parent="." instance=ExtResource("5_6yv3a")]
+position = Vector2(393, 391)
+
+[node name="RigidBody2D3" parent="." instance=ExtResource("5_6yv3a")]
+position = Vector2(909, 395)
+
+[node name="RigidBody2D2" parent="." instance=ExtResource("5_6yv3a")]
+position = Vector2(863, 386)
+
 [connection signal="clicked" from="Coin" to="." method="_on_pickable_object_clicked"]
+[connection signal="clicked" from="Coin6" to="." method="_on_pickable_object_clicked"]
 [connection signal="clicked" from="Coin2" to="." method="_on_pickable_object_clicked"]
+[connection signal="clicked" from="Coin3" to="." method="_on_pickable_object_clicked"]
+[connection signal="clicked" from="Coin5" to="." method="_on_pickable_object_clicked"]
+[connection signal="clicked" from="Coin4" to="." method="_on_pickable_object_clicked"]

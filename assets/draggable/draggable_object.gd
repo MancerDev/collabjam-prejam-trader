@@ -1,5 +1,7 @@
 extends RigidBody2D
 
+class_name DragabbleObject
+
 signal clicked
 
 var held = false

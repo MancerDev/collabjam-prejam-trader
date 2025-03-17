@@ -1,26 +1,30 @@
 [gd_scene load_steps=5 format=3 uid="uid://dnhsscnbu1k31"]
 
-[ext_resource type="Texture2D" uid="uid://2l3u5uwh14hi" path="res://assets/coin/coin15.png" id="1_hkbcu"]
-[ext_resource type="Script" uid="uid://bwyikxe1qgcip" path="res://src/scenes/trade_scene/coin/coin.gd" id="1_yyjhv"]
+[ext_resource type="Texture2D" uid="uid://2l3u5uwh14hi" path="res://assets/draggable/coin/coin15.png" id="1_hkbcu"]
+[ext_resource type="Script" uid="uid://boqv1mwqq2tfg" path="res://assets/draggable/coin/coin.gd" id="1_yyjhv"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_yyjhv"]
-bounce = 0.15
+friction = 0.5
+rough = true
+bounce = 0.05
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hkbcu"]
-radius = 22.0
-height = 62.0
+radius = 4.0
+height = 38.0
 
 [node name="RigidBody2D" type="RigidBody2D"]
 input_pickable = true
+mass = 0.2
 physics_material_override = SubResource("PhysicsMaterial_yyjhv")
 freeze_mode = 1
 script = ExtResource("1_yyjhv")
 
 [node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.6, 0.3)
 texture = ExtResource("1_hkbcu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2, 2)
+position = Vector2(-1, 1)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_hkbcu")
 
