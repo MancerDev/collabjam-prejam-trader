@@ -40,6 +40,8 @@ for file_path in html_dir.walkDir():
                 var all_names_m: seq[string]
                 var all_descs_f: seq[string]
                 var all_descs_m: seq[string]
+                var count_f: int
+                var count_m: int
                 while not html_stream.atEnd():
                     var c = html_stream.readChar()
                     # read_buffer.add(c)
@@ -56,6 +58,7 @@ for file_path in html_dir.walkDir():
                                     # write_f.write("\n")
                                     all_names_f &= name
                                     all_descs_f &= desc
+                                    count_f += 1
                                 if gender.contains("m"):
                                     # write_m.write(name)
                                     # write_m.write("\t")
@@ -63,6 +66,7 @@ for file_path in html_dir.walkDir():
                                     # write_m.write("\n")
                                     all_names_m &= name
                                     all_descs_m &= desc
+                                    count_m += 1
                                 count += 1
                                 name = ""
                                 gender = ""
@@ -130,6 +134,14 @@ for file_path in html_dir.walkDir():
                                     tag_buffer.add(c)
                 html_stream.close()
 
+                write_f.write("count = ")
+                write_f.write($count_f)
+                write_f.write("\n")
+
+                write_m.write("count = ")
+                write_m.write($count_m)
+                write_m.write("\n")
+
                 write_f.write("firstnames = Array[String]([")
                 write_f.write("\"")
                 write_f.write(all_names_f[0])
@@ -170,5 +182,5 @@ for file_path in html_dir.walkDir():
                     write_m.write("\"")
                 write_m.write("])\n")
 
-            echo(count)
-            count = 0
+                echo(count)
+                count = 0
