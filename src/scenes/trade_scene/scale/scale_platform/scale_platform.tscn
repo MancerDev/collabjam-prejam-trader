@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://c2x2jgcjgw0o"]
+[gd_scene load_steps=6 format=3 uid="uid://c2x2jgcjgw0o"]
 
 [ext_resource type="PackedScene" uid="uid://c3chfu73xi1l1" path="res://src/scenes/trade_scene/scale/scale_point/scale_point.tscn" id="1_r8ove"]
-[ext_resource type="Script" path="res://src/scenes/trade_scene/scale/scale_platform/platform.gd" id="2_a6err"]
+[ext_resource type="Script" uid="uid://b3aresg5eunwf" path="res://src/scenes/trade_scene/scale/scale_platform/scale_platform.gd" id="1_v5n52"]
+[ext_resource type="Script" uid="uid://c82ic5s7inldx" path="res://src/scenes/trade_scene/scale/scale_platform/platform.gd" id="2_a6err"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r8ove"]
 radius = 1.0
@@ -10,8 +11,9 @@ radius = 1.0
 size = Vector2(148, 20)
 
 [node name="ScalePlatform" type="RigidBody2D"]
-collision_layer = 2
-collision_mask = 2
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_v5n52")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(73, -129)

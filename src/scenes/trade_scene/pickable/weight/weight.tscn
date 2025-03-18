@@ -14,6 +14,8 @@ size = Vector2(31, 58)
 [node name="Weight" type="RigidBody2D" groups=["pickable"]]
 input_pickable = true
 physics_material_override = SubResource("PhysicsMaterial_yyjhv")
+center_of_mass_mode = 1
+center_of_mass = Vector2(0, 5)
 freeze_mode = 1
 contact_monitor = true
 max_contacts_reported = 10

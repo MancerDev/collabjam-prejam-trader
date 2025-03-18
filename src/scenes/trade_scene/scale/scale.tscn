@@ -1,11 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://dthhbje3265yb"]
+[gd_scene load_steps=6 format=3 uid="uid://dthhbje3265yb"]
 
+[ext_resource type="Script" uid="uid://cxd8h87sl2a7m" path="res://src/scenes/trade_scene/scale/scale.gd" id="1_5ltgm"]
 [ext_resource type="PackedScene" uid="uid://c2x2jgcjgw0o" path="res://src/scenes/trade_scene/scale/scale_platform/scale_platform.tscn" id="1_jnbmu"]
 [ext_resource type="PackedScene" uid="uid://ceyrlkfbsxx33" path="res://src/scenes/trade_scene/scale/scale_beam/scale_beam.tscn" id="2_8ksth"]
+[ext_resource type="PackedScene" uid="uid://t7kd12wjrt5n" path="res://src/scenes/trade_scene/scale/weight_meter/weight_meter.tscn" id="4_uo1kv"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_8ksth"]
 
 [node name="Scale" type="Node2D"]
+script = ExtResource("1_5ltgm")
 
 [node name="ScalePlatformSelf" parent="." instance=ExtResource("1_jnbmu")]
 position = Vector2(-292, 169)
@@ -36,3 +39,5 @@ node_b = NodePath("../ScaleBeamHorizontal")
 position = Vector2(0, 5)
 node_a = NodePath("../ScaleBeamVertical")
 node_b = NodePath("../ScaleBeamHorizontal")
+
+[node name="Control" parent="." instance=ExtResource("4_uo1kv")]

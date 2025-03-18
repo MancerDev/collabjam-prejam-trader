@@ -12,7 +12,7 @@
 [node name="Trade" type="Node2D"]
 script = ExtResource("1_08on2")
 
-[node name="Coin" parent="." instance=ExtResource("1_s8xmh")]
+[node name="Coin" parent="." groups=["spawnerButton"] instance=ExtResource("1_s8xmh")]
 position = Vector2(1065, 533)
 
 [node name="Floor" parent="." instance=ExtResource("3_cll2m")]
@@ -22,25 +22,25 @@ position = Vector2(1, 616)
 position = Vector2(631, 263)
 
 [node name="RigidBody2D" parent="." instance=ExtResource("5_6yv3a")]
-position = Vector2(393, 391)
+position = Vector2(297, 516)
 
 [node name="Button" parent="." instance=ExtResource("6_k2hu4")]
-offset_left = 36.0
-offset_top = 313.0
-offset_right = 148.0
-offset_bottom = 344.0
+offset_left = 805.0
+offset_top = 18.0
+offset_right = 917.0
+offset_bottom = 49.0
 
 [node name="Button2" parent="." instance=ExtResource("6_k2hu4")]
-offset_left = 156.0
-offset_top = 315.0
-offset_right = 268.0
-offset_bottom = 346.0
+offset_left = 799.0
+offset_top = 69.0
+offset_right = 911.0
+offset_bottom = 100.0
 metadata/SpawnableObject = ExtResource("5_6yv3a")
 
 [node name="Shelf" parent="." instance=ExtResource("7_1jg2i")]
 position = Vector2(-12, 252)
 
-[node name="CoinPile" parent="." groups=["spawner"] instance=ExtResource("8_mucam")]
+[node name="CoinPile" parent="." instance=ExtResource("8_mucam")]
 position = Vector2(146, 155)
 quantity = 10
 

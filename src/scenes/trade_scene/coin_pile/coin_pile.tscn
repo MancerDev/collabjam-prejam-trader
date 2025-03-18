@@ -8,7 +8,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_una8w"]
 size = Vector2(106, 54)
 
-[node name="CoinPile" type="RigidBody2D"]
+[node name="CoinPile" type="RigidBody2D" groups=["spawner"]]
 input_pickable = true
 physics_material_override = SubResource("PhysicsMaterial_una8w")
 freeze_mode = 1
