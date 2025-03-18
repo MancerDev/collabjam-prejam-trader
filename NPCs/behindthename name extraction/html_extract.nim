@@ -13,10 +13,14 @@ var count = 0
 for file_path in html_dir.walkDir():
     if file_path.kind == pcFile:
         if file_path.path.fileExists():
-            let write_f = open($(write_dir / Path("f_" & $file_path.path.extractFilename())), fmWrite)
+            if $file_path.path.extractFilename() == ".gdignore":
+                continue
+            let write_f = open($(write_dir / Path("f_" & $file_path.path.extractFilename().changeFileExt("tres"))), fmWrite)
             defer: write_f.close()
-            let write_m = open($(write_dir / Path("m_" & $file_path.path.extractFilename())), fmWrite)
+            let write_m = open($(write_dir / Path("m_" & $file_path.path.extractFilename().changeFileExt("tres"))), fmWrite)
             defer: write_m.close()
+            write_f.writeLine("[gd_resource type=\"Resource\" script_class=\"NPCFirstnameList\" load_steps=2 format=3]\n\n[ext_resource type=\"Script\" path=\"res://NPCs/npc_firstname_list.gd\" id=\"1_hmai5\"]\n\n[resource]\nscript = ExtResource(\"1_hmai5\")")
+            write_m.writeLine("[gd_resource type=\"Resource\" script_class=\"NPCFirstnameList\" load_steps=2 format=3]\n\n[ext_resource type=\"Script\" path=\"res://NPCs/npc_firstname_list.gd\" id=\"1_hmai5\"]\n\n[resource]\nscript = ExtResource(\"1_hmai5\")")
 
             echo(file_path)
             var html_stream = newFileStream($file_path.path, fmRead)
@@ -32,6 +36,10 @@ for file_path in html_dir.walkDir():
                 var name = ""
                 var gender = ""
                 var desc = ""
+                var all_names_f: seq[string]
+                var all_names_m: seq[string]
+                var all_descs_f: seq[string]
+                var all_descs_m: seq[string]
                 while not html_stream.atEnd():
                     var c = html_stream.readChar()
                     # read_buffer.add(c)
@@ -42,15 +50,19 @@ for file_path in html_dir.walkDir():
                                 #     echo(gender)
                                 # echo(name, " ", gender, " ", desc)
                                 if gender.contains("f"):
-                                    write_f.write(name)
-                                    write_f.write("\t")
-                                    write_f.write(desc)
-                                    write_f.write("\n")
+                                    # write_f.write(name)
+                                    # write_f.write("\t")
+                                    # write_f.write(desc)
+                                    # write_f.write("\n")
+                                    all_names_f &= name
+                                    all_descs_f &= desc
                                 if gender.contains("m"):
-                                    write_m.write(name)
-                                    write_m.write("\t")
-                                    write_m.write(desc)
-                                    write_m.write("\n")
+                                    # write_m.write(name)
+                                    # write_m.write("\t")
+                                    # write_m.write(desc)
+                                    # write_m.write("\n")
+                                    all_names_m &= name
+                                    all_descs_m &= desc
                                 count += 1
                                 name = ""
                                 gender = ""
@@ -105,6 +117,8 @@ for file_path in html_dir.walkDir():
                             break # for testing
                         else:
                             if bracket_stack == 0:
+                                if c == '"':
+                                    read_buffer.add('\\')
                                 read_buffer.add(c)
                             else:
                                 if (not reached_space):
@@ -115,5 +129,46 @@ for file_path in html_dir.walkDir():
                                 else:
                                     tag_buffer.add(c)
                 html_stream.close()
+
+                write_f.write("firstnames = Array[String]([")
+                write_f.write("\"")
+                write_f.write(all_names_f[0])
+                write_f.write("\"")
+                for i in 1..<len(all_names_f):
+                    write_f.write(", \"")
+                    write_f.write(all_names_f[i])
+                    write_f.write("\"")
+                write_f.write("])\n")
+
+                write_m.write("firstnames = Array[String]([")
+                write_m.write("\"")
+                write_m.write(all_names_m[0])
+                write_m.write("\"")
+                for i in 1..<len(all_names_m):
+                    write_m.write(", \"")
+                    write_m.write(all_names_m[i])
+                    write_m.write("\"")
+                write_m.write("])\n")
+
+                write_f.write("meanings = Array[String]([")
+                write_f.write("\"")
+                write_f.write(all_descs_f[0])
+                write_f.write("\"")
+                for i in 1..<len(all_descs_f):
+                    write_f.write(", \"")
+                    write_f.write(all_descs_f[i])
+                    write_f.write("\"")
+                write_f.write("])\n")
+
+                write_m.write("meanings = Array[String]([")
+                write_m.write("\"")
+                write_m.write(all_descs_m[0])
+                write_m.write("\"")
+                for i in 1..<len(all_descs_m):
+                    write_m.write(", \"")
+                    write_m.write(all_descs_m[i])
+                    write_m.write("\"")
+                write_m.write("])\n")
+
             echo(count)
             count = 0
