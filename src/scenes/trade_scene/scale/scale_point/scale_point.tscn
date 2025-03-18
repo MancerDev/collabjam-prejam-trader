@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3chfu73xi1l1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_81mt1"]
+radius = 1.0
+
+[node name="ScalePoint" type="RigidBody2D"]
+gravity_scale = 0.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+offset_right = 148.0
+offset_bottom = 20.0
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_81mt1")

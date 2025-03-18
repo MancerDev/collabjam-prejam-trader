@@ -1,0 +1,56 @@
+[gd_scene load_steps=5 format=3 uid="uid://c2x2jgcjgw0o"]
+
+[ext_resource type="PackedScene" uid="uid://c3chfu73xi1l1" path="res://src/scenes/trade_scene/scale/scale_point/scale_point.tscn" id="1_r8ove"]
+[ext_resource type="Script" uid="uid://c82ic5s7inldx" path="res://src/scenes/trade_scene/scale/scale_platform/platform.gd" id="2_a6err"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r8ove"]
+radius = 1.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_81mt1"]
+size = Vector2(148, 20)
+
+[node name="ScalePlatform" type="RigidBody2D"]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(73, -129)
+shape = SubResource("CircleShape2D_r8ove")
+
+[node name="Center" parent="." instance=ExtResource("1_r8ove")]
+visible = false
+position = Vector2(73, -129)
+
+[node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="."]
+position = Vector2(73, -129)
+rotation = 0.523599
+node_a = NodePath("..")
+node_b = NodePath("../Platform")
+length = 150.0
+
+[node name="DampedSpringJoint2D2" type="DampedSpringJoint2D" parent="."]
+position = Vector2(73, -129)
+rotation = -0.523599
+node_a = NodePath("..")
+node_b = NodePath("../Platform")
+length = 150.0
+
+[node name="Platform" type="RigidBody2D" parent="."]
+lock_rotation = true
+script = ExtResource("2_a6err")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform"]
+position = Vector2(74, 10)
+shape = SubResource("RectangleShape2D_81mt1")
+
+[node name="ColorRect" type="ColorRect" parent="Platform"]
+offset_right = 148.0
+offset_bottom = 20.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Platform"]
+offset_left = 54.0
+offset_top = 21.0
+offset_right = 94.0
+offset_bottom = 44.0
+text = "21kg"

@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://dk6rqdlu8v6t5"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_8aeg8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8aeg8"]
+size = Vector2(1178, 40)
+
+[node name="Floor" type="Node2D"]
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_8aeg8")
+gravity_scale = 0.0
+sleeping = true
+freeze = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(571, 17)
+shape = SubResource("RectangleShape2D_8aeg8")
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+
+[node name="ColorRect" type="ColorRect" parent="RigidBody2D"]
+offset_left = -18.0
+offset_top = -3.0
+offset_right = 1159.0
+offset_bottom = 37.0
+color = Color(0.919426, 0.550938, 0.509184, 1)

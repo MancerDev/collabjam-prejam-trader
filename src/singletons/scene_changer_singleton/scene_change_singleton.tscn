@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://d3u443iobkjea"]
+
+[node name="SceneChangeSingleton" type="Node2D"]
