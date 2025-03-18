@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cml1w06ubfvrf"]
 
 [ext_resource type="Script" uid="uid://kn8lghrvwq3" path="res://src/scenes/trade_scene/spawner/spawner_button.gd" id="1_dawkb"]
-[ext_resource type="PackedScene" uid="uid://dnhsscnbu1k31" path="res://src/scenes/trade_scene/coin/coin.tscn" id="2_t4e06"]
+[ext_resource type="PackedScene" uid="uid://dnhsscnbu1k31" path="res://src/scenes/trade_scene/pickable/coin/coin.tscn" id="2_t4e06"]
 
 [node name="spawnerButton" type="Button"]
 offset_right = 36.0

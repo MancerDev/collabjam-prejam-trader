@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dnhsscnbu1k31"]
 
-[ext_resource type="Texture2D" uid="uid://2l3u5uwh14hi" path="res://assets/draggable/coin/coin15.png" id="1_hkbcu"]
-[ext_resource type="Script" uid="uid://boqv1mwqq2tfg" path="res://assets/draggable/coin/coin.gd" id="1_yyjhv"]
+[ext_resource type="Script" uid="uid://boqv1mwqq2tfg" path="res://assets/draggable/coin/coin.gd" id="1_68odj"]
+[ext_resource type="Texture2D" uid="uid://2l3u5uwh14hi" path="res://assets/draggable/coin/coin15.png" id="2_5yhnk"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_yyjhv"]
 friction = 0.5
@@ -13,17 +13,19 @@ radius = 4.0
 height = 38.0
 
 [node name="RigidBody2D" type="RigidBody2D"]
+collision_layer = 2
+collision_mask = 2
 input_pickable = true
 mass = 0.2
 physics_material_override = SubResource("PhysicsMaterial_yyjhv")
 freeze_mode = 1
 contact_monitor = true
 max_contacts_reported = 10
-script = ExtResource("1_yyjhv")
+script = ExtResource("1_68odj")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 scale = Vector2(0.6, 0.3)
-texture = ExtResource("1_hkbcu")
+texture = ExtResource("2_5yhnk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 1)

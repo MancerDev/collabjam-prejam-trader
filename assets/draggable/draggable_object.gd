@@ -9,7 +9,7 @@ var force_magnitude = 500
 
 func _physics_process(delta):
 	if held:
-			global_transform.origin = get_global_mouse_position()
+		global_transform.origin = get_global_mouse_position()
 
 		
 

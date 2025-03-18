@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://dq7rdwfgu5kqt"]
+
+[ext_resource type="Script" uid="uid://bvatrg1sohsgm" path="res://src/scenes/trade_scene/coin_pile/coin_pile.gd" id="1_x0ino"]
+[ext_resource type="Texture2D" uid="uid://bof1t53ci88fd" path="res://assets/images/coin/coin81.png" id="2_una8w"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_una8w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_una8w"]
+size = Vector2(106, 54)
+
+[node name="CoinPile" type="RigidBody2D"]
+input_pickable = true
+physics_material_override = SubResource("PhysicsMaterial_una8w")
+freeze_mode = 1
+script = ExtResource("1_x0ino")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_una8w")
+
+[node name="Label" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = -101.0
+offset_top = -133.0
+offset_right = 103.0
+offset_bottom = -89.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 4)
+shape = SubResource("RectangleShape2D_una8w")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
