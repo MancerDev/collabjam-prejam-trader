@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bp6hj1qylk77y"]
+
+[ext_resource type="Script" uid="uid://1e7s767f3fh" path="res://src/scenes/npc_scene/npc.gd" id="1_ytn30"]
+
+[node name="Npc" type="Node2D"]
+script = ExtResource("1_ytn30")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
