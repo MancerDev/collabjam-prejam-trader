@@ -1,47 +1,76 @@
-[gd_scene load_steps=9 format=3 uid="uid://ddmo4bwcojgyl"]
+[gd_scene load_steps=12 format=3 uid="uid://ddmo4bwcojgyl"]
 
 [ext_resource type="Script" uid="uid://de6xbtotejkxl" path="res://src/scenes/trade_scene/trade.gd" id="1_08on2"]
 [ext_resource type="PackedScene" uid="uid://dnhsscnbu1k31" path="res://src/scenes/trade_scene/pickable/coin/coin.tscn" id="1_s8xmh"]
 [ext_resource type="PackedScene" uid="uid://dk6rqdlu8v6t5" path="res://src/scenes/trade_scene/floor/floor.tscn" id="3_cll2m"]
+[ext_resource type="Resource" uid="uid://c21kh36wrjjah" path="res://assets/npc/villager/villager.tres" id="3_o0n50"]
 [ext_resource type="PackedScene" uid="uid://dthhbje3265yb" path="res://src/scenes/trade_scene/scale/scale.tscn" id="4_v15gx"]
 [ext_resource type="PackedScene" uid="uid://dwcygm3ploh44" path="res://src/scenes/trade_scene/pickable/weight/weight.tscn" id="5_6yv3a"]
 [ext_resource type="PackedScene" uid="uid://cml1w06ubfvrf" path="res://src/scenes/trade_scene/spawner/spawnerButton.tscn" id="6_k2hu4"]
 [ext_resource type="PackedScene" uid="uid://b8lk5oa1o7vk8" path="res://src/scenes/trade_scene/shelf/shelf.tscn" id="7_1jg2i"]
 [ext_resource type="PackedScene" uid="uid://dq7rdwfgu5kqt" path="res://src/scenes/trade_scene/coin_pile/coin_pile.tscn" id="8_mucam"]
+[ext_resource type="PackedScene" uid="uid://bp6hj1qylk77y" path="res://src/scenes/npc_scene/npc.tscn" id="9_q1ldy"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_yyjhv"]
+friction = 0.5
+rough = true
+bounce = 0.05
 
 [node name="Trade" type="Node2D"]
 script = ExtResource("1_08on2")
 
-[node name="Coin" parent="." instance=ExtResource("1_s8xmh")]
-position = Vector2(1065, 533)
+[node name="Uninterractables" type="Node2D" parent="."]
 
-[node name="Floor" parent="." instance=ExtResource("3_cll2m")]
-position = Vector2(1, 616)
+[node name="Npc" parent="Uninterractables" instance=ExtResource("9_q1ldy")]
+position = Vector2(979, 351)
+scale = Vector2(4, 4)
+npc = ExtResource("3_o0n50")
 
-[node name="Scale" parent="." instance=ExtResource("4_v15gx")]
-position = Vector2(631, 263)
+[node name="Physics" type="Node2D" parent="."]
 
-[node name="RigidBody2D" parent="." instance=ExtResource("5_6yv3a")]
-position = Vector2(393, 391)
-
-[node name="Button" parent="." instance=ExtResource("6_k2hu4")]
-offset_left = 36.0
-offset_top = 313.0
-offset_right = 148.0
-offset_bottom = 344.0
-
-[node name="Button2" parent="." instance=ExtResource("6_k2hu4")]
-offset_left = 156.0
-offset_top = 315.0
-offset_right = 268.0
-offset_bottom = 346.0
-metadata/SpawnableObject = ExtResource("5_6yv3a")
-
-[node name="Shelf" parent="." instance=ExtResource("7_1jg2i")]
-position = Vector2(-12, 252)
-
-[node name="CoinPile" parent="." groups=["spawner"] instance=ExtResource("8_mucam")]
-position = Vector2(146, 155)
+[node name="CoinPile" parent="Physics" instance=ExtResource("8_mucam")]
+position = Vector2(70, 434)
 quantity = 10
 
-[connection signal="clicked" from="Coin" to="." method="_on_pickable_object_clicked"]
+[node name="Shelf" parent="Physics" instance=ExtResource("7_1jg2i")]
+position = Vector2(-79, 296)
+
+[node name="Shelf" parent="Physics/Shelf" instance=ExtResource("7_1jg2i")]
+visible = false
+position = Vector2(1028, 140)
+
+[node name="Button2" parent="Physics" instance=ExtResource("6_k2hu4")]
+visible = false
+offset_left = 799.0
+offset_top = 69.0
+offset_right = 911.0
+offset_bottom = 100.0
+metadata/SpawnableObject = ExtResource("5_6yv3a")
+
+[node name="Button" parent="Physics" instance=ExtResource("6_k2hu4")]
+visible = false
+offset_left = 805.0
+offset_top = 18.0
+offset_right = 917.0
+offset_bottom = 49.0
+
+[node name="RigidBody2D" parent="Physics" instance=ExtResource("5_6yv3a")]
+visible = false
+position = Vector2(1036, 96)
+
+[node name="RigidBody2D2" parent="Physics" instance=ExtResource("5_6yv3a")]
+visible = false
+position = Vector2(1092, 100)
+
+[node name="Scale" parent="Physics" instance=ExtResource("4_v15gx")]
+position = Vector2(631, 263)
+
+[node name="Floor" parent="Physics" instance=ExtResource("3_cll2m")]
+position = Vector2(1, 616)
+
+[node name="Coin" parent="Physics" groups=["spawnerButton"] instance=ExtResource("1_s8xmh")]
+position = Vector2(1065, 533)
+physics_material_override = SubResource("PhysicsMaterial_yyjhv")
+can_sleep = true
+
+[connection signal="clicked" from="Physics/Coin" to="." method="_on_pickable_object_clicked"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=2 format=3 uid="uid://ceyrlkfbsxx33"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pnk68"]
-size = Vector2(38, 439)
+size = Vector2(12, 439)
 
 [node name="ScaleBeam" type="RigidBody2D"]
 collision_layer = 0
@@ -12,6 +12,7 @@ position = Vector2(21, 219.5)
 shape = SubResource("RectangleShape2D_pnk68")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 40.0
+offset_left = 14.0
+offset_right = 28.0
 offset_bottom = 439.0
 color = Color(0.942164, 0.811246, 0.862849, 1)

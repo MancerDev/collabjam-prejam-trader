@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://kn8lghrvwq3" path="res://src/scenes/trade_scene/spawner/spawner_button.gd" id="1_dawkb"]
 [ext_resource type="PackedScene" uid="uid://dnhsscnbu1k31" path="res://src/scenes/trade_scene/pickable/coin/coin.tscn" id="2_t4e06"]
 
-[node name="spawnerButton" type="Button"]
+[node name="spawnerButton" type="Button" groups=["spawnerButton"]]
 offset_right = 36.0
 offset_bottom = 11.0
 text = "Spawn object"

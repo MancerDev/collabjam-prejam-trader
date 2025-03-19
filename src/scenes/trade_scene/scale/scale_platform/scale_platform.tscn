@@ -1,17 +1,16 @@
 [gd_scene load_steps=5 format=3 uid="uid://c2x2jgcjgw0o"]
 
 [ext_resource type="PackedScene" uid="uid://c3chfu73xi1l1" path="res://src/scenes/trade_scene/scale/scale_point/scale_point.tscn" id="1_r8ove"]
-[ext_resource type="Script" path="res://src/scenes/trade_scene/scale/scale_platform/platform.gd" id="2_a6err"]
+[ext_resource type="Script" uid="uid://b3aresg5eunwf" path="res://src/scenes/trade_scene/scale/scale_platform/scale_platform.gd" id="1_v5n52"]
+[ext_resource type="Script" uid="uid://c82ic5s7inldx" path="res://src/scenes/trade_scene/scale/scale_platform/platform.gd" id="2_a6err"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r8ove"]
 radius = 1.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_81mt1"]
-size = Vector2(148, 20)
-
 [node name="ScalePlatform" type="RigidBody2D"]
-collision_layer = 2
-collision_mask = 2
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_v5n52")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(73, -129)
@@ -39,18 +38,38 @@ length = 150.0
 collision_layer = 3
 collision_mask = 3
 lock_rotation = true
+freeze = true
+freeze_mode = 1
 contact_monitor = true
 max_contacts_reported = 100
 script = ExtResource("2_a6err")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform"]
-position = Vector2(74, 10)
-shape = SubResource("RectangleShape2D_81mt1")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Platform"]
+polygon = PackedVector2Array(-39, -23, -51, -9, -24, 6, 0, 19, 178, 20, 232, 0, 223, -16, 178, 0, 4, 0)
 
 [node name="ColorRect" type="ColorRect" parent="Platform"]
 offset_right = 148.0
 offset_bottom = 20.0
+scale = Vector2(1.2, 1)
 metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect2" type="ColorRect" parent="Platform/ColorRect"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 18.0
+offset_right = 40.0
+offset_bottom = 36.0
+rotation = -2.56738
+scale = Vector2(1.2, 1)
+
+[node name="ColorRect" type="ColorRect" parent="Platform/ColorRect"]
+layout_mode = 0
+offset_left = 141.0
+offset_top = 3.0
+offset_right = 182.0
+offset_bottom = 21.0
+rotation = -0.404916
+scale = Vector2(1.2, 1)
 
 [node name="Label" type="Label" parent="Platform"]
 offset_left = 54.0
