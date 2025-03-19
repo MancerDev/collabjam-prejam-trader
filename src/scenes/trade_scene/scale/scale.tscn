@@ -12,9 +12,11 @@ script = ExtResource("1_5ltgm")
 
 [node name="ScalePlatformSelf" parent="." instance=ExtResource("1_jnbmu")]
 position = Vector2(-292, 169)
+freeze = true
 
 [node name="ScalePlatformOther" parent="." instance=ExtResource("1_jnbmu")]
 position = Vector2(147, 169)
+freeze = true
 
 [node name="ScaleBeamVertical" parent="." instance=ExtResource("2_8ksth")]
 position = Vector2(-20, 6)

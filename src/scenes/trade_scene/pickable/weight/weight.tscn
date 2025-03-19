@@ -16,6 +16,7 @@ input_pickable = true
 physics_material_override = SubResource("PhysicsMaterial_yyjhv")
 center_of_mass_mode = 1
 center_of_mass = Vector2(0, 5)
+can_sleep = false
 freeze_mode = 1
 contact_monitor = true
 max_contacts_reported = 10
