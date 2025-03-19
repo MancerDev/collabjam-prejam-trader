@@ -7,6 +7,6 @@ func _physics_process(delta):
 
 
 func slow_platform_movement(target_point): 
-	var newPos = (target_point - position)/50
-	var addPos = newPos
-	position += addPos;
+	var newPos = (target_point - position).normalized() 
+	#var addPos = newPos
+	position += 0.1*newPos;

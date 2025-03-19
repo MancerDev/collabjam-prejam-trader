@@ -30,4 +30,18 @@ texture = ExtResource("2_o3ii1")
 position = Vector2(-1.5, -8)
 shape = SubResource("RectangleShape2D_o3ii1")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -11.0
+offset_top = -6.0
+offset_right = 10.0
+offset_bottom = 15.0
+color = Color(0.481983, 0.776507, 0, 1)
+
+[node name="Label" type="Label" parent="ColorRect"]
+layout_mode = 0
+offset_top = -1.0
+offset_right = 21.0
+offset_bottom = 22.0
+text = "12"
+
 [connection signal="input_event" from="." to="." method="_on_input_event"]

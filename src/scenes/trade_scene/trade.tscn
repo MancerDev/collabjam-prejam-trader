@@ -21,8 +21,11 @@ position = Vector2(1, 616)
 [node name="Scale" parent="." instance=ExtResource("4_v15gx")]
 position = Vector2(631, 263)
 
+[node name="RigidBody2D2" parent="." instance=ExtResource("5_6yv3a")]
+position = Vector2(1092, 100)
+
 [node name="RigidBody2D" parent="." instance=ExtResource("5_6yv3a")]
-position = Vector2(297, 516)
+position = Vector2(1036, 96)
 
 [node name="Button" parent="." instance=ExtResource("6_k2hu4")]
 offset_left = 805.0
@@ -38,10 +41,13 @@ offset_bottom = 100.0
 metadata/SpawnableObject = ExtResource("5_6yv3a")
 
 [node name="Shelf" parent="." instance=ExtResource("7_1jg2i")]
-position = Vector2(-12, 252)
+position = Vector2(-79, 296)
+
+[node name="Shelf" parent="Shelf" instance=ExtResource("7_1jg2i")]
+position = Vector2(1060, -327)
 
 [node name="CoinPile" parent="." instance=ExtResource("8_mucam")]
-position = Vector2(146, 155)
+position = Vector2(70, 434)
 quantity = 10
 
 [connection signal="clicked" from="Coin" to="." method="_on_pickable_object_clicked"]

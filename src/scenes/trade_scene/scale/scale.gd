@@ -18,7 +18,7 @@ func _physics_process(delta):
 		elif (currentWeightComparison < 0):
 			angle = ($ScalePlatformOther.weight / $ScalePlatformSelf.weight)*-5
 		var y_offset = angle;
-		set_up_platforms_height(y_offset*1.2)
+		set_up_platforms_height(y_offset)
 		$Control.rotateArrow(angle/2);
 
 

@@ -11,11 +11,13 @@
 script = ExtResource("1_5ltgm")
 
 [node name="ScalePlatformSelf" parent="." instance=ExtResource("1_jnbmu")]
-position = Vector2(-292, 169)
+position = Vector2(-255, 163)
+can_sleep = false
 freeze = true
 
 [node name="ScalePlatformOther" parent="." instance=ExtResource("1_jnbmu")]
-position = Vector2(147, 169)
+position = Vector2(78, 170)
+can_sleep = false
 freeze = true
 
 [node name="ScaleBeamVertical" parent="." instance=ExtResource("2_8ksth")]
@@ -23,17 +25,17 @@ position = Vector2(-20, 6)
 freeze = true
 
 [node name="ScaleBeamHorizontal" parent="." instance=ExtResource("2_8ksth")]
-position = Vector2(220, 0)
+position = Vector2(212, 1)
 rotation = 1.5708
 physics_material_override = SubResource("PhysicsMaterial_8ksth")
 
 [node name="PinJoint2D2" type="PinJoint2D" parent="."]
-position = Vector2(220, 40)
+position = Vector2(152, 29)
 node_a = NodePath("../ScalePlatformOther")
 node_b = NodePath("../ScaleBeamHorizontal")
 
 [node name="PinJoint2D3" type="PinJoint2D" parent="."]
-position = Vector2(-219, 40)
+position = Vector2(-182, 27)
 node_a = NodePath("../ScalePlatformSelf")
 node_b = NodePath("../ScaleBeamHorizontal")
 
@@ -43,3 +45,5 @@ node_a = NodePath("../ScaleBeamVertical")
 node_b = NodePath("../ScaleBeamHorizontal")
 
 [node name="Control" parent="." instance=ExtResource("4_uo1kv")]
+offset_top = 16.0
+offset_bottom = 56.0

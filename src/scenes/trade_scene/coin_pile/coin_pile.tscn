@@ -6,7 +6,7 @@
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_una8w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_una8w"]
-size = Vector2(106, 54)
+size = Vector2(85, 69)
 
 [node name="CoinPile" type="RigidBody2D" groups=["spawner"]]
 input_pickable = true
@@ -16,7 +16,8 @@ script = ExtResource("1_x0ino")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 unique_name_in_owner = true
-scale = Vector2(0.6, 0.6)
+position = Vector2(-20.9, -20.9)
+scale = Vector2(0.436719, 0.436719)
 texture = ExtResource("2_una8w")
 
 [node name="Label" type="Label" parent="."]
@@ -29,7 +30,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 4)
+position = Vector2(-22, -15)
 shape = SubResource("RectangleShape2D_una8w")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]

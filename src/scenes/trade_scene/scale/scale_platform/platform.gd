@@ -3,7 +3,7 @@ extends RigidBody2D
 var weight = 0;
 
 func _physics_process(delta):
-	weight = 0;
+	weight = 1;
 	var allCollidedBodies = [];
 	#
 	#for body in get_colliding_bodies():
@@ -15,7 +15,7 @@ func _physics_process(delta):
 	for body in allCollidedBodies:
 		weight += round_to_dec(body.mass, 3);
 	
-	$Label.text = str(weight)+"KG"
+	$Label.text = str(weight-1)+"KG"
 
 
 func recursiveCollisionCheck(allCollidedBodies, bodies):
