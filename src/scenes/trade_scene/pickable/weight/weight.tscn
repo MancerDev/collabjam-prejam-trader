@@ -14,6 +14,9 @@ size = Vector2(31, 58)
 [node name="Weight" type="RigidBody2D" groups=["pickable"]]
 input_pickable = true
 physics_material_override = SubResource("PhysicsMaterial_yyjhv")
+center_of_mass_mode = 1
+center_of_mass = Vector2(0, 5)
+can_sleep = false
 freeze_mode = 1
 contact_monitor = true
 max_contacts_reported = 10
@@ -26,5 +29,19 @@ texture = ExtResource("2_o3ii1")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1.5, -8)
 shape = SubResource("RectangleShape2D_o3ii1")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -11.0
+offset_top = -6.0
+offset_right = 10.0
+offset_bottom = 15.0
+color = Color(0.481983, 0.776507, 0, 1)
+
+[node name="Label" type="Label" parent="ColorRect"]
+layout_mode = 0
+offset_top = -1.0
+offset_right = 21.0
+offset_bottom = 22.0
+text = "12"
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]

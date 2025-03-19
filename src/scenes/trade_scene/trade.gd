@@ -6,7 +6,10 @@ func _ready():
 		node.clicked.connect(_on_pickable_object_clicked)
 	for node in get_tree().get_nodes_in_group("spawner"):
 		print("as")
-		node.clicked.connect(_on_spawner_object_clicked)
+		node.clicked.connect(_on_spawner_object_grab)
+	for node in get_tree().get_nodes_in_group("spawnerButton"):
+		print("as")
+		node.clicked.connect(_on_spawner_object_click)
 		
 
 func _unhandled_input(event):
@@ -22,10 +25,21 @@ func _on_pickable_object_clicked(object):
 		object.pickup()
 		held_object = object
 
-func _on_spawner_object_clicked(spawner, spawnable):
+func _on_spawner_object_grab(spawner, spawnable):
 	print("a")
 	var scene = spawnable.instantiate();
 	var object = scene;
 	add_child(object);
 	object.clicked.connect(_on_pickable_object_clicked)
 	_on_pickable_object_clicked(object)
+	
+	
+func _on_spawner_object_click(spawner, spawnable):
+	print("a")
+	var scene = spawnable.instantiate();
+	var object = scene;
+	add_child(object);
+	object.position = spawner.position;
+	object.clicked.connect(_on_pickable_object_clicked)
+	#_on_pickable_object_clicked(object)
+	

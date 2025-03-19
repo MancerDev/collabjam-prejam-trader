@@ -1,0 +1,63 @@
+[gd_scene load_steps=2 format=3 uid="uid://t7kd12wjrt5n"]
+
+[ext_resource type="Script" uid="uid://bb4o0rh47mqqa" path="res://src/scenes/trade_scene/scale/ScaleMeter.gd" id="1_b0ttw"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+script = ExtResource("1_b0ttw")
+
+[node name="RightBoundary" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 18.0
+offset_right = 22.0
+offset_bottom = 90.0
+rotation = -1.309
+pivot_offset = Vector2(2, 0)
+color = Color(0.379297, 0.282855, 0.0607545, 1)
+
+[node name="RightBoundary2" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 18.0
+offset_right = 22.0
+offset_bottom = 90.0
+rotation = -0.436332
+pivot_offset = Vector2(2, 0)
+color = Color(0.379297, 0.282855, 0.0607545, 1)
+
+[node name="LeftBoundary2" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 18.0
+offset_right = 22.0
+offset_bottom = 90.0
+rotation = 0.436332
+pivot_offset = Vector2(2, 0)
+color = Color(0.379297, 0.282855, 0.0607545, 1)
+
+[node name="LeftBoundary" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 18.0
+offset_right = 22.0
+offset_bottom = 90.0
+rotation = 1.309
+pivot_offset = Vector2(2, 0)
+color = Color(0.379297, 0.282855, 0.0607545, 1)
+
+[node name="Middle" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 17.0
+offset_right = 23.0
+offset_bottom = 90.0
+pivot_offset = Vector2(2, 0)
+color = Color(0.379297, 0.282855, 0.0607545, 1)
+
+[node name="Arrow" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 19.0
+offset_right = 21.0
+offset_bottom = 90.0
+pivot_offset = Vector2(1, 0)
+color = Color(0.763274, 0.58208, 0.166103, 1)
