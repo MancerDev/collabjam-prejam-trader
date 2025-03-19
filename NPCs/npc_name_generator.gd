@@ -1,16 +1,20 @@
 extends Node
 
-@onready var res_anglo_saxon_f      : NPCFirstnameList = load("res://NPCs/behindthename name extraction/first names/f_anglo_saxon.tres")
-@onready var res_germanic_f         : NPCFirstnameList = load("res://NPCs/behindthename name extraction/first names/f_germanic.tres")
-@onready var res_medieval_english_f : NPCFirstnameList = load("res://NPCs/behindthename name extraction/first names/f_medieval_english.tres")
-@onready var res_medieval_french_f  : NPCFirstnameList = load("res://NPCs/behindthename name extraction/first names/f_medieval_french.tres")
-@onready var res_old_irish_f        : NPCFirstnameList = load("res://NPCs/behindthename name extraction/first names/f_old_irish.tres")
+const res_anglo_saxon_f      : NPCFirstnameList = preload("res://NPCs/behindthename name extraction/first names/f_anglo_saxon.tres")
+const res_germanic_f         : NPCFirstnameList = preload("res://NPCs/behindthename name extraction/first names/f_germanic.tres")
+const res_medieval_dutch_f   : NPCFirstnameList = preload("res://NPCs/behindthename name extraction/first names/f_medieval_dutch.tres")
+const res_medieval_english_f : NPCFirstnameList = preload("res://NPCs/behindthename name extraction/first names/f_medieval_english.tres")
+const res_medieval_french_f  : NPCFirstnameList = preload("res://NPCs/behindthename name extraction/first names/f_medieval_french.tres")
+const res_medieval_german_f  : NPCFirstnameList = preload("res://NPCs/behindthename name extraction/first names/f_medieval_german.tres")
+const res_old_irish_f        : NPCFirstnameList = preload("res://NPCs/behindthename name extraction/first names/f_old_irish.tres")
 
-@onready var res_anglo_saxon_m      : NPCFirstnameList = load("res://NPCs/behindthename name extraction/first names/m_anglo_saxon.tres")
-@onready var res_germanic_m         : NPCFirstnameList = load("res://NPCs/behindthename name extraction/first names/m_germanic.tres")
-@onready var res_medieval_english_m : NPCFirstnameList = load("res://NPCs/behindthename name extraction/first names/m_medieval_english.tres")
-@onready var res_medieval_french_m  : NPCFirstnameList = load("res://NPCs/behindthename name extraction/first names/m_medieval_french.tres")
-@onready var res_old_irish_m        : NPCFirstnameList = load("res://NPCs/behindthename name extraction/first names/m_old_irish.tres")
+const res_anglo_saxon_m      : NPCFirstnameList = preload("res://NPCs/behindthename name extraction/first names/m_anglo_saxon.tres")
+const res_germanic_m         : NPCFirstnameList = preload("res://NPCs/behindthename name extraction/first names/m_germanic.tres")
+const res_medieval_dutch_m   : NPCFirstnameList = preload("res://NPCs/behindthename name extraction/first names/m_medieval_dutch.tres")
+const res_medieval_english_m : NPCFirstnameList = preload("res://NPCs/behindthename name extraction/first names/m_medieval_english.tres")
+const res_medieval_french_m  : NPCFirstnameList = preload("res://NPCs/behindthename name extraction/first names/m_medieval_french.tres")
+const res_medieval_german_m  : NPCFirstnameList = preload("res://NPCs/behindthename name extraction/first names/m_medieval_german.tres")
+const res_old_irish_m        : NPCFirstnameList = preload("res://NPCs/behindthename name extraction/first names/m_old_irish.tres")
 
 # would need to recalculate cumulative indices on a change, so im just going to put them all together for now
 #var use_anglo_saxon      : bool = true
@@ -32,22 +36,32 @@ func _ready() -> void:
 	names_cumulative_indices_f.append(0)
 	names_cumulative_indices_f.append(res_anglo_saxon_f.count)
 	names_cumulative_indices_f.append(names_cumulative_indices_f[1] + res_germanic_f.count)
-	names_cumulative_indices_f.append(names_cumulative_indices_f[2] + res_medieval_english_f.count)
-	names_cumulative_indices_f.append(names_cumulative_indices_f[3] + res_medieval_french_f.count)
-	names_cumulative_indices_f.append(names_cumulative_indices_f[4] + res_old_irish_f.count) # total
+	names_cumulative_indices_f.append(names_cumulative_indices_f[2] + res_medieval_dutch_f.count)
+	names_cumulative_indices_f.append(names_cumulative_indices_f[3] + res_medieval_english_f.count)
+	names_cumulative_indices_f.append(names_cumulative_indices_f[4] + res_medieval_french_f.count)
+	names_cumulative_indices_f.append(names_cumulative_indices_f[5] + res_medieval_german_f.count)
+	names_cumulative_indices_f.append(names_cumulative_indices_f[6] + res_old_irish_f.count) # total
 	
 	names_cumulative_indices_m.append(0)
 	names_cumulative_indices_m.append(res_anglo_saxon_m.count)
 	names_cumulative_indices_m.append(names_cumulative_indices_m[1] + res_germanic_m.count)
-	names_cumulative_indices_m.append(names_cumulative_indices_m[2] + res_medieval_english_m.count)
-	names_cumulative_indices_m.append(names_cumulative_indices_m[3] + res_medieval_french_m.count)
-	names_cumulative_indices_m.append(names_cumulative_indices_m[4] + res_old_irish_m.count) # total
+	names_cumulative_indices_m.append(names_cumulative_indices_m[2] + res_medieval_dutch_m.count)
+	names_cumulative_indices_m.append(names_cumulative_indices_m[3] + res_medieval_english_m.count)
+	names_cumulative_indices_m.append(names_cumulative_indices_m[4] + res_medieval_french_m.count)
+	names_cumulative_indices_m.append(names_cumulative_indices_m[5] + res_medieval_german_m.count)
+	names_cumulative_indices_m.append(names_cumulative_indices_m[6] + res_old_irish_m.count) # total
 	
-	#for i in range(0, 20):
-		#print(pickname_f())
-	#print()
-	#for i in range(0, 20):
-		#print(pickname_m())
+	print(res_anglo_saxon_f.count, " ", res_germanic_f.count, " ", res_medieval_dutch_f.count, " ", res_medieval_english_f.count, " ", res_medieval_french_f.count, " ", res_medieval_german_f.count, " ", res_old_irish_f.count)
+	print(res_anglo_saxon_m.count, " ", res_germanic_m.count, " ", res_medieval_dutch_m.count, " ", res_medieval_english_m.count, " ", res_medieval_french_m.count, " ", res_medieval_german_m.count, " ", res_old_irish_m.count)
+	
+	print(names_cumulative_indices_f)
+	print(names_cumulative_indices_m)
+	
+	for i in range(0, 20):
+		print(pickname_f())
+	print()
+	for i in range(0, 20):
+		print(pickname_m())
 
 
 func index_in_subrange(randint: int, splits: Array[int]) -> Vector2i:
@@ -61,6 +75,10 @@ func index_in_subrange(randint: int, splits: Array[int]) -> Vector2i:
 		return Vector2i(3, randint - splits[3])
 	elif randint < splits[5]:
 		return Vector2i(4, randint - splits[4])
+	elif randint < splits[6]:
+		return Vector2i(5, randint - splits[5])
+	elif randint < splits[7]:
+		return Vector2i(6, randint - splits[6])
 	else:
 		return Vector2i(-1, -1)
 
@@ -72,10 +90,14 @@ func pickname_f() -> String:
 	if split.x == 1:
 		return res_germanic_f.firstnames[split.y]
 	if split.x == 2:
-		return res_medieval_english_f.firstnames[split.y]
+		return res_medieval_dutch_f.firstnames[split.y]
 	if split.x == 3:
-		return res_medieval_french_f.firstnames[split.y]
+		return res_medieval_english_f.firstnames[split.y]
 	if split.x == 4:
+		return res_medieval_french_f.firstnames[split.y]
+	if split.x == 5:
+		return res_medieval_german_f.firstnames[split.y]
+	if split.x == 6:
 		return res_old_irish_f.firstnames[split.y]
 	else:
 		return "Erminsculda (great error)"
@@ -88,10 +110,14 @@ func pickname_m() -> String:
 	if split.x == 1:
 		return res_germanic_m.firstnames[split.y]
 	if split.x == 2:
-		return res_medieval_english_m.firstnames[split.y]
+		return res_medieval_dutch_m.firstnames[split.y]
 	if split.x == 3:
-		return res_medieval_french_m.firstnames[split.y]
+		return res_medieval_english_m.firstnames[split.y]
 	if split.x == 4:
+		return res_medieval_french_m.firstnames[split.y]
+	if split.x == 5:
+		return res_medieval_german_m.firstnames[split.y]
+	if split.x == 6:
 		return res_old_irish_m.firstnames[split.y]
 	else:
 		return "Erminsculd (great error)"

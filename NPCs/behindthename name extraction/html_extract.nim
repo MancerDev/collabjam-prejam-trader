@@ -15,9 +15,9 @@ for file_path in html_dir.walkDir():
         if file_path.path.fileExists():
             if $file_path.path.extractFilename() == ".gdignore":
                 continue
-            # let write_f = open($(write_dir / Path("f_" & $file_path.path.extractFilename())), fmWrite)
+            # let write_f = open($(write_dir / Path("txt") / Path("f_" & $file_path.path.extractFilename())), fmWrite)
             # defer: write_f.close()
-            # let write_m = open($(write_dir / Path("m_" & $file_path.path.extractFilename())), fmWrite)
+            # let write_m = open($(write_dir / Path("txt") / Path("m_" & $file_path.path.extractFilename())), fmWrite)
             # defer: write_m.close()
             let write_f = open($(write_dir / Path("f_" & $file_path.path.extractFilename().changeFileExt("tres"))), fmWrite)
             defer: write_f.close()
