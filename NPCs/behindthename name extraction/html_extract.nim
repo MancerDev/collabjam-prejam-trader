@@ -15,6 +15,10 @@ for file_path in html_dir.walkDir():
         if file_path.path.fileExists():
             if $file_path.path.extractFilename() == ".gdignore":
                 continue
+            # let write_f = open($(write_dir / Path("f_" & $file_path.path.extractFilename())), fmWrite)
+            # defer: write_f.close()
+            # let write_m = open($(write_dir / Path("m_" & $file_path.path.extractFilename())), fmWrite)
+            # defer: write_m.close()
             let write_f = open($(write_dir / Path("f_" & $file_path.path.extractFilename().changeFileExt("tres"))), fmWrite)
             defer: write_f.close()
             let write_m = open($(write_dir / Path("m_" & $file_path.path.extractFilename().changeFileExt("tres"))), fmWrite)
@@ -96,6 +100,7 @@ for file_path in html_dir.walkDir():
                                         of "browsename":
                                             desc &= read_buffer
                                         of "listusage", "nn", "mng", "listgender":
+                                            #TODO removing mng breaks some meanings, but with it had caused some issues
                                             discard
                                         else:
                                             if not classname.startsWith("namedesc"):
@@ -104,7 +109,7 @@ for file_path in html_dir.walkDir():
                         of '>':
                             bracket_stack -= 1
                             # echo(tag_close, " ", tag_kind, " ", tag_buffer)
-                            if tag_kind notin ["i", "b", "a", "br"]:
+                            if tag_kind notin ["i", "b", "a", "br"]: #TODO maybe add mng here
                                 if not tag_close:
                                     html_stack &= (tag_kind, tag_buffer)
                                 else:

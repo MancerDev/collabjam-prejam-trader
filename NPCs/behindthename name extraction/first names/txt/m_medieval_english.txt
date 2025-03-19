@@ -30,7 +30,7 @@ Nicol 	Medieval English and Scottish form of Nicholas. This was the middle name 
 Noll	Medieval diminutive of Oliver.
 Ode	Medieval English form of Odo.
 Pate	Medieval diminutive of Patrick.
-Randel	Medieval diminutive of Randolf and other names beginning with the Germanic element rant meaning "rim (of a shield)".
+Randel	Medieval diminutive of Randolf and other names beginning with the Germanic element rant meaning \"rim (of a shield)\".
 Ranulf	Medieval English form of Raginolf. Norman settlers and invaders introduced this name to England and Scotland.
 Roul	Norman French form of Rolf.
 Stace	Medieval short form of Eustace. As a modern name it is typically a short form of Stacy.
@@ -39,4 +39,4 @@ Wilkin	Medieval diminutive of William.
 Wilky	Medieval diminutive of William.
 Wilmot	Medieval diminutive and feminine form of William.
 Wybert	Middle English form of Wigberht.
-Wymond	Middle English form of the Old English name Wigmund, composed of the elements wig "battle" and mund "protection".
+Wymond	Middle English form of the Old English name Wigmund, composed of the elements wig \"battle\" and mund \"protection\".
