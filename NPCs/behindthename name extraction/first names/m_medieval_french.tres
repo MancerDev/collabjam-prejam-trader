@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="NPCFirstnameList" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://NPCs/npc_firstname_list.gd" id="1_hmai5"]
+
+[resource]
+script = ExtResource("1_hmai5")
+count = 21
+firstnames = Array[String](["Aimery", "Amé", "Amis", "Auberi", "Aymeri", "Enguerran", "Estienne", "Eudes", "Garnier", "Geoffroi", "Gidie", "Gosse", "Guarin", "Guiscard", "Jehan", "Josse", "Onfroi", "Piers", "Rolant", "Rollant", "Roul"])
+meanings = Array[String](["Old French form of Aimeric.", "Old French form of Aimé.", "Medieval name, a masculine form of Amice. It appears in the medieval French poem Amis and Amiles, about two friends who make sacrifices for one another.", "Old French form of Aubrey.", "Old French form of Aimeric. This is the name of a hero in medieval French romance, Aymeri de Narbonne.", "Old French form of Engilram (see Ingram). This was the name of several medieval French nobles from Picardy.", "Medieval French form of Stephen.", "Old French form of Odo.", "Medieval French form of Werner.", "Medieval French form of Geoffrey.", "Medieval French form of Aegidius (see Giles).", "Old French form of Gozzo.", "Norman French form of Warin.", "Norman French form of the Norman name Wischard, from Old Norse vizkr \"wise\" and the Old French pejorative suffix -ard (from Old Frankish hard \"hard, firm, brave, hardy\"). This was the byname of Robert Guiscard, an 11th-century Norman conqueror of Sicily.", "Old French form of Iohannes (see John).", "French form of Iudocus (see Joyce).", "Norman French form of Humphrey.", "Medieval form of Peter. This is the name of the main character in the 14th-century poem Piers Plowman by William Langland.", "Old French form of Roland.", "Old French form of Roland. This form is used in the oldest surviving text of La Chanson de Roland.", "Norman French form of Rolf."])
