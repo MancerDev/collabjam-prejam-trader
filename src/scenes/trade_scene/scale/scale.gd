@@ -1,9 +1,15 @@
 extends Node2D
 
+var SelfPlatform 
+var OtherPlatform 
 var scalePlatformSelf_position_saved;
 var scalePlatformOther_position_saved;
+var currentCollidedBodies
 
 func _ready(): 
+	SelfPlatform = $ScalePlatformSelf;
+	OtherPlatform = $ScalePlatformOther;
+	
 	scalePlatformSelf_position_saved = $ScalePlatformSelf.position
 	scalePlatformOther_position_saved = $ScalePlatformOther.position
 

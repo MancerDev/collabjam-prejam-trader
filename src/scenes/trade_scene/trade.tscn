@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ddmo4bwcojgyl"]
+[gd_scene load_steps=18 format=3 uid="uid://ddmo4bwcojgyl"]
 
 [ext_resource type="Script" uid="uid://de6xbtotejkxl" path="res://src/scenes/trade_scene/trade.gd" id="1_08on2"]
 [ext_resource type="PackedScene" uid="uid://dnhsscnbu1k31" path="res://src/scenes/trade_scene/pickable/coin/coin.tscn" id="1_s8xmh"]
@@ -8,8 +8,18 @@
 [ext_resource type="PackedScene" uid="uid://dwcygm3ploh44" path="res://src/scenes/trade_scene/pickable/weight/weight.tscn" id="5_6yv3a"]
 [ext_resource type="PackedScene" uid="uid://cml1w06ubfvrf" path="res://src/scenes/trade_scene/spawner/spawnerButton.tscn" id="6_k2hu4"]
 [ext_resource type="PackedScene" uid="uid://b8lk5oa1o7vk8" path="res://src/scenes/trade_scene/shelf/shelf.tscn" id="7_1jg2i"]
+[ext_resource type="Script" uid="uid://b5ma2jpq1sxwq" path="res://src/scenes/trade_scene/spawner/Deal.gd" id="8_83k6h"]
 [ext_resource type="PackedScene" uid="uid://dq7rdwfgu5kqt" path="res://src/scenes/trade_scene/coin_pile/coin_pile.tscn" id="8_mucam"]
+[ext_resource type="Script" uid="uid://ysjw4tfen5fv" path="res://src/scenes/trade_scene/spawner/StartTradeGoods.gd" id="8_probq"]
+[ext_resource type="PackedScene" uid="uid://co3x1w25j2ne0" path="res://src/scenes/trade_scene/pickable/FoodToken/FoodToken.tscn" id="8_xpqll"]
+[ext_resource type="PackedScene" uid="uid://54crqfoh4y6a" path="res://src/scenes/trade_scene/pickable/MetalToken/MetalToken.tscn" id="9_probq"]
 [ext_resource type="PackedScene" uid="uid://bp6hj1qylk77y" path="res://src/scenes/npc_scene/npc.tscn" id="9_q1ldy"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_o0n50"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_o0n50"]
+normal = Vector2(12, 0.009)
+distance = -0.165791
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_yyjhv"]
 friction = 0.5
@@ -29,30 +39,51 @@ npc = ExtResource("3_o0n50")
 [node name="Physics" type="Node2D" parent="."]
 
 [node name="CoinPile" parent="Physics" instance=ExtResource("8_mucam")]
-position = Vector2(70, 434)
+position = Vector2(250, 449)
 quantity = 10
 
 [node name="Shelf" parent="Physics" instance=ExtResource("7_1jg2i")]
 position = Vector2(-79, 296)
 
-[node name="Shelf" parent="Physics/Shelf" instance=ExtResource("7_1jg2i")]
-visible = false
-position = Vector2(1028, 140)
-
 [node name="Button2" parent="Physics" instance=ExtResource("6_k2hu4")]
-visible = false
-offset_left = 799.0
-offset_top = 69.0
-offset_right = 911.0
-offset_bottom = 100.0
+offset_left = 142.0
+offset_top = 13.0
+offset_right = 254.0
+offset_bottom = 44.0
+text = "Spawn weight"
 metadata/SpawnableObject = ExtResource("5_6yv3a")
 
+[node name="Button4" type="Button" parent="Physics"]
+offset_left = 475.0
+offset_top = 547.0
+offset_right = 595.0
+offset_bottom = 578.0
+text = "DEAL"
+script = ExtResource("8_83k6h")
+
 [node name="Button" parent="Physics" instance=ExtResource("6_k2hu4")]
-visible = false
-offset_left = 805.0
-offset_top = 18.0
-offset_right = 917.0
-offset_bottom = 49.0
+offset_left = 17.0
+offset_top = 14.0
+offset_right = 129.0
+offset_bottom = 45.0
+text = "Spawn coin"
+
+[node name="Button3" parent="Physics" instance=ExtResource("6_k2hu4")]
+offset_left = 1002.0
+offset_top = 136.0
+offset_right = 1114.0
+offset_bottom = 167.0
+text = "Generate
+"
+script = ExtResource("8_probq")
+
+[node name="Button5" parent="Physics" instance=ExtResource("6_k2hu4")]
+offset_left = 15.0
+offset_top = 58.0
+offset_right = 131.0
+offset_bottom = 89.0
+text = "Spawn Food"
+metadata/SpawnableObject = ExtResource("8_xpqll")
 
 [node name="RigidBody2D" parent="Physics" instance=ExtResource("5_6yv3a")]
 visible = false
@@ -61,6 +92,38 @@ position = Vector2(1036, 96)
 [node name="RigidBody2D2" parent="Physics" instance=ExtResource("5_6yv3a")]
 visible = false
 position = Vector2(1092, 100)
+
+[node name="RigidBody2D3" type="RigidBody2D" parent="Physics"]
+position = Vector2(631, 263)
+collision_layer = 4
+collision_mask = 4
+physics_material_override = SubResource("PhysicsMaterial_o0n50")
+gravity_scale = -8.0
+can_sleep = false
+freeze = true
+freeze_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Physics/RigidBody2D3"]
+position = Vector2(5, -4)
+shape = SubResource("WorldBoundaryShape2D_o0n50")
+
+[node name="RigidBody2D" parent="Physics/RigidBody2D3" instance=ExtResource("8_xpqll")]
+position = Vector2(-479, 302)
+
+[node name="RigidBody2D2" parent="Physics/RigidBody2D3" instance=ExtResource("8_xpqll")]
+position = Vector2(-428, 293)
+
+[node name="RigidBody2D3" parent="Physics/RigidBody2D3" instance=ExtResource("8_xpqll")]
+position = Vector2(-439, 274)
+
+[node name="RigidBody2D4" parent="Physics/RigidBody2D3" instance=ExtResource("9_probq")]
+position = Vector2(-583, 295)
+
+[node name="RigidBody2D5" parent="Physics/RigidBody2D3" instance=ExtResource("9_probq")]
+position = Vector2(-599, 262)
+
+[node name="RigidBody2D6" parent="Physics/RigidBody2D3" instance=ExtResource("9_probq")]
+position = Vector2(-550, 274)
 
 [node name="Scale" parent="Physics" instance=ExtResource("4_v15gx")]
 position = Vector2(631, 263)

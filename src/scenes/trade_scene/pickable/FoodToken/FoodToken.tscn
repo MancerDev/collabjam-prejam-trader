@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://co3x1w25j2ne0"]
+
+[ext_resource type="Script" uid="uid://boqv1mwqq2tfg" path="res://assets/draggable/coin/coin.gd" id="1_f4suy"]
+[ext_resource type="Texture2D" uid="uid://2l3u5uwh14hi" path="res://assets/draggable/coin/coin15.png" id="2_4ixnl"]
+[ext_resource type="Texture2D" uid="uid://7l8gl8dc1esg" path="res://assets/draggable/resourceIcons/food.png" id="3_33dsv"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_68odj"]
+rough = true
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hkbcu"]
+radius = 4.0
+height = 38.0
+
+[node name="RigidBody2D" type="RigidBody2D" groups=["pickable"]]
+collision_layer = 2
+collision_mask = 2
+input_pickable = true
+mass = 0.2
+physics_material_override = SubResource("PhysicsMaterial_68odj")
+can_sleep = false
+freeze_mode = 1
+contact_monitor = true
+max_contacts_reported = 10
+script = ExtResource("1_f4suy")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.6, 0.3)
+texture = ExtResource("2_4ixnl")
+
+[node name="Food" type="Sprite2D" parent="."]
+position = Vector2(-1, 0)
+scale = Vector2(0.163219, 0.106155)
+skew = 0.314159
+texture = ExtResource("3_33dsv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 1)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_hkbcu")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

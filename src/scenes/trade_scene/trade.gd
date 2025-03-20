@@ -34,12 +34,15 @@ func _on_spawner_object_grab(spawner, spawnable):
 	_on_pickable_object_clicked(object)
 	
 	
-func _on_spawner_object_click(spawner, spawnable):
+func _on_spawner_object_click(spawner, spawnable, function = null):
 	print("a")
 	var scene = spawnable.instantiate();
 	var object = scene;
 	add_child(object);
 	object.position = spawner.position;
 	object.clicked.connect(_on_pickable_object_clicked)
+	
+	if function != null:
+		function.call(spawner, object)
 	#_on_pickable_object_clicked(object)
 	

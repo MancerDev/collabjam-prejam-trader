@@ -15,6 +15,7 @@ script = ExtResource("1_v5n52")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(73, -129)
 shape = SubResource("CircleShape2D_r8ove")
+disabled = true
 
 [node name="Center" parent="." instance=ExtResource("1_r8ove")]
 visible = false
