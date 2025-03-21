@@ -22,6 +22,7 @@ shape = SubResource("RectangleShape2D_8aeg8")
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
 
 [node name="ColorRect" type="ColorRect" parent="RigidBody2D"]
+visible = false
 offset_left = -18.0
 offset_top = -3.0
 offset_right = 1159.0

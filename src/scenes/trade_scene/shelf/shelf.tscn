@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://casdjtabo7v0q" path="res://src/scenes/trade_scene/shelf/shelf.gd" id="1_4pcxm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4pcxm"]
-size = Vector2(63, 20)
+size = Vector2(74.5, 5)
 
 [node name="Shelf" type="RigidBody2D"]
 collision_layer = 3
@@ -12,30 +12,33 @@ freeze = true
 script = ExtResource("1_4pcxm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(21.5, 0)
+position = Vector2(27.75, -1.5)
 shape = SubResource("RectangleShape2D_4pcxm")
 
 [node name="ColorRect" type="ColorRect" parent="CollisionShape2D"]
+visible = false
 offset_left = -31.0
 offset_top = -10.0
 offset_right = 31.0
 offset_bottom = 10.0
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(22, 43)
+position = Vector2(29, 49)
 shape = SubResource("RectangleShape2D_4pcxm")
 
 [node name="ColorRect" type="ColorRect" parent="CollisionShape2D2"]
+visible = false
 offset_left = -31.0
 offset_top = -10.0
 offset_right = 31.0
 offset_bottom = 10.0
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
-position = Vector2(22, 102)
+position = Vector2(30, 87)
 shape = SubResource("RectangleShape2D_4pcxm")
 
 [node name="ColorRect" type="ColorRect" parent="CollisionShape2D3"]
+visible = false
 offset_left = -31.0
 offset_top = -10.0
 offset_right = 31.0

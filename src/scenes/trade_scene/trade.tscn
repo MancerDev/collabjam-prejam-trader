@@ -1,9 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://ddmo4bwcojgyl"]
+[gd_scene load_steps=21 format=3 uid="uid://ddmo4bwcojgyl"]
 
 [ext_resource type="Script" uid="uid://de6xbtotejkxl" path="res://src/scenes/trade_scene/trade.gd" id="1_08on2"]
 [ext_resource type="PackedScene" uid="uid://dnhsscnbu1k31" path="res://src/scenes/trade_scene/pickable/coin/coin.tscn" id="1_s8xmh"]
 [ext_resource type="PackedScene" uid="uid://dk6rqdlu8v6t5" path="res://src/scenes/trade_scene/floor/floor.tscn" id="3_cll2m"]
 [ext_resource type="Resource" uid="uid://c21kh36wrjjah" path="res://assets/npc/villager/villager.tres" id="3_o0n50"]
+[ext_resource type="Texture2D" uid="uid://c2x7475ij0g0u" path="res://assets/images/background/background.png" id="4_nnidl"]
 [ext_resource type="PackedScene" uid="uid://dthhbje3265yb" path="res://src/scenes/trade_scene/scale/scale.tscn" id="4_v15gx"]
 [ext_resource type="PackedScene" uid="uid://dwcygm3ploh44" path="res://src/scenes/trade_scene/pickable/weight/weight.tscn" id="5_6yv3a"]
 [ext_resource type="PackedScene" uid="uid://cml1w06ubfvrf" path="res://src/scenes/trade_scene/spawner/spawnerButton.tscn" id="6_k2hu4"]
@@ -34,17 +35,22 @@ script = ExtResource("1_08on2")
 [node name="Uninterractables" type="Node2D" parent="."]
 
 [node name="Npc" parent="Uninterractables" instance=ExtResource("9_q1ldy")]
-position = Vector2(278, 134)
+position = Vector2(283, 90)
 npc = ExtResource("3_o0n50")
+
+[node name="Background" type="Sprite2D" parent="Uninterractables"]
+position = Vector2(161, 120)
+texture = ExtResource("4_nnidl")
 
 [node name="Physics" type="Node2D" parent="."]
 
 [node name="CoinPile" parent="Physics" instance=ExtResource("8_mucam")]
+visible = false
 position = Vector2(51, 26)
 quantity = 10
 
 [node name="Shelf" parent="Physics" instance=ExtResource("7_1jg2i")]
-position = Vector2(7, 54)
+position = Vector2(9, 84)
 
 [node name="Spawn weight" parent="Physics" instance=ExtResource("6_k2hu4")]
 visible = false
@@ -138,7 +144,7 @@ position = Vector2(-550, 274)
 position = Vector2(162, 90)
 
 [node name="Floor" parent="Physics" instance=ExtResource("3_cll2m")]
-position = Vector2(-292, 201)
+position = Vector2(-48, 196)
 
 [node name="Coin" parent="Physics" groups=["spawnerButton"] instance=ExtResource("1_s8xmh")]
 visible = false
