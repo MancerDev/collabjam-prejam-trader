@@ -13,7 +13,7 @@ func _on_button_down() -> void:
 
 
 func set_up_weight_values(spawner, weight):
-	weight.WeightSetUp(2, 1)
+	weight.WeightSetUp(floor(randf()*3+1), 1)
 	weight.add_to_group("customer_goods")
 	#weight.
 

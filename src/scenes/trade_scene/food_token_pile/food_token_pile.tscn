@@ -1,14 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://dq7rdwfgu5kqt"]
+[gd_scene load_steps=5 format=3 uid="uid://dr1rflwqx1t50"]
 
-[ext_resource type="Script" uid="uid://bvatrg1sohsgm" path="res://src/scenes/trade_scene/coin_pile/coin_pile.gd" id="1_x0ino"]
-[ext_resource type="Texture2D" uid="uid://bof1t53ci88fd" path="res://assets/images/coin/coin81.png" id="2_una8w"]
+[ext_resource type="Script" uid="uid://cilt4t4n5l0ui" path="res://src/scenes/trade_scene/food_token_pile/food_token_pile.gd" id="1_1d2lo"]
+[ext_resource type="Texture2D" uid="uid://bof1t53ci88fd" path="res://assets/images/coin/coin81.png" id="2_61s5a"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_una8w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_una8w"]
 size = Vector2(85, 69)
 
-[node name="CoinPile" type="RigidBody2D" groups=["spawner"]]
+[node name="food_token_pile" type="RigidBody2D" groups=["spawner"]]
 collision_layer = 3
 collision_mask = 3
 input_pickable = true
@@ -18,20 +18,20 @@ freeze = true
 freeze_mode = 1
 contact_monitor = true
 max_contacts_reported = 5
-script = ExtResource("1_x0ino")
+script = ExtResource("1_1d2lo")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(-20.9, -20.9)
 scale = Vector2(0.436719, 0.436719)
-texture = ExtResource("2_una8w")
+texture = ExtResource("2_61s5a")
 
 [node name="Label" type="Label" parent="."]
 unique_name_in_owner = true
-offset_left = -101.0
-offset_top = -95.0
-offset_right = 103.0
-offset_bottom = -51.0
+offset_left = -105.0
+offset_top = -94.0
+offset_right = 99.0
+offset_bottom = -50.0
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -44,3 +44,4 @@ shape = SubResource("RectangleShape2D_una8w")
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="ready" from="." to="." method="_on_ready"]

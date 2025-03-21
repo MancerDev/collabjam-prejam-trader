@@ -1,5 +1,7 @@
 extends RigidBody2D
 
+class_name coin_pile
+
 var coin_scene = load("res://src/scenes/trade_scene/pickable/coin/coin.tscn")
 var coin_image_thresholds : Dictionary = {
 	1: load("res://assets/images/coin/coin15.png"),
@@ -13,6 +15,7 @@ signal clicked
 func _ready() -> void:
 	update_image()
 	%Label.text = str(quantity)
+	get_node("/root/Trade").held_object_dropped.connect(_on_held_object_dropped);
 
 func update_quantity(_quantity: int):
 	quantity = _quantity
@@ -46,3 +49,34 @@ func _on_input_event(viewport, event, shape_idx):
 
 func _on_mouse_entered() -> void:
 	print("asd") # Replace with function body.
+	
+	
+
+var savedBody
+var storedObjectScript = coin
+
+func _on_body_entered(body: Node) -> void:
+	print(body)
+	savedBody = null;
+	if (body.get_script() == storedObjectScript):
+		if (!get_node("/root/Trade").held_object):
+			body.queue_free()
+			update_quantity(quantity + 1)
+		else:
+			savedBody = body
+	
+	pass # Replace with function body.
+	
+func _on_body_exited(body: Node) -> void:
+	if (savedBody):
+		if (body.name == savedBody.name):
+			savedBody = null
+	pass # Replace with function body.
+
+
+func _on_held_object_dropped() -> void:
+	if (savedBody && !get_node("/root/Trade").held_object):
+		savedBody.queue_free();
+		update_quantity(quantity + 1)
+
+	pass # Replace with function body.

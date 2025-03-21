@@ -12,12 +12,15 @@ func _ready():
 		node.clicked.connect(_on_spawner_object_click)
 		
 
+signal held_object_dropped
+
 func _unhandled_input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if held_object and !event.pressed:
 			print(held_object)
 			held_object.drop()
 			held_object = null
+			held_object_dropped.emit();
 
 
 func _on_pickable_object_clicked(object):

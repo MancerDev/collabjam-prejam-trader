@@ -4,7 +4,7 @@ var SelfPlatform
 var OtherPlatform 
 var scalePlatformSelf_position_saved;
 var scalePlatformOther_position_saved;
-var currentCollidedBodies
+#var currentCollidedBodies
 
 func _ready(): 
 	SelfPlatform = $ScalePlatformSelf;

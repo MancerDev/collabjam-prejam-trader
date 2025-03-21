@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://co3x1w25j2ne0"]
 
-[ext_resource type="Script" uid="uid://boqv1mwqq2tfg" path="res://assets/draggable/coin/coin.gd" id="1_f4suy"]
+[ext_resource type="Script" uid="uid://y6s1p8ssow70" path="res://src/scenes/trade_scene/pickable/FoodToken/food_token.gd" id="1_gc1bl"]
 [ext_resource type="Texture2D" uid="uid://2l3u5uwh14hi" path="res://assets/draggable/coin/coin15.png" id="2_4ixnl"]
 [ext_resource type="Texture2D" uid="uid://7l8gl8dc1esg" path="res://assets/draggable/resourceIcons/food.png" id="3_33dsv"]
 
@@ -21,7 +21,7 @@ can_sleep = false
 freeze_mode = 1
 contact_monitor = true
 max_contacts_reported = 10
-script = ExtResource("1_f4suy")
+script = ExtResource("1_gc1bl")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 scale = Vector2(0.6, 0.3)

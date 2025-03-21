@@ -10,11 +10,10 @@ rough = true
 radius = 4.0
 height = 38.0
 
-[node name="RigidBody2D" type="RigidBody2D"]
+[node name="coin" type="RigidBody2D"]
 collision_layer = 2
 collision_mask = 2
 input_pickable = true
-mass = 0.2
 physics_material_override = SubResource("PhysicsMaterial_68odj")
 can_sleep = false
 freeze_mode = 1
