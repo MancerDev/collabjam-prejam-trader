@@ -17,7 +17,6 @@ func _ready():
 func _physics_process(delta):
 	var angle = 0;
 	var currentWeightComparison = ($ScalePlatformSelf.weight+5) - ($ScalePlatformOther.weight+5)
-	
 	if (!($ScalePlatformSelf.weight == 0) and !($ScalePlatformOther.weight == 0)):
 		if (currentWeightComparison > 0):
 			angle = ($ScalePlatformSelf.weight / $ScalePlatformOther.weight)*5
