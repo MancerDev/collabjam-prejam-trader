@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="NPCFirstnameList" load_steps=2 format=3 uid="uid://cglfak8swuagk"]
 
-[ext_resource type="Script" uid="uid://b043dwlbh8cc1" path="res://NPCs/npc_firstname_list.gd" id="1_hmai5"]
+[ext_resource type="Script" path="res://NPCs/npc_firstname_list.gd" id="1_hmai5"]
 
 [resource]
 script = ExtResource("1_hmai5")
