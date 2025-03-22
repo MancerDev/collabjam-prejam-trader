@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://buwkidp0b4eie"]
+
+[ext_resource type="FontFile" uid="uid://rwa6jdm60yeb" path="res://assets/text/Old Dungeon Cursive with line gap.otf" id="1_iyyye"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_rnusl"]
+line_spacing = 20.0
+font = ExtResource("1_iyyye")
+
+[node name="TextDemo" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="."]
+texture_filter = 1
+offset_right = 994.0
+offset_bottom = 412.0
+text = "ÐE ÞICK TOWN FOG SLUMPS OVER ÐE HAZY BOG.
+ðe þick town fog slumps over ðe hazy bog.
+
+abcdefghijklmnopqrstuvwxyz
+ABCDEFGHIJKLMNOPQRSTUVWXYZ
+äâáàæǣéèīíïœöôóòūüúùÿ
+ÄÂÁÀÆǢÉÈĪÍÏŒÖÔÓÒŪÜÚÙŸ
+ßẞðÐþÞ
+0123456789⁰¹²³⁴⁵⁶⁷⁸⁹₀₁₂₃₄₅₆₇₈₉
+¼½¾⁄⅐⅑⅒⅓⅔⅕⅖⅗⅘⅙⅚⅛⅜⅝⅞⅟
+$#%‰°+-×÷~<>=≠\\/
+ !?'\"‘“’”.,:;*^_(){}[]|¦§¶
+
+Lielde, Hadasa, Alveradis, Alixia, Claricia, Luitgarde, Acletrude, Arabel, Inga, Enede, Pascha, Ortrun, Aldwif, Unica, Nestoria, Aliit, Jolicia, Ottilburg, Alinore, Auberée
+
+Deorwine, Raginmar, Heyne, Islo, Fleurent, Hampnet, Adelund, Madern, Alawar, Bersi, Æthelwine, Madalger, Abelot, Finnghall, Adie, Fijs, Dulcelinus, Ludovicus, Coper, Adred"
+label_settings = SubResource("LabelSettings_rnusl")
+autowrap_mode = 2
