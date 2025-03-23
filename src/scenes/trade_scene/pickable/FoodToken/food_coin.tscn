@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://sctg4ixrdoo6"]
+
+[ext_resource type="PackedScene" uid="uid://dnhsscnbu1k31" path="res://src/scenes/trade_scene/pickable/coin/coin.tscn" id="1_x0bwa"]
+[ext_resource type="Texture2D" uid="uid://7l8gl8dc1esg" path="res://assets/draggable/resourceIcons/food.png" id="2_f4pbo"]
+
+[node name="FoodCoin" instance=ExtResource("1_x0bwa")]
+
+[node name="Food" type="Sprite2D" parent="." index="1"]
+position = Vector2(-1, 0)
+scale = Vector2(0.163219, 0.106155)
+skew = 0.314159
+texture = ExtResource("2_f4pbo")

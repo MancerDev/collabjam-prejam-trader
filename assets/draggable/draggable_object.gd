@@ -3,7 +3,7 @@ extends RigidBody2D
 class_name DragabbleObject
 
 signal clicked
-
+@export var identifier : String
 var held = false
 var force_magnitude = 500
 

@@ -1,184 +1,84 @@
-[gd_scene load_steps=22 format=3 uid="uid://ddmo4bwcojgyl"]
+[gd_scene load_steps=8 format=3 uid="uid://ddmo4bwcojgyl"]
 
 [ext_resource type="Script" uid="uid://de6xbtotejkxl" path="res://src/scenes/trade_scene/trade.gd" id="1_08on2"]
-[ext_resource type="PackedScene" uid="uid://dnhsscnbu1k31" path="res://src/scenes/trade_scene/pickable/coin/coin.tscn" id="1_s8xmh"]
 [ext_resource type="PackedScene" uid="uid://dk6rqdlu8v6t5" path="res://src/scenes/trade_scene/floor/floor.tscn" id="3_cll2m"]
-[ext_resource type="Resource" uid="uid://c21kh36wrjjah" path="res://assets/npc/villager/villager.tres" id="3_o0n50"]
 [ext_resource type="Texture2D" uid="uid://bi6b4gcnqo5kl" path="res://assets/images/background/background.webp" id="4_3khi1"]
 [ext_resource type="Texture2D" uid="uid://c2x7475ij0g0u" path="res://assets/images/background/background.png" id="4_nnidl"]
 [ext_resource type="PackedScene" uid="uid://dthhbje3265yb" path="res://src/scenes/trade_scene/scale/scale.tscn" id="4_v15gx"]
-[ext_resource type="PackedScene" uid="uid://dwcygm3ploh44" path="res://src/scenes/trade_scene/pickable/weight/weight.tscn" id="5_6yv3a"]
-[ext_resource type="PackedScene" uid="uid://cml1w06ubfvrf" path="res://src/scenes/trade_scene/spawner/spawnerButton.tscn" id="6_k2hu4"]
 [ext_resource type="PackedScene" uid="uid://b8lk5oa1o7vk8" path="res://src/scenes/trade_scene/shelf/shelf.tscn" id="7_1jg2i"]
-[ext_resource type="Script" path="res://src/scenes/trade_scene/spawner/Deal.gd" id="8_83k6h"]
-[ext_resource type="PackedScene" uid="uid://dq7rdwfgu5kqt" path="res://src/scenes/trade_scene/coin_pile/coin_pile.tscn" id="8_mucam"]
-[ext_resource type="Script" path="res://src/scenes/trade_scene/spawner/StartTradeGoods.gd" id="8_probq"]
-[ext_resource type="PackedScene" uid="uid://co3x1w25j2ne0" path="res://src/scenes/trade_scene/pickable/FoodToken/FoodToken.tscn" id="8_xpqll"]
-[ext_resource type="PackedScene" uid="uid://54crqfoh4y6a" path="res://src/scenes/trade_scene/pickable/MetalToken/MetalToken.tscn" id="9_probq"]
-[ext_resource type="PackedScene" uid="uid://bp6hj1qylk77y" path="res://src/scenes/npc_scene/npc.tscn" id="9_q1ldy"]
-[ext_resource type="PackedScene" uid="uid://dr1rflwqx1t50" path="res://src/scenes/trade_scene/food_token_pile/food_token_pile.tscn" id="15_fxeet"]
-[ext_resource type="PackedScene" uid="uid://p3alaxlhfyit" path="res://src/scenes/trade_scene/metal_token_pile/metal_token_pile.tscn" id="16_k3s8h"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_o0n50"]
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_o0n50"]
-normal = Vector2(12, 0.009)
-distance = -0.165791
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_yyjhv"]
-friction = 0.5
-rough = true
-bounce = 0.05
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mucam"]
+size = Vector2(6, 259)
 
 [node name="Trade" type="Node2D"]
 script = ExtResource("1_08on2")
 
 [node name="Uninterractables" type="Node2D" parent="."]
+unique_name_in_owner = true
 
 [node name="Background" type="Sprite2D" parent="Uninterractables"]
 position = Vector2(161, 118)
 texture = ExtResource("4_3khi1")
 
+[node name="NPCPosition" type="Marker2D" parent="Uninterractables"]
+unique_name_in_owner = true
+position = Vector2(284.863, 92.1446)
+
 [node name="Foreground" type="Sprite2D" parent="Uninterractables"]
+z_index = 10
 position = Vector2(161, 120)
 texture = ExtResource("4_nnidl")
 
-[node name="Npc" parent="Uninterractables" instance=ExtResource("9_q1ldy")]
-position = Vector2(283, 90)
-npc = ExtResource("3_o0n50")
-
 [node name="Physics" type="Node2D" parent="."]
-
-[node name="CoinPile" parent="Physics" instance=ExtResource("8_mucam")]
-visible = false
-position = Vector2(51, 26)
-quantity = 10
+unique_name_in_owner = true
+z_index = 15
 
 [node name="Shelf" parent="Physics" instance=ExtResource("7_1jg2i")]
 position = Vector2(8, 83)
 
-[node name="Spawn weight" parent="Physics" instance=ExtResource("6_k2hu4")]
-visible = false
-offset_left = 196.0
-offset_top = 3.0
-offset_right = 312.0
-offset_bottom = 34.0
-text = "Spawn weight"
-metadata/SpawnableObject = ExtResource("5_6yv3a")
-
-[node name="Spawn_Metal" parent="Physics" instance=ExtResource("6_k2hu4")]
-visible = false
-offset_left = 18.0
-offset_top = 316.0
-offset_right = 134.0
-offset_bottom = 347.0
-text = "Spawn_Metal"
-metadata/SpawnableObject = ExtResource("9_probq")
-
-[node name="Spawn_Food" parent="Physics" instance=ExtResource("6_k2hu4")]
-unique_name_in_owner = true
-visible = false
-offset_left = 70.0
-offset_top = 143.0
-offset_right = 186.0
-offset_bottom = 174.0
-text = "Spawn Food"
-metadata/SpawnableObject = ExtResource("8_xpqll")
-
-[node name="Spawn coin" parent="Physics" instance=ExtResource("6_k2hu4")]
-visible = false
-offset_left = 165.0
-offset_top = 318.0
-offset_right = 277.0
-offset_bottom = 349.0
-text = "Spawn coin"
-
-[node name="Deal" type="Button" parent="Physics" groups=["spawnerButton"]]
-visible = false
-offset_left = 317.0
-offset_top = 395.0
-offset_right = 433.0
-offset_bottom = 426.0
-text = "Spawn weight"
-script = ExtResource("8_83k6h")
-metadata/SpawnableObject = ExtResource("5_6yv3a")
-
-[node name="Button3" parent="Physics" instance=ExtResource("6_k2hu4")]
-visible = false
-offset_left = 1002.0
-offset_top = 136.0
-offset_right = 1114.0
-offset_bottom = 167.0
-text = "Generate
-"
-script = ExtResource("8_probq")
-
-[node name="RigidBody2D3" type="RigidBody2D" parent="Physics"]
-position = Vector2(631, 263)
-collision_layer = 4
-collision_mask = 4
-physics_material_override = SubResource("PhysicsMaterial_o0n50")
-gravity_scale = -8.0
-can_sleep = false
-freeze = true
-freeze_mode = 1
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Physics/RigidBody2D3"]
-position = Vector2(5, -4)
-shape = SubResource("WorldBoundaryShape2D_o0n50")
-
-[node name="RigidBody2D" parent="Physics/RigidBody2D3" instance=ExtResource("8_xpqll")]
-position = Vector2(-533, -92)
-
-[node name="RigidBody2D2" parent="Physics/RigidBody2D3" instance=ExtResource("8_xpqll")]
-position = Vector2(-604, -83)
-
-[node name="RigidBody2D3" parent="Physics/RigidBody2D3" instance=ExtResource("8_xpqll")]
-position = Vector2(-567, -80)
-
-[node name="RigidBody2D4" parent="Physics/RigidBody2D3" instance=ExtResource("9_probq")]
-position = Vector2(-583, 295)
-
-[node name="RigidBody2D5" parent="Physics/RigidBody2D3" instance=ExtResource("9_probq")]
-position = Vector2(-599, 262)
-
-[node name="RigidBody2D6" parent="Physics/RigidBody2D3" instance=ExtResource("9_probq")]
-position = Vector2(-550, 274)
-
 [node name="Scale" parent="Physics" instance=ExtResource("4_v15gx")]
 position = Vector2(180, 86)
-
-[node name="Coin" parent="Physics" groups=["spawnerButton"] instance=ExtResource("1_s8xmh")]
-visible = false
-position = Vector2(1065, 533)
-physics_material_override = SubResource("PhysicsMaterial_yyjhv")
-can_sleep = true
-
-[node name="food_token_pile" parent="Physics" instance=ExtResource("15_fxeet")]
-visible = false
-position = Vector2(87, 269)
 
 [node name="Walls" type="Node2D" parent="Physics"]
 
 [node name="Floor" parent="Physics/Walls" instance=ExtResource("3_cll2m")]
 position = Vector2(-3, 200)
 
-[node name="Wall" parent="Physics/Walls" instance=ExtResource("3_cll2m")]
+[node name="SideWall" parent="Physics/Walls" instance=ExtResource("3_cll2m")]
 position = Vector2(-2, -60)
 rotation = 1.5708
 
-[node name="Wall2" parent="Physics/Walls" instance=ExtResource("3_cll2m")]
+[node name="SideWall2" parent="Physics/Walls" instance=ExtResource("3_cll2m")]
 position = Vector2(361, -38)
 rotation = 1.5708
 
-[node name="Wall3" parent="Physics/Walls" instance=ExtResource("3_cll2m")]
+[node name="SideWall3" parent="Physics/Walls" instance=ExtResource("3_cll2m")]
 position = Vector2(10, -41)
 
-[node name="food_token_pile" parent="." instance=ExtResource("16_k3s8h")]
-visible = false
-position = Vector2(76, 434)
+[node name="SideSeperator" type="RigidBody2D" parent="Physics/Walls"]
+unique_name_in_owner = true
+collision_layer = 2
+collision_mask = 2
+freeze = true
 
-[connection signal="body_entered" from="Physics/CoinPile" to="." method="_on_coin_pile_body_entered"]
-[connection signal="button_down" from="Physics/Deal" to="Physics/Deal" method="_on_button_down"]
-[connection signal="clicked" from="Physics/Coin" to="." method="_on_pickable_object_clicked"]
-[connection signal="mouse_exited" from="Physics/Coin" to="." method="_on_coin_mouse_exited"]
+[node name="Side" type="CollisionShape2D" parent="Physics/Walls/SideSeperator"]
+position = Vector2(180, 96)
+shape = SubResource("RectangleShape2D_mucam")
+
+[node name="PlayerItems" type="Node2D" parent="Physics"]
+unique_name_in_owner = true
+
+[node name="NpcItems" type="Node2D" parent="Physics"]
+unique_name_in_owner = true
+
+[node name="UI" type="Node2D" parent="."]
+
+[node name="TradeButton" type="Button" parent="UI"]
+offset_left = 86.0
+offset_top = 6.0
+offset_right = 172.0
+offset_bottom = 41.0
+text = "Trade
+"
+
+[connection signal="pressed" from="UI/TradeButton" to="." method="_on_button_pressed"]

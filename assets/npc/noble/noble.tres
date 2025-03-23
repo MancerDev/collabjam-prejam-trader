@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="NPC" load_steps=7 format=3 uid="uid://bsf5jemkcncun"]
+
+[ext_resource type="Script" uid="uid://3glq0r2r8cjd" path="res://assets/npc/npc.gd" id="1_lwyig"]
+[ext_resource type="Texture2D" uid="uid://rtr0xtg408ys" path="res://assets/npc/noble/noble_angry.png" id="2_vvcrl"]
+[ext_resource type="Texture2D" uid="uid://dqkl31e0dt01x" path="res://assets/npc/noble/noble_backview.png" id="3_losuo"]
+[ext_resource type="Texture2D" uid="uid://bpc8umqb02dxt" path="res://assets/npc/noble/noble_happy.png" id="3_u3suj"]
+[ext_resource type="Texture2D" uid="uid://b6hmv611sh8v2" path="res://assets/npc/noble/noble_neutral.png" id="4_losuo"]
+[ext_resource type="Texture2D" uid="uid://crw8mpn0t06bm" path="res://assets/npc/noble/noble_sad.png" id="6_ai1a8"]
+
+[resource]
+script = ExtResource("1_lwyig")
+name_origin = 6
+sprite_neutral = ExtResource("4_losuo")
+sprite_happy = ExtResource("3_u3suj")
+sprite_angry = ExtResource("2_vvcrl")
+sprite_back = ExtResource("3_losuo")
+sprite_sad = ExtResource("6_ai1a8")
+inventory = Dictionary[String, int]({})
+metadata/_custom_type_script = "uid://3glq0r2r8cjd"
