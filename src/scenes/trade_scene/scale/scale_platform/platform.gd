@@ -22,7 +22,7 @@ func _physics_process(delta):
 			weight += currency_value
 		else:
 			weight += round_to_dec(body.mass, 3)
-
+	
 	weight = round_to_dec(weight, 3)
 	$Label.text = str(weight)+"KG"
 

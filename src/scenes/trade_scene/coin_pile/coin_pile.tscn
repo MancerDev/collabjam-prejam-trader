@@ -13,8 +13,8 @@
 size = Vector2(19, 28)
 
 [node name="CoinPile" type="RigidBody2D" groups=["spawner"]]
-collision_layer = 3
-collision_mask = 3
+collision_layer = 256
+collision_mask = 256
 input_pickable = true
 physics_material_override = SubResource("PhysicsMaterial_una8w")
 sleeping = true

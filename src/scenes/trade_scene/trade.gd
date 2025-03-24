@@ -64,7 +64,7 @@ func _on_spawner_object_click(spawner, spawnable, function = null):
 
 func _get_spawn_position(is_npc_side: bool) -> Vector2:
 	# Probably needs update for more robust positioning that considers items size
-	var separator = %SideSeperator
+	var separator = %CustomerItemsSeparator
 	var viewport_size = get_viewport_rect().size
 	var separator_width = 20  
 	
@@ -144,6 +144,8 @@ func _spawn_npc():
 		for i in range(amount):
 			var new_item = item_map[item].instantiate()
 			%Physics/NpcItems.add_child(new_item)
+			new_item.set_collision_mask_value(5, false);
+			new_item.set_collision_layer_value(5, false);
 			new_item.position = _get_spawn_position(true)
 			new_item.set_collision_mask_value(4, true);
 			new_item.set_collision_layer_value(4, true);
@@ -155,7 +157,7 @@ func _spawn_npc():
 
 func _on_button_pressed() -> void:
 	if deal_check():
-		await deal_execute()
+		deal_execute()
 		await  _despawn_npc()
 		await  _spawn_npc()
 	
@@ -172,9 +174,10 @@ func deal_check():
 func deal_execute():
 	for node in %Scale.SelfPlatform.platform.currentCollidedBodies:
 		print(node)
+		_tween_node_out(node, 0.3)
 		
-	
-	for node in %Scale.OtherPlatform.platform.currentCollidedBodies:
+	var bodies = %Scale.OtherPlatform.platform.currentCollidedBodies.duplicate()
+	for node in bodies:
 		#if (node.has_method("OnBuy")):
 		#	node.OnBuy()
 		#node.set_collision_mask_value(4, false);
@@ -182,11 +185,19 @@ func deal_execute():
 		var new_item = node
 		#%Physics/NpcItems.add_child(new_item)
 		new_item.remove_from_group("customer_items") 
-		
 		new_item.set_collision_mask_value(4, false);
 		new_item.set_collision_layer_value(4, false);
+		node.apply_central_impulse(Vector2(-300, -330))
+		new_item.set_collision_mask_value(9, false);
+		new_item.set_collision_layer_value(9, false);
+		new_item.set_collision_mask_value(10, false);
+		new_item.set_collision_layer_value(10, false);
+		
+		
+		#node.set_collision_mask_value(6, true);
+		#node.set_collision_layer_value(6, true);
 		#new_item.freeze = true
-		new_item.position = Vector2(100, 50)
+		#new_item.position = Vector2(100, 50)
 		#new_item.freeze = false
 		#new_item.identifier = item
 		#new_item.clicked.connect(_on_pickable_object_clicked)
@@ -194,3 +205,19 @@ func deal_execute():
 		
 		#node.set_position(_get_spawn_position(true))
 		#node.queue_free()
+		
+	await get_tree().create_timer(0.9).timeout
+	for node in bodies:
+		if (node.get_script() == food_token):
+			$food_token_pile.update_quantity($food_token_pile.quantity+1);
+			_tween_node_out(node, 0.4)
+		elif (node.get_script() == coin):
+			$CoinPile.update_quantity($CoinPile.quantity+1);
+			_tween_node_out(node, 0.4)
+		#node.set_collision_mask_value(5, true);
+		#node.set_collision_layer_value(5, true);$CoinPile 
+		
+		#node.set_collision_mask_value(6, false);
+		#node.set_collision_layer_value(6, false);
+		#new_item.set_collision_mask_value(5, true);
+		#new_item.set_collision_layer_value(5, true);
