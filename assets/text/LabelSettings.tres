@@ -1,0 +1,9 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://bsmt2fkrwn1nt"]
+
+[ext_resource type="FontFile" uid="uid://dmdm5giq8dms4" path="res://assets/text/Old Dungeon Cursive.otf" id="1_68yum"]
+
+[resource]
+font = ExtResource("1_68yum")
+font_size = 8
+outline_color = Color(0, 0, 0, 1)
+shadow_color = Color(0, 0, 0, 1)

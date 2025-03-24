@@ -21,9 +21,10 @@ DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 
 [display]
 
-window/size/viewport_width=320
-window/size/viewport_height=240
+window/size/viewport_width=640
+window/size/viewport_height=480
 window/stretch/mode="viewport"
+window/stretch/scale=2.0
 window/stretch/scale_mode="integer"
 
 [editor_plugins]
@@ -34,3 +35,10 @@ enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
 
 pickable=""
 spawnerButton=""
+
+[rendering]
+
+textures/lossless_compression/force_png=true
+anti_aliasing/screen_space_roughness_limiter/enabled=false
+2d/snap/snap_2d_transforms_to_pixel=true
+2d/snap/snap_2d_vertices_to_pixel=true

@@ -115,9 +115,11 @@ func _despawn_npc():
 		npc.set_sprite_state("back")
 		
 		# Despawn all items first
-		for item in %Physics/NpcItems.get_children():
-			_tween_node_out(item, 0.3)
 		
+		#for item in %Physics/NpcItems.get_children():
+		#	_tween_node_out(item, 0.3)
+		for item in get_tree().get_nodes_in_group("customer_items"):
+			_tween_node_out(item, 0.3)
 		# Then despawn the NPC
 		await _tween_node_out(npc, 1)
 		return
@@ -143,11 +145,52 @@ func _spawn_npc():
 			var new_item = item_map[item].instantiate()
 			%Physics/NpcItems.add_child(new_item)
 			new_item.position = _get_spawn_position(true)
+			new_item.set_collision_mask_value(4, true);
+			new_item.set_collision_layer_value(4, true);
+			new_item.add_to_group("customer_items");
 			new_item.identifier = item
 			new_item.clicked.connect(_on_pickable_object_clicked)
 			_tween_node_in(new_item, 0.3)
 	return
 
 func _on_button_pressed() -> void:
-	await  _despawn_npc()
-	await  _spawn_npc()
+	if deal_check():
+		await deal_execute()
+		await  _despawn_npc()
+		await  _spawn_npc()
+	
+
+func deal_check():
+	return true;
+	if %Scale.SelfPlatform.platform.weight >= %Scale.OtherPlatform.platform.weight:
+		return true;
+	else: 
+		return false;
+
+
+
+func deal_execute():
+	for node in %Scale.SelfPlatform.platform.currentCollidedBodies:
+		print(node)
+		
+	
+	for node in %Scale.OtherPlatform.platform.currentCollidedBodies:
+		#if (node.has_method("OnBuy")):
+		#	node.OnBuy()
+		#node.set_collision_mask_value(4, false);
+		#node.set_collision_layer_value(4, false);
+		var new_item = node
+		#%Physics/NpcItems.add_child(new_item)
+		new_item.remove_from_group("customer_items") 
+		
+		new_item.set_collision_mask_value(4, false);
+		new_item.set_collision_layer_value(4, false);
+		#new_item.freeze = true
+		new_item.position = Vector2(100, 50)
+		#new_item.freeze = false
+		#new_item.identifier = item
+		#new_item.clicked.connect(_on_pickable_object_clicked)
+		#_tween_node_in(new_item, 0.3)
+		
+		#node.set_position(_get_spawn_position(true))
+		#node.queue_free()

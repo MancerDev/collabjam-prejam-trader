@@ -1,21 +1,19 @@
-[gd_scene load_steps=7 format=3 uid="uid://dnhsscnbu1k31"]
+[gd_scene load_steps=6 format=3 uid="uid://dnhsscnbu1k31"]
 
 [ext_resource type="Script" uid="uid://boqv1mwqq2tfg" path="res://assets/draggable/coin/coin.gd" id="1_68odj"]
-[ext_resource type="Shader" uid="uid://b37oc4ori6fax" path="res://assets/shaders/outline.gdshader" id="2_5lndo"]
-[ext_resource type="Texture2D" uid="uid://2l3u5uwh14hi" path="res://assets/draggable/coin/coin15.png" id="2_5yhnk"]
+[ext_resource type="Texture2D" uid="uid://dhoe7waetda2f" path="res://assets/draggable/resource_tokens/Gold_coin.png" id="2_68odj"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_68odj"]
 rough = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5ixbn"]
-shader = ExtResource("2_5lndo")
-shader_parameter/outline_color = Color(1, 1, 1, 1)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5yhnk"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hkbcu"]
-radius = 4.0
-height = 34.0
+radius = 2.0
+height = 14.0
 
 [node name="coin" type="RigidBody2D"]
+z_index = 11
 collision_layer = 2
 collision_mask = 2
 input_pickable = true
@@ -27,12 +25,14 @@ max_contacts_reported = 10
 script = ExtResource("1_68odj")
 
 [node name="Sprite" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_5ixbn")
-scale = Vector2(0.6, 0.3)
-texture = ExtResource("2_5yhnk")
+z_index = 11
+texture_filter = 1
+texture_repeat = 1
+material = SubResource("ShaderMaterial_5yhnk")
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_68odj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 1)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_hkbcu")
 
