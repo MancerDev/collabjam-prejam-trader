@@ -10,7 +10,7 @@
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_una8w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_una8w"]
-size = Vector2(26, 26)
+size = Vector2(37, 37)
 
 [node name="food_token_pile" type="RigidBody2D" groups=["spawner"]]
 z_index = 11
@@ -31,7 +31,6 @@ script = ExtResource("1_1d2lo")
 unique_name_in_owner = true
 visible = false
 texture_filter = 1
-scale = Vector2(0.75, 0.75)
 texture = ExtResource("2_v774s")
 
 [node name="Size2" type="Sprite2D" parent="Node2D"]
@@ -39,7 +38,6 @@ unique_name_in_owner = true
 visible = false
 texture_filter = 1
 position = Vector2(-1, -3)
-scale = Vector2(0.75, 0.75)
 texture = ExtResource("3_02vno")
 
 [node name="Size3" type="Sprite2D" parent="Node2D"]
@@ -47,14 +45,12 @@ unique_name_in_owner = true
 visible = false
 texture_filter = 1
 position = Vector2(0, -5)
-scale = Vector2(0.75, 0.75)
 texture = ExtResource("4_5kh1f")
 
 [node name="Size4" type="Sprite2D" parent="Node2D"]
 unique_name_in_owner = true
 texture_filter = 1
 position = Vector2(0, -9)
-scale = Vector2(0.75, 0.75)
 texture = ExtResource("5_qfck6")
 
 [node name="Label" type="Label" parent="."]

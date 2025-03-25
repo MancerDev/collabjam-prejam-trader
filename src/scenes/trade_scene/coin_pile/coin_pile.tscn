@@ -10,7 +10,7 @@
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_una8w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_una8w"]
-size = Vector2(19, 28)
+size = Vector2(37, 38)
 
 [node name="CoinPile" type="RigidBody2D" groups=["spawner"]]
 collision_layer = 256
@@ -30,7 +30,6 @@ script = ExtResource("1_x0ino")
 unique_name_in_owner = true
 visible = false
 texture_filter = 1
-scale = Vector2(0.75, 0.75)
 texture = ExtResource("2_13wbt")
 
 [node name="Size2" type="Sprite2D" parent="Node2D"]
@@ -38,7 +37,6 @@ unique_name_in_owner = true
 visible = false
 texture_filter = 1
 position = Vector2(-1, -3)
-scale = Vector2(0.75, 0.75)
 texture = ExtResource("3_egbnn")
 
 [node name="Size3" type="Sprite2D" parent="Node2D"]
@@ -46,14 +44,12 @@ unique_name_in_owner = true
 visible = false
 texture_filter = 1
 position = Vector2(0, -5)
-scale = Vector2(0.75, 0.75)
 texture = ExtResource("4_stift")
 
 [node name="Size4" type="Sprite2D" parent="Node2D"]
 unique_name_in_owner = true
 texture_filter = 1
 position = Vector2(0, -9)
-scale = Vector2(0.75, 0.75)
 texture = ExtResource("5_32hf3")
 
 [node name="Label" type="Label" parent="."]
@@ -68,7 +64,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, -10)
+position = Vector2(-0.5, -8)
 shape = SubResource("RectangleShape2D_una8w")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

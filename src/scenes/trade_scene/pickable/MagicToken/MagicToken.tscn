@@ -1,17 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://54crqfoh4y6a"]
+[gd_scene load_steps=6 format=3 uid="uid://dvhu7l3qacd42"]
 
-[ext_resource type="Script" uid="uid://cvtiyi5mttfpn" path="res://src/scenes/trade_scene/pickable/MetalToken/metal_token.gd" id="1_dmthn"]
-[ext_resource type="Texture2D" uid="uid://2l3u5uwh14hi" path="res://assets/draggable/coin/coin15.png" id="2_1rlia"]
-[ext_resource type="Texture2D" uid="uid://bd0m18m6rd4xq" path="res://assets/draggable/resourceIcons/Iron.png" id="3_dmthn"]
+[ext_resource type="Script" uid="uid://7dp51iceq81k" path="res://src/scenes/trade_scene/pickable/MagicToken/magic_token.gd" id="1_7m88x"]
+[ext_resource type="Texture2D" uid="uid://dubmre3ww28h6" path="res://assets/draggable/resource_tokens/Magic_coin.png" id="2_ukw6x"]
+[ext_resource type="Texture2D" uid="uid://bd0m18m6rd4xq" path="res://assets/draggable/resourceIcons/Iron.png" id="3_xacos"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_68odj"]
 rough = true
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hkbcu"]
-radius = 4.0
-height = 38.0
+radius = 2.0
+height = 20.0
 
 [node name="RigidBody2D" type="RigidBody2D" groups=["pickable"]]
+z_index = 11
 collision_layer = 2
 collision_mask = 2
 input_pickable = true
@@ -21,20 +22,20 @@ can_sleep = false
 freeze_mode = 1
 contact_monitor = true
 max_contacts_reported = 10
-script = ExtResource("1_dmthn")
+script = ExtResource("1_7m88x")
 
 [node name="Sprite" type="Sprite2D" parent="."]
-scale = Vector2(0.6, 0.3)
-texture = ExtResource("2_1rlia")
+texture_filter = 1
+texture = ExtResource("2_ukw6x")
 
 [node name="Iron" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(-5.96046e-08, 0)
 scale = Vector2(0.163435, 0.115899)
 skew = 0.284489
-texture = ExtResource("3_dmthn")
+texture = ExtResource("3_xacos")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 1)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_hkbcu")
 

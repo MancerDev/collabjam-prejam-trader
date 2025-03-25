@@ -1,14 +1,17 @@
-[gd_scene load_steps=12 format=3 uid="uid://ddmo4bwcojgyl"]
+[gd_scene load_steps=17 format=3 uid="uid://ddmo4bwcojgyl"]
 
 [ext_resource type="Script" uid="uid://de6xbtotejkxl" path="res://src/scenes/trade_scene/trade.gd" id="1_08on2"]
 [ext_resource type="PackedScene" uid="uid://dk6rqdlu8v6t5" path="res://src/scenes/trade_scene/floor/floor.tscn" id="3_cll2m"]
-[ext_resource type="Texture2D" uid="uid://bi6b4gcnqo5kl" path="res://assets/images/background/background.webp" id="4_3khi1"]
+[ext_resource type="Texture2D" uid="uid://dmb477udlwn16" path="res://assets/images/background/counternew.png" id="3_o0n50"]
 [ext_resource type="Texture2D" uid="uid://c2x7475ij0g0u" path="res://assets/images/background/background.png" id="4_nnidl"]
 [ext_resource type="PackedScene" uid="uid://dthhbje3265yb" path="res://src/scenes/trade_scene/scale/scale.tscn" id="4_v15gx"]
 [ext_resource type="PackedScene" uid="uid://b8lk5oa1o7vk8" path="res://src/scenes/trade_scene/shelf/shelf.tscn" id="7_1jg2i"]
 [ext_resource type="PackedScene" uid="uid://dq7rdwfgu5kqt" path="res://src/scenes/trade_scene/coin_pile/coin_pile.tscn" id="7_mucam"]
 [ext_resource type="Texture2D" uid="uid://dhoe7waetda2f" path="res://assets/draggable/resource_tokens/Gold_coin.png" id="7_q1ldy"]
 [ext_resource type="PackedScene" uid="uid://dr1rflwqx1t50" path="res://src/scenes/trade_scene/food_token_pile/food_token_pile.tscn" id="9_q1ldy"]
+[ext_resource type="FontFile" uid="uid://dmdm5giq8dms4" path="res://assets/text/Old Dungeon Cursive.otf" id="9_xpqll"]
+[ext_resource type="PackedScene" uid="uid://bokyiq11qstg7" path="res://src/scenes/trade_scene/magic_token_pile/magic_token_pile.tscn" id="11_xpqll"]
+[ext_resource type="PackedScene" uid="uid://dju5m2j84oh21" path="res://src/scenes/trade_scene/metal_token_pile/metal_token_pile.tscn" id="12_probq"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_q1ldy"]
 normal = Vector2(2, 0)
@@ -16,55 +19,80 @@ normal = Vector2(2, 0)
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_o0n50"]
 normal = Vector2(-2, 0)
 
+[sub_resource type="LabelSettings" id="LabelSettings_probq"]
+font = ExtResource("9_xpqll")
+font_size = 12
+outline_color = Color(0, 0, 0, 1)
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_83k6h"]
+font = ExtResource("9_xpqll")
+font_size = 7
+outline_color = Color(0, 0, 0, 1)
+shadow_color = Color(0, 0, 0, 1)
+
 [node name="Trade" type="Node2D"]
 script = ExtResource("1_08on2")
 
 [node name="Uninterractables" type="Node2D" parent="."]
 unique_name_in_owner = true
+position = Vector2(5, 50)
 
 [node name="Background" type="Sprite2D" parent="Uninterractables"]
-position = Vector2(161, 118)
-texture = ExtResource("4_3khi1")
+position = Vector2(195, 100)
+texture = ExtResource("4_nnidl")
 
 [node name="NPCPosition" type="Marker2D" parent="Uninterractables"]
 unique_name_in_owner = true
-position = Vector2(284.863, 92.1446)
+position = Vector2(305, 89)
 
 [node name="Foreground" type="Sprite2D" parent="Uninterractables"]
+visible = false
 z_index = 10
-position = Vector2(161, 120)
-texture = ExtResource("4_nnidl")
+position = Vector2(319, 7)
+texture = ExtResource("3_o0n50")
+
+[node name="Sprite2D" type="Sprite2D" parent="Uninterractables"]
+z_index = 10
+position = Vector2(315, 10)
+texture = ExtResource("3_o0n50")
 
 [node name="Physics" type="Node2D" parent="."]
 unique_name_in_owner = true
 z_index = 15
 
 [node name="Shelf" parent="Physics" instance=ExtResource("7_1jg2i")]
-position = Vector2(8, 83)
+position = Vector2(6, 133)
 
 [node name="Scale" parent="Physics" instance=ExtResource("4_v15gx")]
 unique_name_in_owner = true
-position = Vector2(180, 86)
+position = Vector2(237, 164)
 
 [node name="Walls" type="Node2D" parent="Physics"]
 
 [node name="Floor" parent="Physics/Walls" instance=ExtResource("3_cll2m")]
-position = Vector2(-3, 200)
+position = Vector2(47, 263)
+scale = Vector2(1.2, 1)
+
+[node name="Floor2" parent="Physics/Walls" instance=ExtResource("3_cll2m")]
+position = Vector2(53, 241)
+scale = Vector2(0.07, 0.7)
 
 [node name="SideWall" parent="Physics/Walls" instance=ExtResource("3_cll2m")]
 position = Vector2(-2, -60)
 rotation = 1.5708
 
 [node name="SideWall2" parent="Physics/Walls" instance=ExtResource("3_cll2m")]
-position = Vector2(361, -38)
+position = Vector2(439, -39)
 rotation = 1.5708
 
 [node name="SideWall3" parent="Physics/Walls" instance=ExtResource("3_cll2m")]
-position = Vector2(10, -41)
+position = Vector2(34, -39)
+scale = Vector2(1.1, 1)
 
 [node name="CustomerItemsSeparator" type="RigidBody2D" parent="Physics/Walls"]
 unique_name_in_owner = true
-position = Vector2(192, 1)
+position = Vector2(249, 25)
 collision_layer = 8
 collision_mask = 8
 freeze = true
@@ -75,7 +103,7 @@ shape = SubResource("WorldBoundaryShape2D_q1ldy")
 
 [node name="PlayerItemsSeparator" type="RigidBody2D" parent="Physics/Walls"]
 unique_name_in_owner = true
-position = Vector2(167, 2)
+position = Vector2(224, 26)
 collision_layer = 16
 collision_mask = 16
 freeze = true
@@ -85,7 +113,7 @@ position = Vector2(0, 96)
 shape = SubResource("WorldBoundaryShape2D_o0n50")
 
 [node name="Push separator" type="RigidBody2D" parent="Physics/Walls"]
-position = Vector2(103, 15)
+position = Vector2(160, 39)
 collision_layer = 32
 collision_mask = 32
 freeze = true
@@ -105,22 +133,58 @@ unique_name_in_owner = true
 [node name="TradeButton" type="Button" parent="UI"]
 top_level = true
 z_index = 25
-offset_left = 164.0
-offset_top = 204.0
-offset_right = 198.0
-offset_bottom = 235.0
+offset_left = 219.0
+offset_top = 268.0
+offset_right = 253.0
+offset_bottom = 299.0
 text = "
 "
 icon = ExtResource("7_q1ldy")
 autowrap_mode = 2
 
+[node name="Control" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1.0
+offset_top = 280.0
+offset_right = 126.0
+offset_bottom = 298.0
+
+[node name="Label" type="Label" parent="UI/Control"]
+z_index = 12
+layout_mode = 0
+offset_top = 2.0
+offset_right = 57.0
+offset_bottom = 14.0
+text = "12:00"
+label_settings = SubResource("LabelSettings_probq")
+
+[node name="Label2" type="Label" parent="UI/Control"]
+z_index = 12
+layout_mode = 0
+offset_left = 58.0
+offset_top = -3.0
+offset_right = 214.0
+offset_bottom = 18.0
+text = "Customers 
+left: 12"
+label_settings = SubResource("LabelSettings_83k6h")
+
 [node name="CoinPile" parent="." instance=ExtResource("7_mucam")]
 z_index = 11
-position = Vector2(58, 125)
+position = Vector2(103, 251)
 quantity = 10
 
 [node name="food_token_pile" parent="." instance=ExtResource("9_q1ldy")]
-position = Vector2(32, 125)
+position = Vector2(19, 123)
 quantity = 10
+
+[node name="magic_token_pile" parent="." instance=ExtResource("11_xpqll")]
+position = Vector2(20, 186)
+quantity = 5
+
+[node name="weapon_token_pile" parent="." instance=ExtResource("12_probq")]
+position = Vector2(18, 208)
+quantity = 5
 
 [connection signal="pressed" from="UI/TradeButton" to="." method="_on_button_pressed"]

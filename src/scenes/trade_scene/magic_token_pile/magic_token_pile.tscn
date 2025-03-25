@@ -1,18 +1,18 @@
-[gd_scene load_steps=9 format=3 uid="uid://dju5m2j84oh21"]
+[gd_scene load_steps=9 format=3 uid="uid://bokyiq11qstg7"]
 
-[ext_resource type="Script" uid="uid://dfmuws4w8wn0e" path="res://src/scenes/trade_scene/metal_token_pile/weapon_token_pile.gd" id="1_avcll"]
-[ext_resource type="Texture2D" uid="uid://bf10ywhlfsfe1" path="res://assets/draggable/resource_tokens/Weapon_coin.png" id="2_avcll"]
-[ext_resource type="Texture2D" uid="uid://c48abvwskbyw0" path="res://assets/draggable/resource_tokens/Weapon_pile_1.png" id="3_14nwa"]
-[ext_resource type="Texture2D" uid="uid://22ykffbtia11" path="res://assets/draggable/resource_tokens/Weapon_pile_2.png" id="4_ruxu5"]
-[ext_resource type="Texture2D" uid="uid://d3aph0bojcjba" path="res://assets/draggable/resource_tokens/Weapon_pile_3.png" id="5_ytvew"]
-[ext_resource type="LabelSettings" uid="uid://bsmt2fkrwn1nt" path="res://assets/text/LabelSettings.tres" id="6_h1mv8"]
+[ext_resource type="Script" uid="uid://jjidbtnj6qp5" path="res://src/scenes/trade_scene/magic_token_pile/magic_token_pile.gd" id="1_oeeky"]
+[ext_resource type="Texture2D" uid="uid://dubmre3ww28h6" path="res://assets/draggable/resource_tokens/Magic_coin.png" id="2_ptaxw"]
+[ext_resource type="Texture2D" uid="uid://cg3n4gbe0iwsb" path="res://assets/draggable/resource_tokens/Magic_pile_1.png" id="3_bbnxb"]
+[ext_resource type="Texture2D" uid="uid://bltachtyus2sq" path="res://assets/draggable/resource_tokens/Magic_pile_2.png" id="4_d30gi"]
+[ext_resource type="Texture2D" uid="uid://ck8shikrnb2a5" path="res://assets/draggable/resource_tokens/Magic_pile_3.png" id="5_b8gr8"]
+[ext_resource type="LabelSettings" uid="uid://bsmt2fkrwn1nt" path="res://assets/text/LabelSettings.tres" id="6_wgrvq"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_una8w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_una8w"]
 size = Vector2(37, 37)
 
-[node name="weapon_token_pile" type="RigidBody2D" groups=["spawner"]]
+[node name="magic_token_pile" type="RigidBody2D" groups=["spawner"]]
 z_index = 11
 collision_layer = 512
 collision_mask = 512
@@ -23,35 +23,35 @@ freeze = true
 freeze_mode = 1
 contact_monitor = true
 max_contacts_reported = 5
-script = ExtResource("1_avcll")
+script = ExtResource("1_oeeky")
 
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="Size1" type="Sprite2D" parent="Node2D"]
 unique_name_in_owner = true
+visible = false
 texture_filter = 1
-position = Vector2(0, 3)
-texture = ExtResource("2_avcll")
+texture = ExtResource("2_ptaxw")
 
 [node name="Size2" type="Sprite2D" parent="Node2D"]
 unique_name_in_owner = true
 visible = false
 texture_filter = 1
-texture = ExtResource("3_14nwa")
+position = Vector2(-1, -3)
+texture = ExtResource("3_bbnxb")
 
 [node name="Size3" type="Sprite2D" parent="Node2D"]
 unique_name_in_owner = true
 visible = false
 texture_filter = 1
 position = Vector2(0, -5)
-texture = ExtResource("4_ruxu5")
+texture = ExtResource("4_d30gi")
 
 [node name="Size4" type="Sprite2D" parent="Node2D"]
 unique_name_in_owner = true
-visible = false
 texture_filter = 1
 position = Vector2(0, -9)
-texture = ExtResource("5_ytvew")
+texture = ExtResource("5_b8gr8")
 
 [node name="Label" type="Label" parent="."]
 unique_name_in_owner = true
@@ -60,7 +60,7 @@ offset_top = 5.0
 offset_right = 49.0
 offset_bottom = 20.0
 text = "1"
-label_settings = ExtResource("6_h1mv8")
+label_settings = ExtResource("6_wgrvq")
 horizontal_alignment = 1
 vertical_alignment = 1
 
