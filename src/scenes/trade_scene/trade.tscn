@@ -1,9 +1,9 @@
 [gd_scene load_steps=17 format=3 uid="uid://ddmo4bwcojgyl"]
 
 [ext_resource type="Script" uid="uid://de6xbtotejkxl" path="res://src/scenes/trade_scene/trade.gd" id="1_08on2"]
+[ext_resource type="Texture2D" uid="uid://bkij7dlo2tjpg" path="res://assets/images/background/nighttime.png" id="2_xpqll"]
 [ext_resource type="PackedScene" uid="uid://dk6rqdlu8v6t5" path="res://src/scenes/trade_scene/floor/floor.tscn" id="3_cll2m"]
 [ext_resource type="Texture2D" uid="uid://dmb477udlwn16" path="res://assets/images/background/counternew.png" id="3_o0n50"]
-[ext_resource type="Texture2D" uid="uid://c2x7475ij0g0u" path="res://assets/images/background/background.png" id="4_nnidl"]
 [ext_resource type="PackedScene" uid="uid://dthhbje3265yb" path="res://src/scenes/trade_scene/scale/scale.tscn" id="4_v15gx"]
 [ext_resource type="PackedScene" uid="uid://b8lk5oa1o7vk8" path="res://src/scenes/trade_scene/shelf/shelf.tscn" id="7_1jg2i"]
 [ext_resource type="PackedScene" uid="uid://dq7rdwfgu5kqt" path="res://src/scenes/trade_scene/coin_pile/coin_pile.tscn" id="7_mucam"]
@@ -40,7 +40,7 @@ position = Vector2(5, 50)
 
 [node name="Background" type="Sprite2D" parent="Uninterractables"]
 position = Vector2(195, 100)
-texture = ExtResource("4_nnidl")
+texture = ExtResource("2_xpqll")
 
 [node name="NPCPosition" type="Marker2D" parent="Uninterractables"]
 unique_name_in_owner = true
@@ -180,7 +180,7 @@ position = Vector2(19, 123)
 quantity = 10
 
 [node name="magic_token_pile" parent="." instance=ExtResource("11_xpqll")]
-position = Vector2(20, 186)
+position = Vector2(25, 170)
 quantity = 5
 
 [node name="weapon_token_pile" parent="." instance=ExtResource("12_probq")]
