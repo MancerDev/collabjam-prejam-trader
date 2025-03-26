@@ -6,6 +6,7 @@ func _ready():
 
 func _on_start_button_pressed() -> void:
 	SceneChangeSingleton.openTradeScene()
+	SfxSingleton.play_sound("open_door")
 
 
 func _on_credits_button_pressed() -> void:

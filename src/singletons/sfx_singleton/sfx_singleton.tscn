@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cfjannp8v4v45"]
+
+[ext_resource type="Script" uid="uid://2vsikfyv2giq" path="res://src/singletons/sfx_singleton/sfx_singleton.gd" id="1_jejtd"]
+
+[node name="SfxSingleton" type="Node2D"]
+script = ExtResource("1_jejtd")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]

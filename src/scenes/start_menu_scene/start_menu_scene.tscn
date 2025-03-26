@@ -67,7 +67,7 @@ texture = ExtResource("2_2aekx")
 [node name="Cart" type="AnimatedSprite2D" parent="."]
 position = Vector2(212, 229)
 sprite_frames = SubResource("SpriteFrames_2aekx")
-frame_progress = 0.870198
+frame_progress = 0.361477
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
