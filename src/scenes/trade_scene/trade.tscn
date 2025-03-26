@@ -1,13 +1,14 @@
-[gd_scene load_steps=17 format=3 uid="uid://ddmo4bwcojgyl"]
+[gd_scene load_steps=21 format=3 uid="uid://ddmo4bwcojgyl"]
 
 [ext_resource type="Script" uid="uid://de6xbtotejkxl" path="res://src/scenes/trade_scene/trade.gd" id="1_08on2"]
 [ext_resource type="Texture2D" uid="uid://bkij7dlo2tjpg" path="res://assets/images/background/nighttime.png" id="2_xpqll"]
 [ext_resource type="PackedScene" uid="uid://dk6rqdlu8v6t5" path="res://src/scenes/trade_scene/floor/floor.tscn" id="3_cll2m"]
 [ext_resource type="Texture2D" uid="uid://dmb477udlwn16" path="res://assets/images/background/counternew.png" id="3_o0n50"]
+[ext_resource type="Texture2D" uid="uid://bv3b2jclo8867" path="res://assets/images/background/daytime.png" id="3_probq"]
 [ext_resource type="PackedScene" uid="uid://dthhbje3265yb" path="res://src/scenes/trade_scene/scale/scale.tscn" id="4_v15gx"]
 [ext_resource type="PackedScene" uid="uid://b8lk5oa1o7vk8" path="res://src/scenes/trade_scene/shelf/shelf.tscn" id="7_1jg2i"]
 [ext_resource type="PackedScene" uid="uid://dq7rdwfgu5kqt" path="res://src/scenes/trade_scene/coin_pile/coin_pile.tscn" id="7_mucam"]
-[ext_resource type="Texture2D" uid="uid://dhoe7waetda2f" path="res://assets/draggable/resource_tokens/Gold_coin.png" id="7_q1ldy"]
+[ext_resource type="Script" uid="uid://csk4fprcxo0ie" path="res://src/scenes/trade_scene/TimeControl.gd" id="8_probq"]
 [ext_resource type="PackedScene" uid="uid://dr1rflwqx1t50" path="res://src/scenes/trade_scene/food_token_pile/food_token_pile.tscn" id="9_q1ldy"]
 [ext_resource type="FontFile" uid="uid://dmdm5giq8dms4" path="res://assets/text/Old Dungeon Cursive.otf" id="9_xpqll"]
 [ext_resource type="PackedScene" uid="uid://bokyiq11qstg7" path="res://src/scenes/trade_scene/magic_token_pile/magic_token_pile.tscn" id="11_xpqll"]
@@ -18,6 +19,24 @@ normal = Vector2(2, 0)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_o0n50"]
 normal = Vector2(-2, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_xpqll"]
+font = ExtResource("9_xpqll")
+font_size = 6
+outline_color = Color(0, 0, 0, 1)
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_fxeet"]
+font = ExtResource("9_xpqll")
+font_size = 8
+outline_color = Color(0, 0, 0, 1)
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_k3s8h"]
+font = ExtResource("9_xpqll")
+font_size = 7
+outline_color = Color(0, 0, 0, 1)
+shadow_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_probq"]
 font = ExtResource("9_xpqll")
@@ -38,9 +57,13 @@ script = ExtResource("1_08on2")
 unique_name_in_owner = true
 position = Vector2(5, 50)
 
-[node name="Background" type="Sprite2D" parent="Uninterractables"]
+[node name="NightBackground" type="Sprite2D" parent="Uninterractables"]
 position = Vector2(195, 100)
 texture = ExtResource("2_xpqll")
+
+[node name="DayBackground" type="Sprite2D" parent="Uninterractables"]
+position = Vector2(195, 100)
+texture = ExtResource("3_probq")
 
 [node name="NPCPosition" type="Marker2D" parent="Uninterractables"]
 unique_name_in_owner = true
@@ -130,17 +153,59 @@ unique_name_in_owner = true
 
 [node name="UI" type="Node2D" parent="."]
 
-[node name="TradeButton" type="Button" parent="UI"]
+[node name="banish_button" type="Button" parent="UI"]
+z_index = 25
+offset_left = 257.0
+offset_top = 266.0
+offset_right = 297.0
+offset_bottom = 282.0
+
+[node name="Label" type="Label" parent="UI/banish_button"]
+layout_mode = 0
+offset_left = 1.0
+offset_right = 38.0
+offset_bottom = 16.0
+text = "banish"
+label_settings = SubResource("LabelSettings_xpqll")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="deal_button" type="Button" parent="UI"]
 top_level = true
 z_index = 25
 offset_left = 219.0
-offset_top = 268.0
-offset_right = 253.0
-offset_bottom = 299.0
-text = "
-"
-icon = ExtResource("7_q1ldy")
+offset_top = 266.0
+offset_right = 256.0
+offset_bottom = 282.0
 autowrap_mode = 2
+
+[node name="Label" type="Label" parent="UI/deal_button"]
+layout_mode = 0
+offset_left = 2.0
+offset_right = 36.0
+offset_bottom = 16.0
+text = "Deal"
+label_settings = SubResource("LabelSettings_fxeet")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="next_customer_button" type="Button" parent="UI"]
+top_level = true
+z_index = 25
+offset_left = 188.0
+offset_top = 283.0
+offset_right = 296.0
+offset_bottom = 299.0
+autowrap_mode = 2
+
+[node name="Label" type="Label" parent="UI/next_customer_button"]
+layout_mode = 0
+offset_right = 92.0
+offset_bottom = 14.0
+text = "Next Customer"
+label_settings = SubResource("LabelSettings_k3s8h")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Control" type="Control" parent="UI"]
 layout_mode = 3
@@ -149,8 +214,9 @@ offset_left = 1.0
 offset_top = 280.0
 offset_right = 126.0
 offset_bottom = 298.0
+script = ExtResource("8_probq")
 
-[node name="Label" type="Label" parent="UI/Control"]
+[node name="Time" type="Label" parent="UI/Control"]
 z_index = 12
 layout_mode = 0
 offset_top = 2.0
@@ -159,7 +225,7 @@ offset_bottom = 14.0
 text = "12:00"
 label_settings = SubResource("LabelSettings_probq")
 
-[node name="Label2" type="Label" parent="UI/Control"]
+[node name="Customers" type="Label" parent="UI/Control"]
 z_index = 12
 layout_mode = 0
 offset_left = 58.0
@@ -187,4 +253,6 @@ quantity = 5
 position = Vector2(18, 208)
 quantity = 5
 
-[connection signal="pressed" from="UI/TradeButton" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="UI/banish_button" to="." method="_on_banish_button_pressed"]
+[connection signal="pressed" from="UI/deal_button" to="." method="_on_deal_button_pressed"]
+[connection signal="pressed" from="UI/next_customer_button" to="." method="_on_next_customer_button_pressed"]

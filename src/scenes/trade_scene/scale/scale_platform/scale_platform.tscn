@@ -46,7 +46,7 @@ script = ExtResource("2_a6err")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Platform"]
 position = Vector2(-76, 0)
-polygon = PackedVector2Array(100, -1, 53, -1, 45, -7, 43, -4, 52, 2, 63, 2, 101, 2, 111, -3, 109, -6)
+polygon = PackedVector2Array(100, -2, 53, -2, 45, -7, 43, -4, 52, 3, 63, 3, 101, 3, 111, -3, 109, -6)
 
 [node name="ColorRect" type="ColorRect" parent="Platform"]
 offset_left = -24.0
