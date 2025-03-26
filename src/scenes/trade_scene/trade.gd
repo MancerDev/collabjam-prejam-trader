@@ -13,13 +13,25 @@ var npcs: Array[NPC] = [
 var item_map: Dictionary = {
 	"silver_coin": preload("res://src/scenes/trade_scene/pickable/coin/coin.tscn"),
 	"food_coin": preload("res://src/scenes/trade_scene/pickable/FoodToken/food_coin.tscn")
-
 }
 
 var npc_scene = preload("res://src/scenes/npc_scene/npc.tscn")
 
+
+var current_day;
+var todays_customers_left;
+var todays_customers;
+
 func _ready():
-	_spawn_npc()
+	$UI/banish_button.hide()
+	$UI/deal_button.hide()
+	current_day = 1;
+	todays_customers = 3;
+	todays_customers_left = 3;
+	$UI/Control.TimeUpdate(22-round(14*todays_customers_left/todays_customers), todays_customers_left)
+	
+	
+	#_spawn_npc()
 	for node in get_tree().get_nodes_in_group("pickable"):
 		node.clicked.connect(_on_pickable_object_clicked)
 	for node in get_tree().get_nodes_in_group("spawner"):
@@ -144,26 +156,24 @@ func _spawn_npc():
 		for i in range(amount):
 			var new_item = item_map[item].instantiate()
 			%Physics/NpcItems.add_child(new_item)
-			new_item.set_collision_mask_value(5, false);
-			new_item.set_collision_layer_value(5, false);
+			new_item.set_collision_mask_value(5, false)
+			new_item.set_collision_layer_value(5, false)
 			new_item.position = _get_spawn_position(true)
-			new_item.set_collision_mask_value(4, true);
-			new_item.set_collision_layer_value(4, true);
-			new_item.add_to_group("customer_items");
+			new_item.set_collision_mask_value(4, true)
+			new_item.set_collision_layer_value(4, true)
+			new_item.add_to_group("customer_items")
 			new_item.identifier = item
 			new_item.clicked.connect(_on_pickable_object_clicked)
 			_tween_node_in(new_item, 0.3)
+			
+	todays_customers_left = todays_customers_left - 1;
+	$UI/Control.TimeUpdate(22-round(14*todays_customers_left/todays_customers), todays_customers_left)
+	
 	return
 
-func _on_button_pressed() -> void:
-	if deal_check():
-		deal_execute()
-		await  _despawn_npc()
-		await  _spawn_npc()
-	
 
 func deal_check():
-	return true;
+	#return true;
 	if %Scale.SelfPlatform.platform.weight >= %Scale.OtherPlatform.platform.weight:
 		return true;
 	else: 
@@ -185,13 +195,13 @@ func deal_execute():
 		var new_item = node
 		#%Physics/NpcItems.add_child(new_item)
 		new_item.remove_from_group("customer_items") 
-		new_item.set_collision_mask_value(4, false);
-		new_item.set_collision_layer_value(4, false);
+		new_item.set_collision_mask_value(4, false)
+		new_item.set_collision_layer_value(4, false)
 		node.apply_central_impulse(Vector2(-300, -330))
-		new_item.set_collision_mask_value(9, false);
-		new_item.set_collision_layer_value(9, false);
-		new_item.set_collision_mask_value(10, false);
-		new_item.set_collision_layer_value(10, false);
+		new_item.set_collision_mask_value(9, false)
+		new_item.set_collision_layer_value(9, false)
+		new_item.set_collision_mask_value(10, false)
+		new_item.set_collision_layer_value(10, false)
 		
 		
 		#node.set_collision_mask_value(6, true);
@@ -221,3 +231,28 @@ func deal_execute():
 		#node.set_collision_layer_value(6, false);
 		#new_item.set_collision_mask_value(5, true);
 		#new_item.set_collision_layer_value(5, true);
+
+
+
+func _on_deal_button_pressed() -> void:
+
+	if deal_check():
+		$UI/banish_button.hide()
+		$UI/deal_button.hide()
+		await deal_execute()
+		await  _despawn_npc()
+		$UI/next_customer_button.show()
+
+
+func _on_next_customer_button_pressed() -> void:
+	$UI/next_customer_button.hide()
+	await  _spawn_npc()
+	$UI/banish_button.show()
+	$UI/deal_button.show()
+
+
+func _on_banish_button_pressed() -> void:
+	$UI/banish_button.hide()
+	$UI/deal_button.hide()
+	await  _despawn_npc()
+	$UI/next_customer_button.show()

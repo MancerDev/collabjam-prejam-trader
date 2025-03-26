@@ -12,16 +12,19 @@ func _physics_process(delta):
 	currentCollidedBodies = allCollidedBodies;
 	
 	# Get the current NPC from the trade scene
-	var trade_scene = get_node("/root/Trade")
+	var trade_scene = get_node("/root/SceneChangeSingleton/Scenes/Trade") 
+
 	if !trade_scene:
 		return
-	var npc = trade_scene.get_node("Uninterractables/Npc")
+	var npc = trade_scene.get_node_or_null("Uninterractables/Npc")
+	
 	for body in allCollidedBodies:
 		if body is coin and npc and npc.resource and npc.resource.currency_map:
 			var currency_value = npc.resource.currency_map.currency_to_int_map.get(body.identifier, 0)
 			weight += currency_value
 		else:
 			weight += round_to_dec(body.mass, 3)
+		
 	
 	weight = round_to_dec(weight, 3)
 	$Label.text = str(weight)+"KG"
