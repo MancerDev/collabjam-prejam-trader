@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="NPC" load_steps=7 format=3 uid="uid://c21kh36wrjjah"]
+[gd_resource type="Resource" script_class="NPC" load_steps=9 format=3 uid="uid://c21kh36wrjjah"]
 
 [ext_resource type="Script" uid="uid://cu1cq74uuc1n0" path="res://assets/item/currency_map.gd" id="1_5ii45"]
+[ext_resource type="Script" uid="uid://cr8gu37376ika" path="res://assets/npc/name_pick_from.gd" id="2_6dvpw"]
 [ext_resource type="Script" uid="uid://3glq0r2r8cjd" path="res://assets/npc/npc.gd" id="2_wphms"]
 [ext_resource type="Texture2D" uid="uid://c64np5j1vjuqk" path="res://assets/npc/villager/villager-sad.png" id="3_6dvpw"]
 [ext_resource type="Texture2D" uid="uid://rmoyryfqtcge" path="res://assets/npc/villager/villager-happy.png" id="4_vaoe5"]
@@ -15,9 +16,17 @@ currency_to_int_map = {
 }
 metadata/_custom_type_script = "uid://cu1cq74uuc1n0"
 
+[sub_resource type="Resource" id="Resource_wphms"]
+script = ExtResource("2_6dvpw")
+pick_from = 20
+use_female_names = false
+use_male_names = true
+metadata/_custom_type_script = "uid://cr8gu37376ika"
+
 [resource]
 script = ExtResource("2_wphms")
-name_origin = 3
+name_pick_from = SubResource("Resource_wphms")
+name = ""
 sprite_neutral = ExtResource("5_n66bm")
 sprite_happy = ExtResource("4_vaoe5")
 sprite_angry = ExtResource("3_6dvpw")
