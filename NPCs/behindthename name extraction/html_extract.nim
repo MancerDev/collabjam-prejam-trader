@@ -1,4 +1,4 @@
-import std/[paths, dirs, os, files, streams, strutils]
+import std/[paths, dirs, os, files, streams, strutils, sets, unicode]
 
 
 var html_dir = Path(currentSourcePath()).parentDir() / Path("page html")
@@ -9,6 +9,7 @@ var write_dir = Path(currentSourcePath()).parentDir() / Path("first names")
 if not html_dir.dirExists():
     quit("write directory not found", 1)
 
+var letter_set: HashSet[Rune]
 var count = 0
 for file_path in html_dir.walkDir():
     if file_path.kind == pcFile:
@@ -72,6 +73,8 @@ for file_path in html_dir.walkDir():
                                     all_descs_m &= desc
                                     count_m += 1
                                 count += 1
+                                for r in name.toRunes():
+                                    letter_set.incl(r)
                                 name = ""
                                 gender = ""
                                 desc = ""
@@ -167,25 +170,30 @@ for file_path in html_dir.walkDir():
                     write_m.write("\"")
                 write_m.write("])\n")
 
-                write_f.write("meanings = Array[String]([")
-                write_f.write("\"")
-                write_f.write(all_descs_f[0])
-                write_f.write("\"")
-                for i in 1..<len(all_descs_f):
-                    write_f.write(", \"")
-                    write_f.write(all_descs_f[i])
-                    write_f.write("\"")
-                write_f.write("])\n")
+                # write_f.write("meanings = Array[String]([")
+                # write_f.write("\"")
+                # write_f.write(all_descs_f[0])
+                # write_f.write("\"")
+                # for i in 1..<len(all_descs_f):
+                #     write_f.write(", \"")
+                #     write_f.write(all_descs_f[i])
+                #     write_f.write("\"")
+                # write_f.write("])\n")
 
-                write_m.write("meanings = Array[String]([")
-                write_m.write("\"")
-                write_m.write(all_descs_m[0])
-                write_m.write("\"")
-                for i in 1..<len(all_descs_m):
-                    write_m.write(", \"")
-                    write_m.write(all_descs_m[i])
-                    write_m.write("\"")
-                write_m.write("])\n")
+                # write_m.write("meanings = Array[String]([")
+                # write_m.write("\"")
+                # write_m.write(all_descs_m[0])
+                # write_m.write("\"")
+                # for i in 1..<len(all_descs_m):
+                #     write_m.write(", \"")
+                #     write_m.write(all_descs_m[i])
+                #     write_m.write("\"")
+                # write_m.write("])\n")
 
                 echo(count)
                 count = 0
+
+for r in letter_set.items():
+    stdout.write($r)
+    stdout.write(" ")
+echo()

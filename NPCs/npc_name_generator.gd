@@ -1,5 +1,9 @@
 extends Node
 
+#enum GenderOptions {
+	#Female, Male, Neutral
+#}
+
 const res_anglo_saxon_f      : NPCFirstnameList = preload("res://NPCs/behindthename name extraction/first names/f_anglo_saxon.tres")
 const res_germanic_f         : NPCFirstnameList = preload("res://NPCs/behindthename name extraction/first names/f_germanic.tres")
 const res_medieval_dutch_f   : NPCFirstnameList = preload("res://NPCs/behindthename name extraction/first names/f_medieval_dutch.tres")
@@ -26,6 +30,8 @@ const res_old_irish_m        : NPCFirstnameList = preload("res://NPCs/behindthen
 var names_cumulative_indices_f: Array[int]
 var names_cumulative_indices_m: Array[int]
 
+#var rng = RandomNumberGenerator.new()
+
 
 func _ready() -> void:
 	#var template_names_resource: NPCFirstnameList = NPCFirstnameList.new()
@@ -51,17 +57,39 @@ func _ready() -> void:
 	names_cumulative_indices_m.append(names_cumulative_indices_m[5] + res_medieval_german_m.count)
 	names_cumulative_indices_m.append(names_cumulative_indices_m[6] + res_old_irish_m.count) # total
 	
-	print(res_anglo_saxon_f.count, " ", res_germanic_f.count, " ", res_medieval_dutch_f.count, " ", res_medieval_english_f.count, " ", res_medieval_french_f.count, " ", res_medieval_german_f.count, " ", res_old_irish_f.count)
-	print(res_anglo_saxon_m.count, " ", res_germanic_m.count, " ", res_medieval_dutch_m.count, " ", res_medieval_english_m.count, " ", res_medieval_french_m.count, " ", res_medieval_german_m.count, " ", res_old_irish_m.count)
-	
-	print(names_cumulative_indices_f)
-	print(names_cumulative_indices_m)
-	
-	for i in range(0, 20):
-		print(pickname_f())
-	print()
-	for i in range(0, 20):
-		print(pickname_m())
+	#print(res_anglo_saxon_f.count, " ", res_germanic_f.count, " ", res_medieval_dutch_f.count, " ", res_medieval_english_f.count, " ", res_medieval_french_f.count, " ", res_medieval_german_f.count, " ", res_old_irish_f.count)
+	#print(res_anglo_saxon_m.count, " ", res_germanic_m.count, " ", res_medieval_dutch_m.count, " ", res_medieval_english_m.count, " ", res_medieval_french_m.count, " ", res_medieval_german_m.count, " ", res_old_irish_m.count)
+	#
+	#print(names_cumulative_indices_f)
+	#print(names_cumulative_indices_m)
+	#
+	#for i in range(0, 20):
+		#print(pickname_f())
+	#print()
+	#for i in range(0, 20):
+		#print(pickname_m())
+
+
+static func pickname_size_weighted_arrays(rng: RandomNumberGenerator, sizes: PackedFloat32Array, indices: Array[Vector2i]) -> String:
+	var weighted_select = rng.rand_weighted(sizes)
+	var index_in_selected = rng.randi_range(0, sizes[weighted_select])
+	if indices[weighted_select].x == 0:
+		if   indices[weighted_select].y == 0: return res_anglo_saxon_f     .firstnames[index_in_selected]
+		elif indices[weighted_select].y == 1: return res_germanic_f        .firstnames[index_in_selected]
+		elif indices[weighted_select].y == 2: return res_medieval_dutch_f  .firstnames[index_in_selected]
+		elif indices[weighted_select].y == 3: return res_medieval_english_f.firstnames[index_in_selected]
+		elif indices[weighted_select].y == 4: return res_medieval_french_f .firstnames[index_in_selected]
+		elif indices[weighted_select].y == 5: return res_medieval_german_f .firstnames[index_in_selected]
+		elif indices[weighted_select].y == 6: return res_old_irish_f       .firstnames[index_in_selected]
+	elif indices[weighted_select].x == 1:
+		if   indices[weighted_select].y == 0: return res_anglo_saxon_m     .firstnames[index_in_selected]
+		elif indices[weighted_select].y == 1: return res_germanic_m        .firstnames[index_in_selected]
+		elif indices[weighted_select].y == 2: return res_medieval_dutch_m  .firstnames[index_in_selected]
+		elif indices[weighted_select].y == 3: return res_medieval_english_m.firstnames[index_in_selected]
+		elif indices[weighted_select].y == 4: return res_medieval_french_m .firstnames[index_in_selected]
+		elif indices[weighted_select].y == 5: return res_medieval_german_m .firstnames[index_in_selected]
+		elif indices[weighted_select].y == 6: return res_old_irish_m       .firstnames[index_in_selected]
+	return "Erminsculda (great error)"
 
 
 func index_in_subrange(randint: int, splits: Array[int]) -> Vector2i:
@@ -83,7 +111,7 @@ func index_in_subrange(randint: int, splits: Array[int]) -> Vector2i:
 		return Vector2i(-1, -1)
 
 func pickname_f() -> String:
-	var randint = randi_range(0, names_cumulative_indices_f[5] - 1)
+	var randint = randi_range(0, names_cumulative_indices_f[6] - 1)
 	var split = index_in_subrange(randint, names_cumulative_indices_f)
 	if split.x == 0:
 		return res_anglo_saxon_f.firstnames[split.y]
@@ -103,7 +131,7 @@ func pickname_f() -> String:
 		return "Erminsculda (great error)"
 
 func pickname_m() -> String:
-	var randint = randi_range(0, names_cumulative_indices_m[5] - 1)
+	var randint = randi_range(0, names_cumulative_indices_m[6] - 1)
 	var split = index_in_subrange(randint, names_cumulative_indices_m)
 	if split.x == 0:
 		return res_anglo_saxon_m.firstnames[split.y]
