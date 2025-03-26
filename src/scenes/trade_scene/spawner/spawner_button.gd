@@ -14,6 +14,5 @@ signal clicked
 
 
 func _on_button_down() -> void:
-	print("clicked")
 	clicked.emit(self, get_meta("SpawnableObject"))
 	pass 
