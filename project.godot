@@ -11,13 +11,14 @@ config_version=5
 [application]
 
 config/name="collabjam-prejam-trader"
-run/main_scene="uid://ddmo4bwcojgyl"
+run/main_scene="uid://b7a2x11davkk0"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+SceneChangeSingleton="*res://src/singletons/scene_changer_singleton/scene_change_singleton.tscn"
 
 [display]
 
@@ -38,6 +39,11 @@ enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
 
 pickable=""
 spawnerButton=""
+
+[gui]
+
+theme/custom="uid://di0us7rx1brkc"
+theme/custom_font="uid://dmdm5giq8dms4"
 
 [rendering]
 

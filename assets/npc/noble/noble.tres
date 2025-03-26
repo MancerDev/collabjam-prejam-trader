@@ -9,7 +9,6 @@
 
 [resource]
 script = ExtResource("1_lwyig")
-name_origin = 6
 sprite_neutral = ExtResource("4_losuo")
 sprite_happy = ExtResource("3_u3suj")
 sprite_angry = ExtResource("2_vvcrl")

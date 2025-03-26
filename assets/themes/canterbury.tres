@@ -1,0 +1,14 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://di0us7rx1brkc"]
+
+[ext_resource type="StyleBox" uid="uid://cmcoer60taf8n" path="res://assets/themes/canterbury_texture_box.tres" id="1_2seyl"]
+[ext_resource type="FontFile" uid="uid://rwa6jdm60yeb" path="res://assets/text/Old Dungeon Cursive with line gap.otf" id="1_gryvo"]
+
+[resource]
+default_font = ExtResource("1_gryvo")
+Button/icons/icon = null
+Button/styles/disabled = ExtResource("1_2seyl")
+Button/styles/focus = ExtResource("1_2seyl")
+Button/styles/hover = ExtResource("1_2seyl")
+Button/styles/hover_pressed = ExtResource("1_2seyl")
+Button/styles/normal = ExtResource("1_2seyl")
+Button/styles/pressed = ExtResource("1_2seyl")

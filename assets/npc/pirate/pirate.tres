@@ -18,7 +18,6 @@ metadata/_custom_type_script = "uid://cu1cq74uuc1n0"
 
 [resource]
 script = ExtResource("1_lvgkp")
-name_origin = 9
 sprite_neutral = ExtResource("4_ta14m")
 sprite_happy = ExtResource("3_twb0m")
 sprite_angry = ExtResource("2_4jv3a")

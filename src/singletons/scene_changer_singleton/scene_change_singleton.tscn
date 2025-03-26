@@ -1,3 +1,17 @@
-[gd_scene format=3 uid="uid://d3u443iobkjea"]
+[gd_scene load_steps=2 format=3 uid="uid://d3u443iobkjea"]
+
+[ext_resource type="Script" uid="uid://cbx4wvv4p5147" path="res://src/singletons/scene_changer_singleton/scene_change_singleton.gd" id="1_w6lpw"]
 
 [node name="SceneChangeSingleton" type="Node2D"]
+script = ExtResource("1_w6lpw")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Scenes" type="Node2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -14.0
+offset_top = -14.0
+offset_right = 809.0
+offset_bottom = 610.0
+color = Color(0, 0, 0, 1)

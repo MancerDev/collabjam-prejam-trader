@@ -5,6 +5,7 @@ class_name coin_pile
 var coin_scene = load("res://src/scenes/trade_scene/pickable/coin/coin.tscn")
 var coin_image_thresholds : Dictionary 
 
+@onready var trade_node: Node2D = get_node("/root/SceneChangeSingleton/Scenes/Trade")
 
 signal clicked
 @export var quantity : int
@@ -21,7 +22,7 @@ func _ready() -> void:
 	
 	update_image()
 	%Label.text = str(quantity)
-	get_node("/root/Trade").held_object_dropped.connect(_on_held_object_dropped);
+	trade_node.held_object_dropped.connect(_on_held_object_dropped);
 
 func update_quantity(_quantity: int):
 	quantity = _quantity
@@ -50,24 +51,21 @@ func update_image():
 		selected_image.show()
 
 func _on_input_event(viewport, event, shape_idx):
-	print("a")
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
-			print("clicked")
 			clicked.emit(self, coin_scene)
 			update_quantity(quantity - 1)
 
 
 func _on_mouse_entered() -> void:
-	print("asd") # Replace with function body.
+	pass
 	
 
 
 func _on_body_entered(body: Node) -> void:
-	print(body)
 	savedBody = null;
 	if (body.get_script() == storedObjectScript):
-		if (!get_node("/root/Trade").held_object):
+		if (!trade_node.held_object):
 			body.queue_free()
 			update_quantity(quantity + 1)
 		else:
@@ -83,7 +81,7 @@ func _on_body_exited(body: Node) -> void:
 
 
 func _on_held_object_dropped() -> void:
-	if (savedBody && !get_node("/root/Trade").held_object):
+	if (savedBody && !trade_node.held_object):
 		savedBody.queue_free();
 		update_quantity(quantity + 1)
 
