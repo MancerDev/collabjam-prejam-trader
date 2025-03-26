@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://sctg4ixrdoo6"]
+
+[ext_resource type="PackedScene" uid="uid://dnhsscnbu1k31" path="res://src/scenes/trade_scene/pickable/coin/coin.tscn" id="1_x0bwa"]
+[ext_resource type="Texture2D" uid="uid://dnr4whtgrqvhs" path="res://assets/draggable/resource_tokens/Food_weight.png" id="2_d4i6d"]
+[ext_resource type="Texture2D" uid="uid://7l8gl8dc1esg" path="res://assets/draggable/resourceIcons/food.png" id="2_f4pbo"]
+[ext_resource type="Script" uid="uid://y6s1p8ssow70" path="res://src/scenes/trade_scene/pickable/FoodToken/food_token.gd" id="2_svfoh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_svfoh"]
+atlas = ExtResource("2_d4i6d")
+region = Rect2(3, 55, 20, 9)
+
+[node name="FoodCoin" instance=ExtResource("1_x0bwa")]
+collision_layer = 530
+collision_mask = 530
+script = ExtResource("2_svfoh")
+identifier = "food_coin"
+
+[node name="Sprite" parent="." index="0"]
+position = Vector2(-2.38419e-07, 0)
+texture = SubResource("AtlasTexture_svfoh")
+
+[node name="Food" type="Sprite2D" parent="." index="1"]
+visible = false
+position = Vector2(-1, 0)
+scale = Vector2(0.163219, 0.106155)
+skew = 0.314159
+texture = ExtResource("2_f4pbo")
+
+[node name="CollisionShape2D" parent="." index="2"]
+rotation = -1.5708

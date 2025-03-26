@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://54crqfoh4y6a"]
+
+[ext_resource type="Script" uid="uid://cvtiyi5mttfpn" path="res://src/scenes/trade_scene/pickable/WeaponToken/weapon_toke.gd" id="1_6jrgu"]
+[ext_resource type="Texture2D" uid="uid://bf10ywhlfsfe1" path="res://assets/draggable/resource_tokens/Weapon_coin.png" id="2_ysg18"]
+[ext_resource type="Texture2D" uid="uid://bd0m18m6rd4xq" path="res://assets/draggable/resourceIcons/Iron.png" id="3_elhv2"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_68odj"]
+rough = true
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hkbcu"]
+radius = 2.0
+height = 20.0
+
+[node name="RigidBody2D" type="RigidBody2D" groups=["pickable"]]
+z_index = 11
+collision_layer = 2
+collision_mask = 2
+input_pickable = true
+mass = 0.2
+physics_material_override = SubResource("PhysicsMaterial_68odj")
+can_sleep = false
+freeze_mode = 1
+contact_monitor = true
+max_contacts_reported = 10
+script = ExtResource("1_6jrgu")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_ysg18")
+
+[node name="Iron" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-5.96046e-08, 0)
+scale = Vector2(0.163435, 0.115899)
+skew = 0.284489
+texture = ExtResource("3_elhv2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_hkbcu")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

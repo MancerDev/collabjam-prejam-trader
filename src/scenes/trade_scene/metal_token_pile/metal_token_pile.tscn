@@ -1,16 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://p3alaxlhfyit"]
+[gd_scene load_steps=9 format=3 uid="uid://dju5m2j84oh21"]
 
-[ext_resource type="Script" uid="uid://bumnkvpghxclu" path="res://src/scenes/trade_scene/metal_token_pile/metal_token_pile.gd" id="1_ucyh3"]
-[ext_resource type="Texture2D" uid="uid://bof1t53ci88fd" path="res://assets/images/coin/coin81.png" id="2_0yd76"]
+[ext_resource type="Script" uid="uid://dfmuws4w8wn0e" path="res://src/scenes/trade_scene/metal_token_pile/weapon_token_pile.gd" id="1_avcll"]
+[ext_resource type="Texture2D" uid="uid://bf10ywhlfsfe1" path="res://assets/draggable/resource_tokens/Weapon_coin.png" id="2_avcll"]
+[ext_resource type="Texture2D" uid="uid://c48abvwskbyw0" path="res://assets/draggable/resource_tokens/Weapon_pile_1.png" id="3_14nwa"]
+[ext_resource type="Texture2D" uid="uid://22ykffbtia11" path="res://assets/draggable/resource_tokens/Weapon_pile_2.png" id="4_ruxu5"]
+[ext_resource type="Texture2D" uid="uid://d3aph0bojcjba" path="res://assets/draggable/resource_tokens/Weapon_pile_3.png" id="5_ytvew"]
+[ext_resource type="LabelSettings" uid="uid://bsmt2fkrwn1nt" path="res://assets/text/LabelSettings.tres" id="6_h1mv8"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_una8w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_una8w"]
-size = Vector2(85, 69)
+size = Vector2(37, 37)
 
-[node name="food_token_pile" type="RigidBody2D" groups=["spawner"]]
-collision_layer = 3
-collision_mask = 3
+[node name="weapon_token_pile" type="RigidBody2D" groups=["spawner"]]
+z_index = 11
+collision_layer = 512
+collision_mask = 512
 input_pickable = true
 physics_material_override = SubResource("PhysicsMaterial_una8w")
 sleeping = true
@@ -18,25 +23,49 @@ freeze = true
 freeze_mode = 1
 contact_monitor = true
 max_contacts_reported = 5
-script = ExtResource("1_ucyh3")
+script = ExtResource("1_avcll")
 
-[node name="Sprite" type="Sprite2D" parent="."]
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Size1" type="Sprite2D" parent="Node2D"]
 unique_name_in_owner = true
-position = Vector2(-20.9, -20.9)
-scale = Vector2(0.436719, 0.436719)
-texture = ExtResource("2_0yd76")
+texture_filter = 1
+position = Vector2(0, 3)
+texture = ExtResource("2_avcll")
+
+[node name="Size2" type="Sprite2D" parent="Node2D"]
+unique_name_in_owner = true
+visible = false
+texture_filter = 1
+texture = ExtResource("3_14nwa")
+
+[node name="Size3" type="Sprite2D" parent="Node2D"]
+unique_name_in_owner = true
+visible = false
+texture_filter = 1
+position = Vector2(0, -5)
+texture = ExtResource("4_ruxu5")
+
+[node name="Size4" type="Sprite2D" parent="Node2D"]
+unique_name_in_owner = true
+visible = false
+texture_filter = 1
+position = Vector2(0, -9)
+texture = ExtResource("5_ytvew")
 
 [node name="Label" type="Label" parent="."]
 unique_name_in_owner = true
-offset_left = -104.0
-offset_top = -95.0
-offset_right = 100.0
-offset_bottom = -51.0
+offset_left = -49.0
+offset_top = 5.0
+offset_right = 49.0
+offset_bottom = 20.0
+text = "1"
+label_settings = ExtResource("6_h1mv8")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-22, -15)
+position = Vector2(0, -9)
 shape = SubResource("RectangleShape2D_una8w")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

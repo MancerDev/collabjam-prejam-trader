@@ -19,6 +19,17 @@ config/icon="res://icon.svg"
 
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 
+[display]
+
+window/size/viewport_width=800
+window/size/viewport_height=600
+window/size/borderless=true
+window/size/sharp_corners=true
+window/stretch/mode="viewport"
+window/stretch/aspect="ignore"
+window/stretch/scale=2.0
+window/stretch/scale_mode="integer"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
@@ -27,3 +38,10 @@ enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
 
 pickable=""
 spawnerButton=""
+
+[rendering]
+
+textures/lossless_compression/force_png=true
+anti_aliasing/screen_space_roughness_limiter/enabled=false
+2d/snap/snap_2d_transforms_to_pixel=true
+2d/snap/snap_2d_vertices_to_pixel=true

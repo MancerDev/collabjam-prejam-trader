@@ -31,4 +31,5 @@ sprite_neutral = ExtResource("5_n66bm")
 sprite_happy = ExtResource("4_vaoe5")
 sprite_angry = ExtResource("3_6dvpw")
 currency_map = SubResource("Resource_5ii45")
+inventory = Dictionary[String, int]({})
 metadata/_custom_type_script = "uid://3glq0r2r8cjd"

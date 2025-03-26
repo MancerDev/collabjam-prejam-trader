@@ -1,16 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://dq7rdwfgu5kqt"]
+[gd_scene load_steps=9 format=3 uid="uid://dq7rdwfgu5kqt"]
 
 [ext_resource type="Script" uid="uid://bvatrg1sohsgm" path="res://src/scenes/trade_scene/coin_pile/coin_pile.gd" id="1_x0ino"]
-[ext_resource type="Texture2D" uid="uid://bof1t53ci88fd" path="res://assets/images/coin/coin81.png" id="2_una8w"]
+[ext_resource type="Texture2D" uid="uid://dhoe7waetda2f" path="res://assets/draggable/resource_tokens/Gold_coin.png" id="2_13wbt"]
+[ext_resource type="Texture2D" uid="uid://cb12ce6ddk06v" path="res://assets/draggable/resource_tokens/Gold_coin_pile_size_1.png" id="3_egbnn"]
+[ext_resource type="Texture2D" uid="uid://cta1hsa8b57h8" path="res://assets/draggable/resource_tokens/Gold_coin_pile_size_2.png" id="4_stift"]
+[ext_resource type="Texture2D" uid="uid://b1vomo5spigru" path="res://assets/draggable/resource_tokens/Gold_coin_pile_size_3.png" id="5_32hf3"]
+[ext_resource type="LabelSettings" uid="uid://bsmt2fkrwn1nt" path="res://assets/text/LabelSettings.tres" id="6_egbnn"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_una8w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_una8w"]
-size = Vector2(85, 69)
+size = Vector2(37, 38)
 
 [node name="CoinPile" type="RigidBody2D" groups=["spawner"]]
-collision_layer = 3
-collision_mask = 3
+collision_layer = 256
+collision_mask = 256
 input_pickable = true
 physics_material_override = SubResource("PhysicsMaterial_una8w")
 sleeping = true
@@ -20,23 +24,47 @@ contact_monitor = true
 max_contacts_reported = 5
 script = ExtResource("1_x0ino")
 
-[node name="Sprite" type="Sprite2D" parent="."]
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Size1" type="Sprite2D" parent="Node2D"]
 unique_name_in_owner = true
-position = Vector2(-20.9, -20.9)
-scale = Vector2(0.436719, 0.436719)
-texture = ExtResource("2_una8w")
+visible = false
+texture_filter = 1
+texture = ExtResource("2_13wbt")
+
+[node name="Size2" type="Sprite2D" parent="Node2D"]
+unique_name_in_owner = true
+visible = false
+texture_filter = 1
+position = Vector2(-1, -3)
+texture = ExtResource("3_egbnn")
+
+[node name="Size3" type="Sprite2D" parent="Node2D"]
+unique_name_in_owner = true
+visible = false
+texture_filter = 1
+position = Vector2(0, -5)
+texture = ExtResource("4_stift")
+
+[node name="Size4" type="Sprite2D" parent="Node2D"]
+unique_name_in_owner = true
+texture_filter = 1
+position = Vector2(0, -9)
+texture = ExtResource("5_32hf3")
 
 [node name="Label" type="Label" parent="."]
 unique_name_in_owner = true
 offset_left = -101.0
-offset_top = -95.0
+offset_top = -12.0
 offset_right = 103.0
-offset_bottom = -51.0
+offset_bottom = 32.0
+text = "2"
+label_settings = ExtResource("6_egbnn")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-22, -15)
+position = Vector2(-0.5, -8)
 shape = SubResource("RectangleShape2D_una8w")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

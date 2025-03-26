@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://co3x1w25j2ne0"]
+[gd_scene load_steps=6 format=3 uid="uid://c3f1ps4nl2yfe"]
 
 [ext_resource type="Script" uid="uid://y6s1p8ssow70" path="res://src/scenes/trade_scene/pickable/FoodToken/food_token.gd" id="1_gc1bl"]
 [ext_resource type="Texture2D" uid="uid://2l3u5uwh14hi" path="res://assets/draggable/coin/coin15.png" id="2_4ixnl"]

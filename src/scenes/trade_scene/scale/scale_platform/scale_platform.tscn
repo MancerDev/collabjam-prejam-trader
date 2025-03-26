@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://c2x2jgcjgw0o"]
+[gd_scene load_steps=6 format=3 uid="uid://c2x2jgcjgw0o"]
 
 [ext_resource type="PackedScene" uid="uid://c3chfu73xi1l1" path="res://src/scenes/trade_scene/scale/scale_point/scale_point.tscn" id="1_r8ove"]
 [ext_resource type="Script" uid="uid://b3aresg5eunwf" path="res://src/scenes/trade_scene/scale/scale_platform/scale_platform.gd" id="1_v5n52"]
 [ext_resource type="Script" uid="uid://c82ic5s7inldx" path="res://src/scenes/trade_scene/scale/scale_platform/platform.gd" id="2_a6err"]
+[ext_resource type="LabelSettings" uid="uid://bsmt2fkrwn1nt" path="res://assets/text/LabelSettings.tres" id="4_mr1ko"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r8ove"]
 radius = 1.0
@@ -13,7 +14,7 @@ collision_mask = 0
 script = ExtResource("1_v5n52")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(73, -129)
+position = Vector2(1, -43)
 shape = SubResource("CircleShape2D_r8ove")
 disabled = true
 
@@ -22,18 +23,16 @@ visible = false
 position = Vector2(73, -129)
 
 [node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="."]
-position = Vector2(73, -129)
+position = Vector2(1, -43)
 rotation = 0.523599
 node_a = NodePath("..")
 node_b = NodePath("../Platform")
-length = 150.0
 
 [node name="DampedSpringJoint2D2" type="DampedSpringJoint2D" parent="."]
-position = Vector2(73, -129)
+position = Vector2(1, -43)
 rotation = -0.523599
 node_a = NodePath("..")
 node_b = NodePath("../Platform")
-length = 150.0
 
 [node name="Platform" type="RigidBody2D" parent="."]
 collision_layer = 3
@@ -46,35 +45,37 @@ max_contacts_reported = 100
 script = ExtResource("2_a6err")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Platform"]
-polygon = PackedVector2Array(-39, -23, -51, -9, -24, 6, 0, 19, 178, 20, 232, 0, 223, -16, 178, 0, 4, 0)
+position = Vector2(-76, 0)
+polygon = PackedVector2Array(100, -1, 53, -1, 45, -7, 43, -4, 52, 2, 63, 2, 101, 2, 111, -3, 109, -6)
 
 [node name="ColorRect" type="ColorRect" parent="Platform"]
-offset_right = 148.0
-offset_bottom = 20.0
-scale = Vector2(1.2, 1)
-metadata/_edit_use_anchors_ = true
+offset_left = -24.0
+offset_top = -1.0
+offset_right = 26.0
+offset_bottom = 2.0
 
 [node name="ColorRect2" type="ColorRect" parent="Platform/ColorRect"]
 layout_mode = 0
 offset_left = -1.0
-offset_top = 18.0
-offset_right = 40.0
-offset_bottom = 36.0
+offset_top = 2.0
+offset_right = 7.0
+offset_bottom = 5.0
 rotation = -2.56738
 scale = Vector2(1.2, 1)
 
-[node name="ColorRect" type="ColorRect" parent="Platform/ColorRect"]
+[node name="ColorRect3" type="ColorRect" parent="Platform/ColorRect"]
 layout_mode = 0
-offset_left = 141.0
-offset_top = 3.0
-offset_right = 182.0
-offset_bottom = 21.0
-rotation = -0.404916
+offset_left = 59.0
+offset_top = -2.0
+offset_right = 67.0
+offset_bottom = 1.0
+rotation = 2.61799
 scale = Vector2(1.2, 1)
 
 [node name="Label" type="Label" parent="Platform"]
-offset_left = 54.0
-offset_top = 21.0
-offset_right = 94.0
-offset_bottom = 44.0
+offset_left = -15.0
+offset_top = 9.0
+offset_right = 25.0
+offset_bottom = 32.0
 text = "21kg"
+label_settings = ExtResource("4_mr1ko")
