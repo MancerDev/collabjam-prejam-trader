@@ -12,7 +12,8 @@ func _physics_process(delta):
 	currentCollidedBodies = allCollidedBodies;
 	
 	# Get the current NPC from the trade scene
-	var trade_scene = get_node("/root/Trade")
+	var trade_scene = get_node("/root/SceneChangeSingleton/Scenes/Trade") 
+
 	if !trade_scene:
 		return
 	var npc = trade_scene.get_node_or_null("Uninterractables/Npc")

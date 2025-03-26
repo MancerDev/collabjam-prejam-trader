@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dr1rflwqx1t50" path="res://src/scenes/trade_scene/food_token_pile/food_token_pile.tscn" id="9_q1ldy"]
 [ext_resource type="FontFile" uid="uid://dmdm5giq8dms4" path="res://assets/text/Old Dungeon Cursive.otf" id="9_xpqll"]
 [ext_resource type="PackedScene" uid="uid://bokyiq11qstg7" path="res://src/scenes/trade_scene/magic_token_pile/magic_token_pile.tscn" id="11_xpqll"]
-[ext_resource type="PackedScene" uid="uid://p3alaxlhfyit" path="res://src/scenes/trade_scene/metal_token_pile/metal_token_pile.tscn" id="12_probq"]
+[ext_resource type="PackedScene" uid="uid://dju5m2j84oh21" path="res://src/scenes/trade_scene/metal_token_pile/metal_token_pile.tscn" id="12_probq"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_q1ldy"]
 normal = Vector2(2, 0)
