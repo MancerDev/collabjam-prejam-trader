@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="NPC" load_steps=10 format=3 uid="uid://yxlyo1w2a4wr"]
 
 [ext_resource type="Resource" uid="uid://cfklqvjjoo07c" path="res://CurrencyMaps/defaultCurrencyMap.tres" id="1_yah5s"]
-[ext_resource type="Script" path="res://assets/npc/name_pick_from.gd" id="2_52x08"]
+[ext_resource type="Script" uid="uid://cr8gu37376ika" path="res://assets/npc/name_pick_from.gd" id="2_52x08"]
 [ext_resource type="Script" uid="uid://3glq0r2r8cjd" path="res://assets/npc/npc.gd" id="3_td6r2"]
 [ext_resource type="Texture2D" uid="uid://dui37yva35lhj" path="res://assets/npc/potter/potter_angry.png" id="4_heoci"]
 [ext_resource type="Texture2D" uid="uid://4epumn15sfje" path="res://assets/npc/potter/potter_back.png" id="5_flw4b"]

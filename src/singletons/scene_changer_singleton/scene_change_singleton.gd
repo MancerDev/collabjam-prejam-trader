@@ -15,6 +15,7 @@ func _process(_delta):
 	pass
 	
 func openScene(scene):
+	print("scene")
 	$ColorRect.visible = true
 	var tween = get_tree().create_tween()
 	tween.tween_property($ColorRect, "modulate:a", 1, animation_time)
@@ -37,6 +38,7 @@ func openScene(scene):
 	return scene_instance
 
 func openTradeScene():
+	print("trade")
 	openScene(trade_scene)
 
 func openCreditsScene():

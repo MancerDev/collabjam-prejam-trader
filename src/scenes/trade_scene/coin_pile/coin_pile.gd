@@ -22,6 +22,7 @@ func _ready() -> void:
 	
 	update_image()
 	%Label.text = str(quantity)
+	print("fdsfddfsd")
 	trade_node.held_object_dropped.connect(_on_held_object_dropped);
 
 func update_quantity(_quantity: int):
