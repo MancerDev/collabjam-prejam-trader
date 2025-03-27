@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 SceneChangeSingleton="*res://src/singletons/scene_changer_singleton/scene_change_singleton.tscn"
+SfxSingleton="*res://src/singletons/sfx_singleton/sfx_singleton.tscn"
 
 [display]
 

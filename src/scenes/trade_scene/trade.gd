@@ -243,7 +243,7 @@ func _spawn_npc(npclist = [], rememberIndex = false):
 	npc.name = "Npc"
 	npc.z_index = 5
 	npc.position = %NPCPosition.position
-	
+	SfxSingleton.play_sound("entry_walk")
 	await _tween_node_in(npc)
 	for item in npc_resource.inventory:
 		var amount = npc_resource.inventory[item]
