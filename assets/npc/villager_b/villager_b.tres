@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="NPC" load_steps=10 format=3 uid="uid://dpqn46hpyut3l"]
+
+[ext_resource type="Resource" uid="uid://cfklqvjjoo07c" path="res://CurrencyMaps/defaultCurrencyMap.tres" id="1_6dmt0"]
+[ext_resource type="Script" path="res://assets/npc/name_pick_from.gd" id="2_wo0g5"]
+[ext_resource type="Script" uid="uid://3glq0r2r8cjd" path="res://assets/npc/npc.gd" id="3_gypy3"]
+[ext_resource type="Texture2D" uid="uid://d07p4af1cuikt" path="res://assets/npc/villager_b/villager_b_angry.png" id="4_wmk6c"]
+[ext_resource type="Texture2D" uid="uid://dnbrapgpx5fm1" path="res://assets/npc/villager_b/villager_b_back.png" id="5_5rifc"]
+[ext_resource type="Texture2D" uid="uid://ct8hm0q80m3yc" path="res://assets/npc/villager_b/villager_b_happy.png" id="6_wr7xv"]
+[ext_resource type="Texture2D" uid="uid://dsgjvkqk7ug5b" path="res://assets/npc/villager_b/villager_b_default.png" id="7_cv1pf"]
+[ext_resource type="Texture2D" uid="uid://bmxlld0bfhfvp" path="res://assets/npc/villager_b/villager_b_sad.png" id="8_gmmc2"]
+
+[sub_resource type="Resource" id="Resource_wphms"]
+script = ExtResource("2_wo0g5")
+pick_from = 20
+use_female_names = false
+use_male_names = true
+metadata/_custom_type_script = "uid://cr8gu37376ika"
+
+[resource]
+script = ExtResource("3_gypy3")
+name_pick_from = SubResource("Resource_wphms")
+sprite_neutral = ExtResource("7_cv1pf")
+sprite_happy = ExtResource("6_wr7xv")
+sprite_angry = ExtResource("4_wmk6c")
+sprite_back = ExtResource("5_5rifc")
+sprite_sad = ExtResource("8_gmmc2")
+currency_map = ExtResource("1_6dmt0")
+inventory = Dictionary[String, int]({})
+metadata/_custom_type_script = "uid://3glq0r2r8cjd"

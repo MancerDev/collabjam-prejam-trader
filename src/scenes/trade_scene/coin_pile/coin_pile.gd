@@ -52,7 +52,7 @@ func update_image():
 
 func _on_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
-		if event.pressed:
+		if event.pressed && quantity > 0:
 			clicked.emit(self, coin_scene)
 			update_quantity(quantity - 1)
 

@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="NPC" load_steps=10 format=3 uid="uid://c5r2flt8lp5hq"]
+
+[ext_resource type="Resource" uid="uid://cfklqvjjoo07c" path="res://CurrencyMaps/defaultCurrencyMap.tres" id="1_jsg37"]
+[ext_resource type="Script" path="res://assets/npc/name_pick_from.gd" id="2_ceo4a"]
+[ext_resource type="Script" uid="uid://3glq0r2r8cjd" path="res://assets/npc/npc.gd" id="3_1fh0h"]
+[ext_resource type="Texture2D" uid="uid://qoq2nqu6hm0i" path="res://assets/npc/hunter/hunter_angry.png" id="4_q2dhm"]
+[ext_resource type="Texture2D" uid="uid://66oboy4kwm54" path="res://assets/npc/hunter/hunter_back.png" id="5_gokdy"]
+[ext_resource type="Texture2D" uid="uid://byyxmuv5rpwqg" path="res://assets/npc/hunter/hunter_happy.png" id="6_tatnk"]
+[ext_resource type="Texture2D" uid="uid://bqje6mdvk0g1j" path="res://assets/npc/hunter/hunter_default.png" id="7_uaxsi"]
+[ext_resource type="Texture2D" uid="uid://buqitcuumkj6o" path="res://assets/npc/hunter/hunter_sad.png" id="8_pm7w6"]
+
+[sub_resource type="Resource" id="Resource_wphms"]
+script = ExtResource("2_ceo4a")
+pick_from = 20
+use_female_names = false
+use_male_names = true
+metadata/_custom_type_script = "uid://cr8gu37376ika"
+
+[resource]
+script = ExtResource("3_1fh0h")
+name_pick_from = SubResource("Resource_wphms")
+sprite_neutral = ExtResource("7_uaxsi")
+sprite_happy = ExtResource("6_tatnk")
+sprite_angry = ExtResource("4_q2dhm")
+sprite_back = ExtResource("5_gokdy")
+sprite_sad = ExtResource("8_pm7w6")
+currency_map = ExtResource("1_jsg37")
+inventory = Dictionary[String, int]({})
+metadata/_custom_type_script = "uid://3glq0r2r8cjd"

@@ -1,18 +1,42 @@
-[gd_resource type="Resource" script_class="NPC" load_steps=7 format=3 uid="uid://bsf5jemkcncun"]
+[gd_resource type="Resource" script_class="NPC" load_steps=11 format=3 uid="uid://dhqy7py1iomof"]
 
-[ext_resource type="Script" uid="uid://3glq0r2r8cjd" path="res://assets/npc/npc.gd" id="1_lwyig"]
+[ext_resource type="Script" uid="uid://cu1cq74uuc1n0" path="res://assets/item/currency_map.gd" id="1_ndblu"]
+[ext_resource type="Script" path="res://assets/npc/name_pick_from.gd" id="2_n3b71"]
 [ext_resource type="Texture2D" uid="uid://rtr0xtg408ys" path="res://assets/npc/noble/noble_angry.png" id="2_vvcrl"]
+[ext_resource type="Script" uid="uid://3glq0r2r8cjd" path="res://assets/npc/npc.gd" id="3_22ult"]
 [ext_resource type="Texture2D" uid="uid://dqkl31e0dt01x" path="res://assets/npc/noble/noble_backview.png" id="3_losuo"]
 [ext_resource type="Texture2D" uid="uid://bpc8umqb02dxt" path="res://assets/npc/noble/noble_happy.png" id="3_u3suj"]
 [ext_resource type="Texture2D" uid="uid://b6hmv611sh8v2" path="res://assets/npc/noble/noble_neutral.png" id="4_losuo"]
 [ext_resource type="Texture2D" uid="uid://crw8mpn0t06bm" path="res://assets/npc/noble/noble_sad.png" id="6_ai1a8"]
 
+[sub_resource type="Resource" id="Resource_4osu5"]
+script = ExtResource("1_ndblu")
+currency_to_int_map = {
+"food_coin": 1.5,
+"magic_coin": 1.5,
+"silver_coin": 0.5,
+"weapon_coin": 2.0
+}
+metadata/_custom_type_script = "uid://cu1cq74uuc1n0"
+
+[sub_resource type="Resource" id="Resource_wphms"]
+script = ExtResource("2_n3b71")
+pick_from = 20
+use_female_names = false
+use_male_names = true
+metadata/_custom_type_script = "uid://cr8gu37376ika"
+
 [resource]
-script = ExtResource("1_lwyig")
+script = ExtResource("3_22ult")
+name_pick_from = SubResource("Resource_wphms")
 sprite_neutral = ExtResource("4_losuo")
 sprite_happy = ExtResource("3_u3suj")
 sprite_angry = ExtResource("2_vvcrl")
 sprite_back = ExtResource("3_losuo")
 sprite_sad = ExtResource("6_ai1a8")
-inventory = Dictionary[String, int]({})
+currency_map = SubResource("Resource_4osu5")
+inventory = Dictionary[String, int]({
+"magic_coin": 2,
+"silver_coin": 7
+})
 metadata/_custom_type_script = "uid://3glq0r2r8cjd"

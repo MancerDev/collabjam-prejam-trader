@@ -10,9 +10,98 @@ var npcs: Array[NPC] = [
 	#preload("res://assets/npc/villager/villager.tres"),
 ]
 
+var mysticalNpcs = [
+	#headman
+	preload("res://assets/npc/headman/headman.tres"),
+	#fishman
+	preload("res://assets/npc/fishman/mysticfish.tres"),
+	#heron
+	preload("res://assets/npc/heron/heron.tres"),
+	#troll
+	preload("res://assets/npc/troll/troll.tres"),
+]
+
+var noble = [
+	#noble 
+	preload("res://assets/npc/noble/noble.tres"),
+	#noble B
+	preload("res://assets/npc/noble_b/noble_b.tres"),
+	#noble C
+	preload("res://assets/npc/noble_c/noble_c.tres"),
+]
+
+var artisan  = [
+	#pirate  
+	preload("res://assets/npc/pirate/pirate.tres"),
+	#blacksmith 
+	preload("res://assets/npc/blacksmith/blacksmith.tres"),
+	#hunter
+	preload("res://assets/npc/hunter/hunter.tres"),
+	#potter 
+	preload("res://assets/npc/potter/potter.tres"),
+]
+
+var villager = [
+	#villager 
+	preload("res://assets/npc/villager/villager.tres"),
+	#villager B 
+	preload("res://assets/npc/villager_b/villager_b.tres"),
+	#villager C 
+	preload("res://assets/npc/villager_c/villager_c.tres"),
+	#villager D 
+	preload("res://assets/npc/villager_d/villager_d.tres"),
+]
+
+var failstateNpcs = [
+	#headman
+	#preload("res://assets/npc/headman/headman.tres"),
+	#evilNoble
+	preload("res://assets/npc/noble/evil_noble.tres")
+]
+
+var allNPCS = [
+	#headman
+	preload("res://assets/npc/headman/headman.tres"),
+	#fishman
+	preload("res://assets/npc/fishman/mysticfish.tres"),
+	#heron
+	preload("res://assets/npc/heron/heron.tres"),
+	#troll
+	preload("res://assets/npc/troll/troll.tres"),
+	
+	#noble 
+	preload("res://assets/npc/noble/noble.tres"),
+	#noble B
+	preload("res://assets/npc/noble_b/noble_b.tres"),
+	#noble C
+	preload("res://assets/npc/noble_c/noble_c.tres"),
+	
+	#pirate  
+	preload("res://assets/npc/pirate/pirate.tres"),
+	#blacksmith 
+	preload("res://assets/npc/blacksmith/blacksmith.tres"),
+	#hunter
+	preload("res://assets/npc/hunter/hunter.tres"),
+	#potter 
+	preload("res://assets/npc/potter/potter.tres"),
+	
+	#villager 
+	preload("res://assets/npc/villager/villager.tres"),
+	#villager B 
+	preload("res://assets/npc/villager_b/villager_b.tres"),
+	#villager C 
+	preload("res://assets/npc/villager_c/villager_c.tres"),
+	#villager D 
+	preload("res://assets/npc/villager_d/villager_d.tres"),
+]
+
 var item_map: Dictionary = {
 	"silver_coin": preload("res://src/scenes/trade_scene/pickable/coin/coin.tscn"),
-	"food_coin": preload("res://src/scenes/trade_scene/pickable/FoodToken/food_coin.tscn")
+	"food_coin": preload("res://src/scenes/trade_scene/pickable/FoodToken/food_coin.tscn"),
+	"magic_coin": preload("res://src/scenes/trade_scene/pickable/MagicToken/MagicToken.tscn"),
+	"weapon_coin": preload("res://src/scenes/trade_scene/pickable/WeaponToken/WeaponToken.tscn"),
+	
+	"death_weight": preload("res://src/scenes/trade_scene/pickable/weight/weight.tscn")
 }
 
 var npc_scene = preload("res://src/scenes/npc_scene/npc.tscn")
@@ -25,6 +114,7 @@ var todays_customers;
 func _ready():
 	$UI/banish_button.hide()
 	$UI/deal_button.hide()
+	$UI/give_up_button.hide()
 	current_day = 1;
 	todays_customers = 3;
 	todays_customers_left = 3;
@@ -119,10 +209,10 @@ func _tween_node_in(node: Node2D, duration: float = 1) -> void:
 	await tween.finished
 	return
 
-func _despawn_npc():
+func _despawn_npc(leave_attitude = "happy"):
 	var npc = %Uninterractables.get_node_or_null("Npc")
 	if npc:
-		npc.set_sprite_state("happy")
+		npc.set_sprite_state(leave_attitude)
 		await get_tree().create_timer(1.0).timeout
 		npc.set_sprite_state("back")
 		
@@ -136,13 +226,17 @@ func _despawn_npc():
 		await _tween_node_out(npc, 1)
 		return
 
-func _spawn_npc():
+func _spawn_npc(npclist = [], rememberIndex = false):
 	# Remove any existing NPC first
 	var existing_npc = %Uninterractables.get_node_or_null("Npc")
 	if existing_npc:
 		existing_npc.queue_free()
+		
+	var index = floor(randf() * npclist.size())
+	if rememberIndex:
+		lastNpcs.push_back(index)
 	
-	var npc_resource = npcs[randi() % npcs.size()]
+	var npc_resource = npclist[index]
 	var npc = npc_scene.instantiate()
 	npc.resource = npc_resource
 	%Uninterractables.add_child(npc)
@@ -164,11 +258,10 @@ func _spawn_npc():
 			new_item.add_to_group("customer_items")
 			new_item.identifier = item
 			new_item.clicked.connect(_on_pickable_object_clicked)
+			if (new_item.get_script() == weight):
+				new_item.WeightSetUp(12, 1)
 			_tween_node_in(new_item, 0.3)
 			
-	todays_customers_left = todays_customers_left - 1;
-	$UI/Control.TimeUpdate(22-round(14*todays_customers_left/todays_customers), todays_customers_left)
-	
 	return
 
 
@@ -224,6 +317,12 @@ func deal_execute():
 		elif (node.get_script() == coin):
 			$CoinPile.update_quantity($CoinPile.quantity+1);
 			_tween_node_out(node, 0.4)
+		elif (node.get_script() == magic_token):
+			$magic_token_pile.update_quantity($magic_token_pile.quantity+1);
+			_tween_node_out(node, 0.4)
+		elif (node.get_script() == weapon_token):
+			$weapon_token_pile.update_quantity($weapon_token_pile.quantity+1);
+			_tween_node_out(node, 0.4)
 		#node.set_collision_mask_value(5, true);
 		#node.set_collision_layer_value(5, true);$CoinPile 
 		
@@ -235,24 +334,69 @@ func deal_execute():
 
 
 func _on_deal_button_pressed() -> void:
-
 	if deal_check():
 		$UI/banish_button.hide()
 		$UI/deal_button.hide()
 		await deal_execute()
 		await  _despawn_npc()
 		$UI/next_customer_button.show()
+		
+		var deathWeightRemoved = false;
+		for item in get_tree().get_nodes_in_group("death_weight"):
+			deathWeightRemoved = true
+			_tween_node_out(item, 0.4)
+		
+		if (deathWeightRemoved): 
+			day_finish()
 
 
 func _on_next_customer_button_pressed() -> void:
 	$UI/next_customer_button.hide()
-	await  _spawn_npc()
-	$UI/banish_button.show()
-	$UI/deal_button.show()
+	await next_customer()
+	
 
 
 func _on_banish_button_pressed() -> void:
 	$UI/banish_button.hide()
 	$UI/deal_button.hide()
-	await  _despawn_npc()
+	await _despawn_npc("sad")
 	$UI/next_customer_button.show()
+
+var lastNpcs = [];
+
+func next_customer():
+	if (todays_customers_left > 0): 
+		todays_customers_left = todays_customers_left - 1;
+		$UI/Control.TimeUpdate(22-round(14*todays_customers_left/todays_customers), todays_customers_left)
+		var NPCArray = allNPCS.duplicate()
+		#NPCArray.pop_at();
+		for num in lastNpcs:
+			print(lastNpcs)
+			NPCArray.pop_at(num)
+		await _spawn_npc(NPCArray, true)
+		$UI/banish_button.show()
+		$UI/deal_button.show()
+	else: 
+		failstate_customer()
+
+
+func failstate_customer():
+	
+	await _spawn_npc(failstateNpcs)
+	
+	$UI/banish_button.hide()
+	$UI/deal_button.show()
+	$UI/give_up_button.show()
+	
+
+func day_finish():
+	
+	#await _spawn_npc(failstateNpcs)
+	current_day += 1;
+	todays_customers += 1;
+	todays_customers_left = todays_customers;
+	$UI/Control.TimeUpdate(22-round(14*todays_customers_left/todays_customers), todays_customers_left)
+	$UI/next_customer_button.show()
+	$UI/banish_button.hide()
+	$UI/deal_button.hide()
+	$UI/give_up_button.hide()

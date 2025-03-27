@@ -170,6 +170,23 @@ label_settings = SubResource("LabelSettings_xpqll")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="give_up_button" type="Button" parent="UI"]
+z_index = 25
+offset_left = 328.0
+offset_top = 267.0
+offset_right = 402.0
+offset_bottom = 288.0
+
+[node name="Label" type="Label" parent="UI/give_up_button"]
+layout_mode = 0
+offset_right = 74.0
+offset_bottom = 24.0
+text = " give up 
+"
+label_settings = SubResource("LabelSettings_xpqll")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="deal_button" type="Button" parent="UI"]
 top_level = true
 z_index = 25
@@ -238,7 +255,7 @@ label_settings = SubResource("LabelSettings_83k6h")
 
 [node name="CoinPile" parent="." instance=ExtResource("7_mucam")]
 z_index = 11
-position = Vector2(103, 251)
+position = Vector2(136, 251)
 quantity = 10
 
 [node name="food_token_pile" parent="." instance=ExtResource("9_q1ldy")]
@@ -246,13 +263,14 @@ position = Vector2(19, 123)
 quantity = 10
 
 [node name="magic_token_pile" parent="." instance=ExtResource("11_xpqll")]
-position = Vector2(25, 170)
+position = Vector2(16, 169)
 quantity = 5
 
 [node name="weapon_token_pile" parent="." instance=ExtResource("12_probq")]
-position = Vector2(18, 208)
+position = Vector2(19, 207)
 quantity = 5
 
 [connection signal="pressed" from="UI/banish_button" to="." method="_on_banish_button_pressed"]
+[connection signal="pressed" from="UI/give_up_button" to="." method="_on_banish_button_pressed"]
 [connection signal="pressed" from="UI/deal_button" to="." method="_on_deal_button_pressed"]
 [connection signal="pressed" from="UI/next_customer_button" to="." method="_on_next_customer_button_pressed"]

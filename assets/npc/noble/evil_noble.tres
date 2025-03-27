@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="NPC" load_steps=8 format=3 uid="uid://dudeovony2bhg"]
+
+[ext_resource type="Resource" uid="uid://cfklqvjjoo07c" path="res://CurrencyMaps/defaultCurrencyMap.tres" id="1_2gpo2"]
+[ext_resource type="Script" path="res://assets/npc/name_pick_from.gd" id="2_87r22"]
+[ext_resource type="Script" uid="uid://3glq0r2r8cjd" path="res://assets/npc/npc.gd" id="3_7hxjh"]
+[ext_resource type="Texture2D" uid="uid://cc68ephk0jbkd" path="res://assets/npc/noble/noble_angry2.png" id="4_2gpo2"]
+[ext_resource type="Texture2D" uid="uid://dqkl31e0dt01x" path="res://assets/npc/noble/noble_backview.png" id="5_ptc8i"]
+[ext_resource type="Texture2D" uid="uid://dexjo2gyrjqgq" path="res://assets/npc/noble/noble_happy2.png" id="6_kfb2t"]
+
+[sub_resource type="Resource" id="Resource_wphms"]
+script = ExtResource("2_87r22")
+pick_from = 20
+use_female_names = false
+use_male_names = true
+metadata/_custom_type_script = "uid://cr8gu37376ika"
+
+[resource]
+script = ExtResource("3_7hxjh")
+name_pick_from = SubResource("Resource_wphms")
+sprite_neutral = ExtResource("4_2gpo2")
+sprite_happy = ExtResource("6_kfb2t")
+sprite_angry = ExtResource("4_2gpo2")
+sprite_back = ExtResource("5_ptc8i")
+sprite_sad = ExtResource("4_2gpo2")
+currency_map = ExtResource("1_2gpo2")
+inventory = Dictionary[String, int]({
+"death_weight": 1
+})
+metadata/_custom_type_script = "uid://3glq0r2r8cjd"

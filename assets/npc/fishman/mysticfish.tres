@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="NPC" load_steps=8 format=3 uid="uid://b0xufeovgnmex"]
+
+[ext_resource type="Resource" uid="uid://cfklqvjjoo07c" path="res://CurrencyMaps/defaultCurrencyMap.tres" id="1_1o6ae"]
+[ext_resource type="Script" uid="uid://3glq0r2r8cjd" path="res://assets/npc/npc.gd" id="1_fj4j5"]
+[ext_resource type="Texture2D" uid="uid://b5dwg6nxxs0nq" path="res://assets/npc/fishman/mysticfish_angry.png" id="2_hjfrp"]
+[ext_resource type="Texture2D" uid="uid://ccmkmsrokvhea" path="res://assets/npc/fishman/mysticfish_back.png" id="3_1o6ae"]
+[ext_resource type="Texture2D" uid="uid://cb3mabdwsn5f3" path="res://assets/npc/fishman/mysticfish_happy.png" id="4_15ihu"]
+[ext_resource type="Texture2D" uid="uid://47814rt1fc5c" path="res://assets/npc/fishman/mysticfish_default.png" id="5_rs6yw"]
+[ext_resource type="Texture2D" uid="uid://w21k18t05wjq" path="res://assets/npc/fishman/mysticfish_sad.png" id="6_nusvo"]
+
+[resource]
+script = ExtResource("1_fj4j5")
+sprite_neutral = ExtResource("5_rs6yw")
+sprite_happy = ExtResource("4_15ihu")
+sprite_angry = ExtResource("2_hjfrp")
+sprite_back = ExtResource("3_1o6ae")
+sprite_sad = ExtResource("6_nusvo")
+currency_map = ExtResource("1_1o6ae")
+inventory = Dictionary[String, int]({})
+metadata/_custom_type_script = "uid://3glq0r2r8cjd"

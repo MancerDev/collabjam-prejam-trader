@@ -32,12 +32,13 @@ func _ready():
 func WeightSetUp(_amount, _weightPerAmount):
 	amount = _amount
 	weightPerAmount = _weightPerAmount
-	goodType = goodTypes.keys()[floor(randf()*2)]
+	#goodType = goodTypes.keys()[floor(randf()*2)]
 	
-	$Sprite.scale = Vector2(1+amount*0.1, 1+amount*0.1)
-	$CollisionShape2D.scale = Vector2(1+amount*0.1, 1+amount*0.1)
+	$Sprite.scale = Vector2(1+amount*0.01, 1+amount*0.01)
+	$Node2D/Death.scale = Vector2(7+amount*0.01, 7+amount*0.01)
+	$CollisionShape2D.scale = Vector2(1+amount*0.01, 1+amount*0.01)
 	mass = floor(amount*weightPerAmount);
-	SetUpSprite(goodType)
+	#SetUpSprite(goodType)
 	
 	$Label.text = str(floor(amount))+"";
 
@@ -53,22 +54,23 @@ func SetUpSprite(goodType):
 		$Node2D/RedWheatSprite.hide()
 		#$ColorRect.set_color(Color(100, 100, 100))
 
-func OnBuy(SpawnPoint = null):
-	print(amount)
-	for number in range(amount):
-		#var packed_scene = load("res://src/scenes/trade_scene/pickable/FoodToken/FoodToken.tscn")
-		#var scene_node = packed_scene.instantiate()
-		#print(get_node("/root/Trade/Physics/Spawn_Food"))
-		#print(get_node("/root"))
-		if (goodType == goodTypes.food):
-			var root = get_node("/root/Trade/Physics/Spawn_Food")._on_button_down()
-		if (goodType == goodTypes.metal):
-			var root = get_node("/root/Trade/Physics/Spawn_Metal")._on_button_down()
-			
-			
-		#root.add_child(scene_node)
-		#%"Spawn Food"._on_button_down()
-		#$"../Spawn Food"._on_button_down();
+
+#func OnBuy(SpawnPoint = null):
+	#print(amount)
+	#for number in range(amount):
+		##var packed_scene = load("res://src/scenes/trade_scene/pickable/FoodToken/FoodToken.tscn")
+		##var scene_node = packed_scene.instantiate()
+		##print(get_node("/root/Trade/Physics/Spawn_Food"))
+		##print(get_node("/root"))
+		#if (goodType == goodTypes.food):
+			#var root = get_node("/root/Trade/Physics/Spawn_Food")._on_button_down()
+		#if (goodType == goodTypes.metal):
+			#var root = get_node("/root/Trade/Physics/Spawn_Metal")._on_button_down()
+			#
+			#
+		##root.add_child(scene_node)
+		##%"Spawn Food"._on_button_down()
+		##$"../Spawn Food"._on_button_down();
 	
 	
 	

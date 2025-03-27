@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="NPC" load_steps=8 format=3 uid="uid://bsf5jemkcncun"]
+
+[ext_resource type="Resource" uid="uid://cfklqvjjoo07c" path="res://CurrencyMaps/defaultCurrencyMap.tres" id="1_bb2un"]
+[ext_resource type="Script" uid="uid://3glq0r2r8cjd" path="res://assets/npc/npc.gd" id="2_ukyv6"]
+[ext_resource type="Texture2D" uid="uid://ddc2axa4thok7" path="res://assets/npc/headman/headman_angry.png" id="3_6mxcl"]
+[ext_resource type="Texture2D" uid="uid://krk0gspuvb2j" path="res://assets/npc/headman/headman_back.png" id="4_criil"]
+[ext_resource type="Texture2D" uid="uid://cco2qracp58u8" path="res://assets/npc/headman/headman_happy.png" id="5_ti3gi"]
+[ext_resource type="Texture2D" uid="uid://d3hp0rqj5f108" path="res://assets/npc/headman/headman_default.png" id="6_hbchf"]
+[ext_resource type="Texture2D" uid="uid://23wnjxnd0l43" path="res://assets/npc/headman/headman_sad.png" id="7_yhjh3"]
+
+[resource]
+script = ExtResource("2_ukyv6")
+sprite_neutral = ExtResource("6_hbchf")
+sprite_happy = ExtResource("5_ti3gi")
+sprite_angry = ExtResource("3_6mxcl")
+sprite_back = ExtResource("4_criil")
+sprite_sad = ExtResource("7_yhjh3")
+currency_map = ExtResource("1_bb2un")
+inventory = Dictionary[String, int]({
+"silver_coin": 2,
+"weapon_coin": 1
+})
+metadata/_custom_type_script = "uid://3glq0r2r8cjd"

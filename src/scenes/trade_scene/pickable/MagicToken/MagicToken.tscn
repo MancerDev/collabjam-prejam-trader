@@ -23,6 +23,7 @@ freeze_mode = 1
 contact_monitor = true
 max_contacts_reported = 10
 script = ExtResource("1_7m88x")
+identifier = "magic_coin"
 
 [node name="Sprite" type="Sprite2D" parent="."]
 texture_filter = 1
