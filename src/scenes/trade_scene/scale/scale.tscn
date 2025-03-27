@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dthhbje3265yb"]
+[gd_scene load_steps=7 format=3 uid="uid://dthhbje3265yb"]
 
 [ext_resource type="Script" uid="uid://cxd8h87sl2a7m" path="res://src/scenes/trade_scene/scale/scale.gd" id="1_5ltgm"]
 [ext_resource type="PackedScene" uid="uid://c2x2jgcjgw0o" path="res://src/scenes/trade_scene/scale/scale_platform/scale_platform.tscn" id="1_jnbmu"]
 [ext_resource type="PackedScene" uid="uid://ceyrlkfbsxx33" path="res://src/scenes/trade_scene/scale/scale_beam/scale_beam.tscn" id="2_8ksth"]
+[ext_resource type="Texture2D" uid="uid://dlnv0ven4a46v" path="res://assets/images/scale/scale.png" id="4_7nxte"]
 [ext_resource type="PackedScene" uid="uid://t7kd12wjrt5n" path="res://src/scenes/trade_scene/scale/weight_meter/weight_meter.tscn" id="4_uo1kv"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_8ksth"]
@@ -11,12 +12,12 @@
 script = ExtResource("1_5ltgm")
 
 [node name="ScalePlatformSelf" parent="." instance=ExtResource("1_jnbmu")]
-position = Vector2(-46, 53)
+position = Vector2(-62, 48)
 can_sleep = false
 freeze = true
 
 [node name="ScalePlatformOther" parent="." instance=ExtResource("1_jnbmu")]
-position = Vector2(43, 53)
+position = Vector2(63, 48)
 can_sleep = false
 freeze = true
 
@@ -24,18 +25,22 @@ freeze = true
 position = Vector2(0, -1)
 freeze = true
 
+[node name="Sprite2D" type="Sprite2D" parent="ScaleBeamVertical"]
+position = Vector2(2, 42)
+texture = ExtResource("4_7nxte")
+
 [node name="ScaleBeamHorizontal" parent="." instance=ExtResource("2_8ksth")]
 position = Vector2(45, 4)
 rotation = 1.5708
 physics_material_override = SubResource("PhysicsMaterial_8ksth")
 
 [node name="PinJoint2D2" type="PinJoint2D" parent="."]
-position = Vector2(44, 10)
+position = Vector2(64, 5)
 node_a = NodePath("../ScalePlatformOther")
 node_b = NodePath("../ScaleBeamHorizontal")
 
 [node name="PinJoint2D3" type="PinJoint2D" parent="."]
-position = Vector2(-45, 11)
+position = Vector2(-61, 5)
 node_a = NodePath("../ScalePlatformSelf")
 node_b = NodePath("../ScaleBeamHorizontal")
 

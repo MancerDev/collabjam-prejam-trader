@@ -38,4 +38,5 @@ position = Vector2(-1, 1)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_hkbcu")
 
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="input_event" from="." to="." method="_on_input_event"]

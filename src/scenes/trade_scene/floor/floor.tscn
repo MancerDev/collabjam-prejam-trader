@@ -5,9 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8aeg8"]
 size = Vector2(398, 40)
 
-[node name="Floor" type="Node2D"]
-
-[node name="RigidBody2D" type="RigidBody2D" parent="."]
+[node name="Floor" type="RigidBody2D"]
 collision_layer = 3
 collision_mask = 3
 physics_material_override = SubResource("PhysicsMaterial_8aeg8")
@@ -15,13 +13,13 @@ gravity_scale = 0.0
 sleeping = true
 freeze = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(154, 19)
 shape = SubResource("RectangleShape2D_8aeg8")
 
-[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 
-[node name="ColorRect" type="ColorRect" parent="RigidBody2D"]
+[node name="ColorRect" type="ColorRect" parent="."]
 visible = false
 offset_left = -18.0
 offset_top = -3.0
