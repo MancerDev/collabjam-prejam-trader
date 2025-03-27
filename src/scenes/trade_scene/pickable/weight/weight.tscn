@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://dwcygm3ploh44"]
 
 [ext_resource type="Script" uid="uid://tg7u5xgwrtve" path="res://assets/draggable/weight/weight.gd" id="1_o3ii1"]
-[ext_resource type="Texture2D" uid="uid://c0iwbnhs1rpox" path="res://assets/draggable/weight/Weight.png" id="2_o3ii1"]
+[ext_resource type="Texture2D" uid="uid://b27efnlb3cas" path="res://assets/draggable/resourceIcons/weight.png" id="2_krh8o"]
 [ext_resource type="Texture2D" uid="uid://7l8gl8dc1esg" path="res://assets/draggable/resourceIcons/food.png" id="3_hmme1"]
 [ext_resource type="Texture2D" uid="uid://b46uy5438k3sp" path="res://assets/draggable/resourceIcons/Skull.png" id="3_krh8o"]
 [ext_resource type="Texture2D" uid="uid://bd0m18m6rd4xq" path="res://assets/draggable/resourceIcons/Iron.png" id="4_uh52g"]
@@ -12,7 +12,7 @@ rough = true
 bounce = 0.05
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o3ii1"]
-size = Vector2(31, 58)
+size = Vector2(17, 28)
 
 [node name="Weight" type="RigidBody2D" groups=["death_weight", "pickable"]]
 collision_layer = 5
@@ -29,11 +29,12 @@ script = ExtResource("1_o3ii1")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 z_index = 11
-position = Vector2(-0.100001, -7.2)
-texture = ExtResource("2_o3ii1")
+texture_filter = 1
+position = Vector2(1, -8)
+texture = ExtResource("2_krh8o")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1.5, -8)
+position = Vector2(1.5, -8)
 shape = SubResource("RectangleShape2D_o3ii1")
 
 [node name="Node2D" type="Node2D" parent="."]
@@ -42,8 +43,9 @@ scale = Vector2(0.132813, 0.132813)
 
 [node name="Death" type="Sprite2D" parent="Node2D"]
 z_index = 11
-position = Vector2(52.7057, 45.1763)
-scale = Vector2(7, 7)
+texture_filter = 1
+position = Vector2(82.8232, -1.90735e-06)
+scale = Vector2(3.5, 3.5)
 texture = ExtResource("3_krh8o")
 
 [node name="MetalSprite2D" type="Sprite2D" parent="Node2D"]

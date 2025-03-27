@@ -20,7 +20,7 @@ func TimeUpdate(hour, customers):
 		tween.tween_property($"../../Uninterractables/NightBackground", "modulate:a", 1.0, 1)
 		tween.tween_property($"../../Uninterractables/DayBackground", "modulate:a", 0.0, 1)
 	else:
-		tween.tween_property($"../../Uninterractables/NightBackground", "modulate:a", 0.0, 1)
 		tween.tween_property($"../../Uninterractables/DayBackground", "modulate:a", 1.0, 1)
+		tween.tween_property($"../../Uninterractables/NightBackground", "modulate:a", 0.0, 1)
 	pass
 	

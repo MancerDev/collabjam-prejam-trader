@@ -1,0 +1,66 @@
+[gd_scene load_steps=8 format=3 uid="uid://dkklr75pch58c"]
+
+[ext_resource type="Script" uid="uid://044kuxrikyaj" path="res://src/scenes/trade_scene/pickable/artifact/pearl/pearl.gd" id="1_q15ky"]
+[ext_resource type="Texture2D" uid="uid://b27efnlb3cas" path="res://assets/draggable/resourceIcons/weight.png" id="2_kdi3v"]
+[ext_resource type="FontFile" uid="uid://dmdm5giq8dms4" path="res://assets/text/Old Dungeon Cursive.otf" id="3_kyc0c"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_68odj"]
+rough = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5yhnk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tbyjm"]
+size = Vector2(7.74997, 9.00001)
+
+[sub_resource type="LabelSettings" id="LabelSettings_nhrt3"]
+font = ExtResource("3_kyc0c")
+font_size = 6
+outline_color = Color(0, 0, 0, 1)
+shadow_color = Color(0, 0, 0, 1)
+
+[node name="pearl" type="RigidBody2D" groups=["pickable"]]
+z_index = 11
+collision_layer = 274
+collision_mask = 274
+input_pickable = true
+physics_material_override = SubResource("PhysicsMaterial_68odj")
+can_sleep = false
+lock_rotation = true
+freeze_mode = 1
+contact_monitor = true
+max_contacts_reported = 10
+script = ExtResource("1_q15ky")
+description = "Gets less worthy each collided item"
+identifier = "artifact"
+
+[node name="Sprite" type="Sprite2D" parent="."]
+z_index = 11
+texture_filter = 1
+texture_repeat = 1
+material = SubResource("ShaderMaterial_5yhnk")
+position = Vector2(-1.49012e-08, 0)
+scale = Vector2(0.47619, 0.25)
+texture = ExtResource("2_kdi3v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 11
+position = Vector2(0.499993, -0.124997)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_tbyjm")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+z_index = 50
+offset_right = 200.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="PanelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Short description 
+A lot of information"
+label_settings = SubResource("LabelSettings_nhrt3")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="input_event" from="." to="." method="_on_input_event"]

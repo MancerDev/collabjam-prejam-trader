@@ -19,11 +19,14 @@ func _physics_process(delta):
 	var npc = trade_scene.get_node_or_null("Uninterractables/Npc")
 	
 	for body in allCollidedBodies:
-		if body is coin and npc and npc.resource and npc.resource.currency_map:
-			var currency_value = npc.resource.currency_map.currency_to_int_map.get(body.identifier, 0)
-			weight += currency_value
-		else:
-			weight += round_to_dec(body.mass, 3)
+		if body.is_in_group("pickable"):
+			if body is coin and npc and npc.resource and npc.resource.currency_map:
+				var currency_value = npc.resource.currency_map.currency_to_int_map.get(body.identifier, 0)
+				weight += currency_value
+			elif body.identifier == "artifact":
+				weight += body.get_weight();
+			else:
+				weight += round_to_dec(body.mass, 3)
 		
 	
 	weight = round_to_dec(weight, 3)

@@ -130,6 +130,12 @@ func _ready():
 		node.clicked.connect(_on_spawner_object_click)
 		
 
+func _physics_process(delta: float) -> void: 
+	if deal_check():
+		$UI/deal_button.show()
+	else:
+		$UI/deal_button.hide()
+
 signal held_object_dropped
 
 func _unhandled_input(event):
@@ -267,9 +273,15 @@ func _spawn_npc(npclist = [], rememberIndex = false):
 
 func deal_check():
 	#return true;
-	if %Scale.SelfPlatform.platform.weight >= %Scale.OtherPlatform.platform.weight:
-		return true;
-	else: 
+	if !%Scale.SelfPlatform.platform:
+		return false;
+		
+	if %Scale.SelfPlatform.platform.weight != 0 && %Scale.OtherPlatform.platform.weight != 0:
+		if %Scale.SelfPlatform.platform.weight >= %Scale.OtherPlatform.platform.weight:
+			return true;
+		else: 
+			return false;
+	else:
 		return false;
 
 
@@ -400,3 +412,8 @@ func day_finish():
 	$UI/banish_button.hide()
 	$UI/deal_button.hide()
 	$UI/give_up_button.hide()
+	
+
+func _on_give_up_button_pressed() -> void:
+	get_node("/root/SceneChangeSingleton").openStartMenuScene()
+	pass # Replace with function body.

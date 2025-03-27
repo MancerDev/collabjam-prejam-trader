@@ -35,7 +35,7 @@ func WeightSetUp(_amount, _weightPerAmount):
 	#goodType = goodTypes.keys()[floor(randf()*2)]
 	
 	$Sprite.scale = Vector2(1+amount*0.01, 1+amount*0.01)
-	$Node2D/Death.scale = Vector2(7+amount*0.01, 7+amount*0.01)
+	$Node2D/Death.scale = Vector2(3.5+amount*0.01, 3.5+amount*0.01)
 	$CollisionShape2D.scale = Vector2(1+amount*0.01, 1+amount*0.01)
 	mass = floor(amount*weightPerAmount);
 	#SetUpSprite(goodType)

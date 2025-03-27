@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://ddmo4bwcojgyl"]
+[gd_scene load_steps=28 format=3 uid="uid://ddmo4bwcojgyl"]
 
 [ext_resource type="Script" uid="uid://de6xbtotejkxl" path="res://src/scenes/trade_scene/trade.gd" id="1_08on2"]
 [ext_resource type="Texture2D" uid="uid://bkij7dlo2tjpg" path="res://assets/images/background/nighttime.png" id="2_xpqll"]
@@ -15,7 +15,10 @@
 [ext_resource type="PackedScene" uid="uid://dr1rflwqx1t50" path="res://src/scenes/trade_scene/food_token_pile/food_token_pile.tscn" id="9_q1ldy"]
 [ext_resource type="FontFile" uid="uid://dmdm5giq8dms4" path="res://assets/text/Old Dungeon Cursive.otf" id="9_xpqll"]
 [ext_resource type="PackedScene" uid="uid://bokyiq11qstg7" path="res://src/scenes/trade_scene/magic_token_pile/magic_token_pile.tscn" id="11_xpqll"]
-[ext_resource type="PackedScene" uid="uid://p3alaxlhfyit" path="res://src/scenes/trade_scene/metal_token_pile/metal_token_pile.tscn" id="12_probq"]
+[ext_resource type="PackedScene" uid="uid://dju5m2j84oh21" path="res://src/scenes/trade_scene/metal_token_pile/metal_token_pile.tscn" id="12_probq"]
+[ext_resource type="PackedScene" uid="uid://c4vy1k3tc4ldf" path="res://src/scenes/trade_scene/pickable/artifact/collisioner/collisioner.tscn" id="17_3khi1"]
+[ext_resource type="PackedScene" uid="uid://bsfl46g4ox5vs" path="res://src/scenes/trade_scene/pickable/artifact/cushion/cushion_artifact.tscn" id="17_nnidl"]
+[ext_resource type="PackedScene" uid="uid://dkklr75pch58c" path="res://src/scenes/trade_scene/pickable/artifact/pearl/pearl.tscn" id="19_fwhpl"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_q1ldy"]
 normal = Vector2(2, 0)
@@ -73,7 +76,7 @@ texture = ExtResource("3_probq")
 
 [node name="NPCPosition" type="Marker2D" parent="Uninterractables"]
 unique_name_in_owner = true
-position = Vector2(305, 89)
+position = Vector2(341, 77)
 
 [node name="Foreground" type="Sprite2D" parent="Uninterractables"]
 visible = false
@@ -83,7 +86,7 @@ texture = ExtResource("3_o0n50")
 
 [node name="Sprite2D" type="Sprite2D" parent="Uninterractables"]
 z_index = 10
-position = Vector2(194, 99)
+position = Vector2(194, 100)
 texture = ExtResource("5_83k6h")
 
 [node name="Physics" type="Node2D" parent="."]
@@ -91,11 +94,11 @@ unique_name_in_owner = true
 z_index = 15
 
 [node name="Shelf" parent="Physics" instance=ExtResource("7_1jg2i")]
-position = Vector2(6, 133)
+position = Vector2(2, 133)
 
 [node name="Scale" parent="Physics" instance=ExtResource("4_v15gx")]
 unique_name_in_owner = true
-position = Vector2(243, 123)
+position = Vector2(239, 149)
 
 [node name="Walls" type="Node2D" parent="Physics"]
 
@@ -293,7 +296,16 @@ quantity = 5
 position = Vector2(19, 207)
 quantity = 5
 
+[node name="collisioner2" parent="." instance=ExtResource("17_3khi1")]
+position = Vector2(123, 202)
+
+[node name="cushion_artifact" parent="." instance=ExtResource("17_nnidl")]
+position = Vector2(186, 184)
+
+[node name="pearl" parent="." instance=ExtResource("19_fwhpl")]
+position = Vector2(71, 232)
+
 [connection signal="pressed" from="UI/banish_button" to="." method="_on_banish_button_pressed"]
-[connection signal="pressed" from="UI/give_up_button" to="." method="_on_banish_button_pressed"]
+[connection signal="pressed" from="UI/give_up_button" to="." method="_on_give_up_button_pressed"]
 [connection signal="pressed" from="UI/deal_button" to="." method="_on_deal_button_pressed"]
 [connection signal="pressed" from="UI/next_customer_button" to="." method="_on_next_customer_button_pressed"]

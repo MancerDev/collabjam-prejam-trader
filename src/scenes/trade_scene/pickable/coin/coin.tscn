@@ -12,7 +12,7 @@ rough = true
 radius = 2.0
 height = 20.0
 
-[node name="coin" type="RigidBody2D"]
+[node name="coin" type="RigidBody2D" groups=["pickable"]]
 z_index = 11
 collision_layer = 274
 collision_mask = 274
