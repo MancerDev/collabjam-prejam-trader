@@ -27,6 +27,7 @@ position = Vector2(0, -1)
 freeze = true
 
 [node name="Sprite2D" type="Sprite2D" parent="ScaleBeamVertical"]
+texture_filter = 1
 position = Vector2(2, 42)
 texture = ExtResource("4_7nxte")
 

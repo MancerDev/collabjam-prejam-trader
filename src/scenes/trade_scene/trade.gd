@@ -253,7 +253,7 @@ func _despawn_npc(leave_attitude = "happy"):
 		await _tween_node_out(npc, 1)
 		return
 
-func _spawn_npc(npclist = [], rememberIndex = false, artifact_chance = 30):
+func _spawn_npc(npclist = [], rememberIndex = false, artifact_chance = 35):
 	# Remove any existing NPC first
 	var existing_npc = %Uninterractables.get_node_or_null("Npc")
 	if existing_npc:
@@ -424,7 +424,7 @@ func next_customer():
 				var npcIndex = lastNpcs[i]
 				if npcIndex >= cur:
 					lastNpcs[i] += 1; 
-			#lastNpcs.pop_front()
+			lastNpcs.pop_front()
 		
 		for num in lastNpcs:
 			print(lastNpcs)
