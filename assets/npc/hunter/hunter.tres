@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="NPC" load_steps=11 format=3 uid="uid://c5r2flt8lp5hq"]
 
 [ext_resource type="Script" uid="uid://cu1cq74uuc1n0" path="res://assets/item/currency_map.gd" id="1_jsg37"]
-[ext_resource type="Script" path="res://assets/npc/name_pick_from.gd" id="2_ceo4a"]
+[ext_resource type="Script" uid="uid://cr8gu37376ika" path="res://assets/npc/name_pick_from.gd" id="2_ceo4a"]
 [ext_resource type="Script" uid="uid://3glq0r2r8cjd" path="res://assets/npc/npc.gd" id="3_1fh0h"]
 [ext_resource type="Texture2D" uid="uid://qoq2nqu6hm0i" path="res://assets/npc/hunter/hunter_angry.png" id="4_q2dhm"]
 [ext_resource type="Texture2D" uid="uid://66oboy4kwm54" path="res://assets/npc/hunter/hunter_back.png" id="5_gokdy"]
