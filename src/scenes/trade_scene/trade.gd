@@ -56,7 +56,16 @@ var failstateNpcs = [
 	#headman
 	#preload("res://assets/npc/headman/headman.tres"),
 	#evilNoble
-	preload("res://assets/npc/noble/evil_noble.tres")
+	preload("res://assets/npc/FailstateNPCs/Devilman1.tres"),
+	preload("res://assets/npc/FailstateNPCs/Devilman2.tres"),
+	preload("res://assets/npc/FailstateNPCs/Devilman3.tres"),
+	preload("res://assets/npc/FailstateNPCs/Devilman4.tres"),
+	preload("res://assets/npc/FailstateNPCs/Devilman5.tres"),
+	preload("res://assets/npc/FailstateNPCs/Devilman6.tres"),
+	preload("res://assets/npc/FailstateNPCs/Devilman7.tres"),
+	preload("res://assets/npc/FailstateNPCs/Devilman8.tres"),
+	preload("res://assets/npc/FailstateNPCs/Devilman9.tres"),
+	preload("res://assets/npc/FailstateNPCs/Devilman10.tres"),
 ]
 
 var allNPCS = [
@@ -107,7 +116,6 @@ var item_map: Dictionary = {
 	"cushion" : preload("res://src/scenes/trade_scene/pickable/artifact/cushion/cushion_artifact.tscn"),
 	"collisioner" : preload("res://src/scenes/trade_scene/pickable/artifact/collisioner/collisioner.tscn"),
 	
-	
 	"magnet" : preload("res://src/scenes/trade_scene/pickable/artifact/magnet/Magnet.tscn"),
 	"multiplier" : preload("res://src/scenes/trade_scene/pickable/artifact/multiplier/multiplier.tscn")
 }
@@ -128,9 +136,9 @@ func _ready():
 	$UI/deal_button.hide()
 	$UI/give_up_button.hide()
 	current_day = 1;
-	todays_customers = 3;
-	todays_customers_left = 3;
-	$UI/Control.TimeUpdate(22-round(14*todays_customers_left/todays_customers), todays_customers_left)
+	todays_customers = 4;
+	todays_customers_left = todays_customers;
+	$UI/Control.TimeUpdate(22-round(14*todays_customers_left/todays_customers), todays_customers_left, current_day)
 	
 	
 	#_spawn_npc()
@@ -245,7 +253,7 @@ func _despawn_npc(leave_attitude = "happy"):
 		await _tween_node_out(npc, 1)
 		return
 
-func _spawn_npc(npclist = [], rememberIndex = false):
+func _spawn_npc(npclist = [], rememberIndex = false, artifact_chance = 30):
 	# Remove any existing NPC first
 	var existing_npc = %Uninterractables.get_node_or_null("Npc")
 	if existing_npc:
@@ -278,17 +286,19 @@ func _spawn_npc(npclist = [], rememberIndex = false):
 			new_item.identifier = item
 			new_item.clicked.connect(_on_pickable_object_clicked)
 			if (new_item.get_script() == weight):
-				new_item.WeightSetUp(12, 1)
+				new_item.WeightSetUp(6, 1)
 			_tween_node_in(new_item, 0.3)
 			
-	var artifacts = ["collisioner", "magnet", "multiplier", "cushion", "pearl"]
-	var a_index = floor(randf() * artifacts.size())
-	var item = _spawn_item(artifacts[a_index], true)
-	item.set_collision_mask_value(5, false)
-	item.set_collision_layer_value(5, false)
-	item.set_collision_mask_value(4, true)
-	item.set_collision_layer_value(4, true)
-	item.add_to_group("customer_items")
+	
+	if (randf()*100 < artifact_chance):
+		var artifacts = ["collisioner", "magnet", "multiplier", "cushion", "pearl"]
+		var a_index = floor(randf() * artifacts.size())
+		var item = _spawn_item(artifacts[a_index], true)
+		item.set_collision_mask_value(5, false)
+		item.set_collision_layer_value(5, false)
+		item.set_collision_mask_value(4, true)
+		item.set_collision_layer_value(4, true)
+		item.add_to_group("customer_items")
 	
 	return
 
@@ -400,13 +410,22 @@ func _on_banish_button_pressed() -> void:
 	$UI/next_customer_button.show()
 
 var lastNpcs = [];
+var len = 5;
 
 func next_customer():
 	if (todays_customers_left > 0): 
 		todays_customers_left = todays_customers_left - 1;
-		$UI/Control.TimeUpdate(22-round(14*todays_customers_left/todays_customers), todays_customers_left)
+		$UI/Control.TimeUpdate(22-round(14*todays_customers_left/todays_customers), todays_customers_left, current_day)
 		var NPCArray = allNPCS.duplicate()
 		#NPCArray.pop_at();
+		if (len < lastNpcs.size()):
+			var cur = lastNpcs[0]
+			for i in range(lastNpcs.size()):
+				var npcIndex = lastNpcs[i]
+				if npcIndex >= cur:
+					lastNpcs[i] += 1; 
+			#lastNpcs.pop_front()
+		
 		for num in lastNpcs:
 			print(lastNpcs)
 			NPCArray.pop_at(num)
@@ -418,8 +437,10 @@ func next_customer():
 
 
 func failstate_customer():
-	
-	await _spawn_npc(failstateNpcs)
+	if (current_day < 10):
+		await _spawn_npc([failstateNpcs[current_day-1]], false, 0)
+	else:
+		await _spawn_npc([failstateNpcs[9]], false, 0)
 	
 	$UI/banish_button.hide()
 	$UI/deal_button.show()
@@ -432,7 +453,7 @@ func day_finish():
 	current_day += 1;
 	todays_customers += 1;
 	todays_customers_left = todays_customers;
-	$UI/Control.TimeUpdate(22-round(14*todays_customers_left/todays_customers), todays_customers_left)
+	$UI/Control.TimeUpdate(22-round(14*todays_customers_left/todays_customers), todays_customers_left, current_day)
 	$UI/next_customer_button.show()
 	$UI/banish_button.hide()
 	$UI/deal_button.hide()

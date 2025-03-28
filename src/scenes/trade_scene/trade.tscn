@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://ddmo4bwcojgyl"]
+[gd_scene load_steps=25 format=3 uid="uid://ddmo4bwcojgyl"]
 
 [ext_resource type="Script" uid="uid://de6xbtotejkxl" path="res://src/scenes/trade_scene/trade.gd" id="1_08on2"]
 [ext_resource type="Texture2D" uid="uid://bkij7dlo2tjpg" path="res://assets/images/background/nighttime.png" id="2_xpqll"]
@@ -16,9 +16,6 @@
 [ext_resource type="FontFile" uid="uid://dmdm5giq8dms4" path="res://assets/text/Old Dungeon Cursive.otf" id="9_xpqll"]
 [ext_resource type="PackedScene" uid="uid://bokyiq11qstg7" path="res://src/scenes/trade_scene/magic_token_pile/magic_token_pile.tscn" id="11_xpqll"]
 [ext_resource type="PackedScene" uid="uid://dju5m2j84oh21" path="res://src/scenes/trade_scene/metal_token_pile/metal_token_pile.tscn" id="12_probq"]
-[ext_resource type="PackedScene" uid="uid://c4vy1k3tc4ldf" path="res://src/scenes/trade_scene/pickable/artifact/collisioner/collisioner.tscn" id="17_3khi1"]
-[ext_resource type="PackedScene" uid="uid://bsfl46g4ox5vs" path="res://src/scenes/trade_scene/pickable/artifact/cushion/cushion_artifact.tscn" id="17_nnidl"]
-[ext_resource type="PackedScene" uid="uid://dkklr75pch58c" path="res://src/scenes/trade_scene/pickable/artifact/pearl/pearl.tscn" id="19_fwhpl"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_q1ldy"]
 normal = Vector2(2, 0)
@@ -54,6 +51,7 @@ outline_color = Color(0, 0, 0, 1)
 shadow_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_83k6h"]
+line_spacing = 1.0
 font = ExtResource("9_xpqll")
 font_size = 7
 outline_color = Color(0, 0, 0, 1)
@@ -268,15 +266,24 @@ offset_bottom = 14.0
 text = "12:00"
 label_settings = SubResource("LabelSettings_probq")
 
+[node name="Day" type="Label" parent="UI/Control"]
+z_index = 12
+layout_mode = 0
+offset_left = 55.0
+offset_top = -3.0
+offset_right = 135.0
+offset_bottom = 18.0
+text = "Day:1"
+label_settings = SubResource("LabelSettings_83k6h")
+
 [node name="Customers" type="Label" parent="UI/Control"]
 z_index = 12
 layout_mode = 0
-offset_left = 58.0
-offset_top = -3.0
-offset_right = 214.0
-offset_bottom = 18.0
-text = "Customers 
-left: 12"
+offset_left = 56.0
+offset_top = 10.0
+offset_right = 193.0
+offset_bottom = 31.0
+text = "Customers:12"
 label_settings = SubResource("LabelSettings_83k6h")
 
 [node name="CoinPile" parent="." instance=ExtResource("7_mucam")]
@@ -295,15 +302,6 @@ quantity = 1
 [node name="weapon_token_pile" parent="." instance=ExtResource("12_probq")]
 position = Vector2(19, 207)
 quantity = 1
-
-[node name="collisioner2" parent="." instance=ExtResource("17_3khi1")]
-position = Vector2(93, 247)
-
-[node name="cushion_artifact" parent="." instance=ExtResource("17_nnidl")]
-position = Vector2(15, 246)
-
-[node name="pearl" parent="." instance=ExtResource("19_fwhpl")]
-position = Vector2(41, 241)
 
 [connection signal="pressed" from="UI/banish_button" to="." method="_on_banish_button_pressed"]
 [connection signal="pressed" from="UI/give_up_button" to="." method="_on_give_up_button_pressed"]

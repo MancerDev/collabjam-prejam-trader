@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="NPC" load_steps=10 format=3 uid="uid://xbvd6h43vu7o"]
+
+[ext_resource type="Resource" uid="uid://cfklqvjjoo07c" path="res://CurrencyMaps/defaultCurrencyMap.tres" id="1_4ivif"]
+[ext_resource type="Script" path="res://assets/npc/name_pick_from.gd" id="2_oyosh"]
+[ext_resource type="Script" uid="uid://3glq0r2r8cjd" path="res://assets/npc/npc.gd" id="3_ox4lm"]
+[ext_resource type="Texture2D" uid="uid://ddc2axa4thok7" path="res://assets/npc/headman/headman_angry.png" id="4_nyy8m"]
+[ext_resource type="Texture2D" uid="uid://krk0gspuvb2j" path="res://assets/npc/headman/headman_back.png" id="5_f85rs"]
+[ext_resource type="Texture2D" uid="uid://cco2qracp58u8" path="res://assets/npc/headman/headman_happy.png" id="6_sbah0"]
+[ext_resource type="Texture2D" uid="uid://d3hp0rqj5f108" path="res://assets/npc/headman/headman_default.png" id="7_c7ink"]
+[ext_resource type="Texture2D" uid="uid://23wnjxnd0l43" path="res://assets/npc/headman/headman_sad.png" id="8_2ntdh"]
+
+[sub_resource type="Resource" id="Resource_wphms"]
+script = ExtResource("2_oyosh")
+pick_from = 20
+use_female_names = false
+use_male_names = true
+metadata/_custom_type_script = "uid://cr8gu37376ika"
+
+[resource]
+script = ExtResource("3_ox4lm")
+name_pick_from = SubResource("Resource_wphms")
+sprite_neutral = ExtResource("7_c7ink")
+sprite_happy = ExtResource("6_sbah0")
+sprite_angry = ExtResource("4_nyy8m")
+sprite_back = ExtResource("5_f85rs")
+sprite_sad = ExtResource("8_2ntdh")
+currency_map = ExtResource("1_4ivif")
+inventory = Dictionary[String, int]({
+"death_weight": 10
+})
+metadata/_custom_type_script = "uid://3glq0r2r8cjd"
