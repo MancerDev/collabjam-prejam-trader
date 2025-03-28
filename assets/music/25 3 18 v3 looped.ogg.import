@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bvnfg1e1h7i4d"
+path="res://.godot/imported/25 3 18 v3 looped.ogg-e4b252d4ea45b9cb3580fcb14ac8d166.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/music/25 3 18 v3 looped.ogg"
+dest_files=["res://.godot/imported/25 3 18 v3 looped.ogg-e4b252d4ea45b9cb3580fcb14ac8d166.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
