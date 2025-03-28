@@ -44,7 +44,7 @@ scale = Vector2(0.132813, 0.132813)
 [node name="Death" type="Sprite2D" parent="Node2D"]
 z_index = 11
 texture_filter = 1
-position = Vector2(82.8232, -1.90735e-06)
+position = Vector2(82.8232, -7.52938)
 scale = Vector2(3.5, 3.5)
 texture = ExtResource("3_krh8o")
 

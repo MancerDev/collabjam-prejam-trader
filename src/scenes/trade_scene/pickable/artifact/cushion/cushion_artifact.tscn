@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://bsfl46g4ox5vs"]
 
 [ext_resource type="Script" uid="uid://d30gulodgd0th" path="res://src/scenes/trade_scene/pickable/artifact/cushion/cushion_artifact.gd" id="1_ewoe5"]
-[ext_resource type="Texture2D" uid="uid://b27efnlb3cas" path="res://assets/draggable/resourceIcons/weight.png" id="2_dr7dy"]
+[ext_resource type="Texture2D" uid="uid://ddxfu4mx5m32d" path="res://assets/images/artifact/cushion.png" id="2_nhrt3"]
 [ext_resource type="FontFile" uid="uid://dmdm5giq8dms4" path="res://assets/text/Old Dungeon Cursive.otf" id="3_nhrt3"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_68odj"]
@@ -10,7 +10,7 @@ rough = true
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5yhnk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tbyjm"]
-size = Vector2(14, 33)
+size = Vector2(14.0001, 37)
 
 [sub_resource type="LabelSettings" id="LabelSettings_t1o8q"]
 font = ExtResource("3_nhrt3")
@@ -38,12 +38,12 @@ z_index = 11
 texture_filter = 1
 texture_repeat = 1
 material = SubResource("ShaderMaterial_5yhnk")
-scale = Vector2(1.75057, 0.483333)
-texture = ExtResource("2_dr7dy")
+position = Vector2(1.58974, -0.5)
+texture = ExtResource("2_nhrt3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 11
-position = Vector2(1.50001, 3.96113e-05)
+position = Vector2(1.49997, -1.00003)
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_tbyjm")
 

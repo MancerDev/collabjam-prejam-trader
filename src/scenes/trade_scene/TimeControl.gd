@@ -10,8 +10,7 @@ func _ready():
 
 func TimeUpdate(hour, customers, day = 0):
 	$Time.text = str(hour)+":00";
-	$Customers.text = "Customers 
-		left:"+str(customers)
+	$Customers.text = "Customers:"+str(customers)
 	$Day.text = "Day:"+str(day)
 	var tween = create_tween()
 	

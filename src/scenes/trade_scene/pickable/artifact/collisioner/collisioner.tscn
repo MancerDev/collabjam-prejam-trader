@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://c4vy1k3tc4ldf"]
 
 [ext_resource type="Script" uid="uid://vdqdr5cdlq1r" path="res://src/scenes/trade_scene/pickable/artifact/collisioner/collisioner.gd" id="1_0gojs"]
-[ext_resource type="Texture2D" uid="uid://b27efnlb3cas" path="res://assets/draggable/resourceIcons/weight.png" id="2_d5nux"]
+[ext_resource type="Texture2D" uid="uid://cyni3oqgxhlir" path="res://assets/images/artifact/collisioner.png" id="2_0gojs"]
 [ext_resource type="FontFile" uid="uid://dmdm5giq8dms4" path="res://assets/text/Old Dungeon Cursive.otf" id="3_vx0or"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_68odj"]
@@ -10,7 +10,7 @@ rough = true
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5yhnk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tbyjm"]
-size = Vector2(29, 20)
+size = Vector2(19, 24)
 
 [sub_resource type="LabelSettings" id="LabelSettings_t1o8q"]
 font = ExtResource("3_vx0or")
@@ -38,11 +38,15 @@ z_index = 11
 texture_filter = 1
 texture_repeat = 1
 material = SubResource("ShaderMaterial_5yhnk")
-texture = ExtResource("2_d5nux")
+texture = ExtResource("2_0gojs")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-14, -5, -9, -5, -7, -4, -5, -6, -1, -8, 3, -8, 5, -10, 6, -6, 8, -3, 14, -3, 11, 1, 10, 1, 10, 4, 8, 6, 10, 11, 5, 9, 2, 11, -1, 11, -6, 9, -10, 11, -13, 11, -10, 7, -8, 4, -9, 2, -9, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 z_index = 11
-position = Vector2(1, 0)
+position = Vector2(-1.00002, 1.50004)
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_tbyjm")
 

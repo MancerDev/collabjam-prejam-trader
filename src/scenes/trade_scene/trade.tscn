@@ -83,19 +83,23 @@ position = Vector2(319, 7)
 texture = ExtResource("3_o0n50")
 
 [node name="Sprite2D" type="Sprite2D" parent="Uninterractables"]
-z_index = 10
+z_as_relative = false
 position = Vector2(194, 100)
 texture = ExtResource("5_83k6h")
 
 [node name="Physics" type="Node2D" parent="."]
 unique_name_in_owner = true
 z_index = 15
+z_as_relative = false
 
 [node name="Shelf" parent="Physics" instance=ExtResource("7_1jg2i")]
+z_as_relative = false
 position = Vector2(2, 133)
 
 [node name="Scale" parent="Physics" instance=ExtResource("4_v15gx")]
 unique_name_in_owner = true
+z_index = 15
+z_as_relative = false
 position = Vector2(239, 149)
 
 [node name="Walls" type="Node2D" parent="Physics"]

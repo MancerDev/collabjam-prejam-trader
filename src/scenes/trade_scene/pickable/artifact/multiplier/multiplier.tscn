@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://dn5y77uwm0lij"]
 
 [ext_resource type="Script" uid="uid://db4kwt6435jio" path="res://src/scenes/trade_scene/pickable/artifact/multiplier/multiplier.gd" id="1_yjr46"]
-[ext_resource type="Texture2D" uid="uid://b27efnlb3cas" path="res://assets/draggable/resourceIcons/weight.png" id="2_k4yjq"]
+[ext_resource type="Texture2D" uid="uid://b0e4koah2ll5j" path="res://assets/images/artifact/quartz.png" id="2_yjr46"]
 [ext_resource type="FontFile" uid="uid://dmdm5giq8dms4" path="res://assets/text/Old Dungeon Cursive.otf" id="3_heydy"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_68odj"]
@@ -38,13 +38,12 @@ z_index = 11
 texture_filter = 1
 texture_repeat = 1
 material = SubResource("ShaderMaterial_5yhnk")
-position = Vector2(-1.49012e-08, 0)
-scale = Vector2(0.47619, 0.25)
-texture = ExtResource("2_k4yjq")
+position = Vector2(0, -1.49012e-08)
+scale = Vector2(0.238095, 0.235714)
+texture = ExtResource("2_yjr46")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 11
-position = Vector2(-0.0624995, -2.26248e-07)
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_tbyjm")
 
