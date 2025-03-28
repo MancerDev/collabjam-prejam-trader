@@ -1,18 +1,201 @@
-[gd_scene load_steps=2 format=3 uid="uid://d3u443iobkjea"]
+[gd_scene load_steps=18 format=3 uid="uid://d3u443iobkjea"]
 
-[ext_resource type="Script" path="res://src/singletons/scene_changer_singleton/scene_change_singleton.gd" id="1_w6lpw"]
+[ext_resource type="Script" uid="uid://cbx4wvv4p5147" path="res://src/singletons/scene_changer_singleton/scene_change_singleton.gd" id="1_w6lpw"]
+[ext_resource type="AudioStream" uid="uid://4i1y0usa5e30" path="res://assets/music/25 3 27 looped.ogg" id="2_mxi2c"]
+[ext_resource type="AudioStream" uid="uid://ykipx6lbe4fl" path="res://assets/music/25 3 16 v3 looped.ogg" id="3_sxwbl"]
+[ext_resource type="AudioStream" uid="uid://bvnfg1e1h7i4d" path="res://assets/music/25 3 18 v3 looped.ogg" id="4_7dwmw"]
+[ext_resource type="Animation" uid="uid://bbr58mvxkhmcq" path="res://assets/music/animation fading tracks/fade_out_menu.res" id="5_fstkj"]
+[ext_resource type="Animation" uid="uid://bllndidxyibg5" path="res://assets/music/animation fading tracks/fade_out_day.res" id="6_giejy"]
+[ext_resource type="Animation" uid="uid://ce7m0781f2dp2" path="res://assets/music/animation fading tracks/fade_out_night.res" id="7_jlslo"]
+[ext_resource type="Animation" uid="uid://cgqnum16vehtu" path="res://assets/music/animation fading tracks/fade_in_night.res" id="8_s214c"]
+[ext_resource type="Animation" uid="uid://cewphypwtke1j" path="res://assets/music/animation fading tracks/fade_in_menu.res" id="9_o4jg6"]
+[ext_resource type="Animation" uid="uid://cjb6tcnc1sawm" path="res://assets/music/animation fading tracks/fade_in_day.res" id="10_hx35l"]
+
+[sub_resource type="Animation" id="Animation_fstkj"]
+resource_name = "filter_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:lowpass_cutoff")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(3, 1),
+"update": 0,
+"values": [20500.0, 10.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:highpass_cutoff")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(3, 1),
+"update": 0,
+"values": [0.0, 20500.0]
+}
+
+[sub_resource type="Animation" id="Animation_giejy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:lowpass_cutoff")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [20500.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:highpass_cutoff")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_jlslo"]
+resource_name = "filter_bounce"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:lowpass_cutoff")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(3, 0.2, 1),
+"update": 0,
+"values": [20500.0, 30.0, 20500.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath(".:highpass_cutoff")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(3, 0.2, 1),
+"update": 0,
+"values": [0.0, 20500.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_giejy"]
+_data = {
+&"RESET": SubResource("Animation_giejy"),
+&"filter_bounce": SubResource("Animation_jlslo"),
+&"filter_out": SubResource("Animation_fstkj")
+}
+
+[sub_resource type="Animation" id="Animation_7dwmw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("music_menu:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("music_day:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("music_night:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7dwmw"]
+_data = {
+&"RESET": SubResource("Animation_7dwmw"),
+&"fade_out_day": ExtResource("6_giejy"),
+&"fade_out_menu": ExtResource("5_fstkj"),
+&"fade_out_night": ExtResource("7_jlslo")
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fstkj"]
+_data = {
+&"fade_in_day": ExtResource("10_hx35l"),
+&"fade_in_menu": ExtResource("9_o4jg6"),
+&"fade_in_night": ExtResource("8_s214c")
+}
 
 [node name="SceneChangeSingleton" type="Node2D"]
 script = ExtResource("1_w6lpw")
+lowpass_cutoff = 20500.0
 
 [node name="Timer" type="Timer" parent="."]
 
 [node name="Scenes" type="Node2D" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="."]
-z_index = 10
+z_index = 100
+z_as_relative = false
 offset_left = -14.0
 offset_top = -14.0
 offset_right = 809.0
 offset_bottom = 610.0
 color = Color(0, 0, 0, 1)
+
+[node name="music_menu" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_mxi2c")
+bus = &"Music"
+parameters/looping = true
+
+[node name="music_day" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_sxwbl")
+bus = &"Music"
+parameters/looping = true
+
+[node name="music_night" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_7dwmw")
+bus = &"Music"
+parameters/looping = true
+
+[node name="music_filter" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_giejy")
+}
+
+[node name="music_fade_out" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_7dwmw")
+}
+
+[node name="music_fade_in" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_fstkj")
+}

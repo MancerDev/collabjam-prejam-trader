@@ -5,6 +5,7 @@ func _ready():
 
 
 func _on_start_button_pressed() -> void:
+	SceneChangeSingleton.music_next = SceneChangeSingleton.MusicSelection.Day
 	SceneChangeSingleton.openTradeScene()
 	SfxSingleton.play_sound("open_door")
 
