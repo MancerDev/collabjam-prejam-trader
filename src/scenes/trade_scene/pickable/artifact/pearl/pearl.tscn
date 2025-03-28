@@ -10,7 +10,7 @@ rough = true
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5yhnk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tbyjm"]
-size = Vector2(7.74997, 9.00001)
+size = Vector2(7.74997, 9.875)
 
 [sub_resource type="LabelSettings" id="LabelSettings_nhrt3"]
 font = ExtResource("3_kyc0c")
@@ -44,7 +44,7 @@ texture = ExtResource("2_kdi3v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 11
-position = Vector2(0.499993, -0.124997)
+position = Vector2(-0.0624995, -2.26248e-07)
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_tbyjm")
 

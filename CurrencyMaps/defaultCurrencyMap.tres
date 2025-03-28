@@ -5,9 +5,9 @@
 [resource]
 script = ExtResource("1_05gqm")
 currency_to_int_map = {
-"food_coin": 1.5,
-"magic_coin": 3.0,
+"food_coin": 1.0,
+"magic_coin": 2.0,
 "silver_coin": 1.0,
-"weapon_coin": 2.0
+"weapon_coin": 1.5
 }
 metadata/_custom_type_script = "uid://cu1cq74uuc1n0"

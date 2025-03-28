@@ -20,7 +20,10 @@ func _physics_process(delta):
 	
 	for body in allCollidedBodies:
 		if body.is_in_group("pickable"):
-			if body is coin and npc and npc.resource and npc.resource.currency_map:
+			if (body.identifier == "weapon_coin" ||
+			body.identifier == "silver_coin" ||  
+			body.identifier == "food_coin" || 
+			body.identifier == "magic_coin") and npc and npc.resource and npc.resource.currency_map:
 				var currency_value = npc.resource.currency_map.currency_to_int_map.get(body.identifier, 0)
 				weight += currency_value
 			elif body.identifier == "artifact":

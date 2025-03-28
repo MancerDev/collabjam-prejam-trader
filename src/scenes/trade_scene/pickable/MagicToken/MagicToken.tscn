@@ -13,8 +13,8 @@ height = 20.0
 
 [node name="RigidBody2D" type="RigidBody2D" groups=["pickable"]]
 z_index = 11
-collision_layer = 2
-collision_mask = 2
+collision_layer = 514
+collision_mask = 514
 input_pickable = true
 mass = 0.2
 physics_material_override = SubResource("PhysicsMaterial_68odj")

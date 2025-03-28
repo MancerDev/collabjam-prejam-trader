@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="NPC" load_steps=10 format=3 uid="uid://b6pv12823vdst"]
+[gd_resource type="Resource" script_class="NPC" load_steps=11 format=3 uid="uid://b6pv12823vdst"]
 
-[ext_resource type="Resource" uid="uid://cfklqvjjoo07c" path="res://CurrencyMaps/defaultCurrencyMap.tres" id="1_e08bo"]
+[ext_resource type="Script" uid="uid://cu1cq74uuc1n0" path="res://assets/item/currency_map.gd" id="1_e08bo"]
 [ext_resource type="Script" path="res://assets/npc/name_pick_from.gd" id="2_qoyta"]
 [ext_resource type="Script" uid="uid://3glq0r2r8cjd" path="res://assets/npc/npc.gd" id="3_j6j6x"]
 [ext_resource type="Texture2D" uid="uid://w6c2gbbn0388" path="res://assets/npc/heron/heron_angry.png" id="4_e08bo"]
@@ -8,6 +8,16 @@
 [ext_resource type="Texture2D" uid="uid://bodrk537uv5e6" path="res://assets/npc/heron/heron_happy.png" id="6_lymvh"]
 [ext_resource type="Texture2D" uid="uid://c77w8ytvd2ayg" path="res://assets/npc/heron/heron_default.png" id="7_pdxac"]
 [ext_resource type="Texture2D" uid="uid://cxq2cr5uwdw1g" path="res://assets/npc/heron/heron_sad.png" id="8_uynmg"]
+
+[sub_resource type="Resource" id="Resource_udjw6"]
+script = ExtResource("1_e08bo")
+currency_to_int_map = {
+"food_coin": 2.5,
+"magic_coin": 2.5,
+"silver_coin": 1.0,
+"weapon_coin": 1.0
+}
+metadata/_custom_type_script = "uid://cu1cq74uuc1n0"
 
 [sub_resource type="Resource" id="Resource_wphms"]
 script = ExtResource("2_qoyta")
@@ -24,6 +34,11 @@ sprite_happy = ExtResource("6_lymvh")
 sprite_angry = ExtResource("4_e08bo")
 sprite_back = ExtResource("5_udjw6")
 sprite_sad = ExtResource("8_uynmg")
-currency_map = ExtResource("1_e08bo")
-inventory = Dictionary[String, int]({})
+currency_map = SubResource("Resource_udjw6")
+inventory = Dictionary[String, int]({
+"food_coin": 4,
+"magic_coin": 1,
+"silver_coin": 1,
+"weapon_coin": 1
+})
 metadata/_custom_type_script = "uid://3glq0r2r8cjd"

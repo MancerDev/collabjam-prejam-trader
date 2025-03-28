@@ -1,11 +1,13 @@
-[gd_resource type="Resource" script_class="NPC" load_steps=8 format=3 uid="uid://brt5p8hdjrjuc"]
+[gd_resource type="Resource" script_class="NPC" load_steps=10 format=3 uid="uid://brt5p8hdjrjuc"]
 
 [ext_resource type="Resource" uid="uid://cfklqvjjoo07c" path="res://CurrencyMaps/defaultCurrencyMap.tres" id="1_2gpo2"]
 [ext_resource type="Script" path="res://assets/npc/name_pick_from.gd" id="2_87r22"]
 [ext_resource type="Script" uid="uid://3glq0r2r8cjd" path="res://assets/npc/npc.gd" id="3_7hxjh"]
-[ext_resource type="Texture2D" uid="uid://cc68ephk0jbkd" path="res://assets/npc/noble/noble_angry2.png" id="4_2gpo2"]
-[ext_resource type="Texture2D" uid="uid://dqkl31e0dt01x" path="res://assets/npc/noble/noble_backview.png" id="5_ptc8i"]
-[ext_resource type="Texture2D" uid="uid://dexjo2gyrjqgq" path="res://assets/npc/noble/noble_happy2.png" id="6_kfb2t"]
+[ext_resource type="Texture2D" uid="uid://ddc2axa4thok7" path="res://assets/npc/headman/headman_angry.png" id="4_isbq6"]
+[ext_resource type="Texture2D" uid="uid://krk0gspuvb2j" path="res://assets/npc/headman/headman_back.png" id="5_87r22"]
+[ext_resource type="Texture2D" uid="uid://cco2qracp58u8" path="res://assets/npc/headman/headman_happy.png" id="6_7hxjh"]
+[ext_resource type="Texture2D" uid="uid://d3hp0rqj5f108" path="res://assets/npc/headman/headman_default.png" id="7_j6dpp"]
+[ext_resource type="Texture2D" uid="uid://23wnjxnd0l43" path="res://assets/npc/headman/headman_sad.png" id="8_ptc8i"]
 
 [sub_resource type="Resource" id="Resource_wphms"]
 script = ExtResource("2_87r22")
@@ -17,11 +19,11 @@ metadata/_custom_type_script = "uid://cr8gu37376ika"
 [resource]
 script = ExtResource("3_7hxjh")
 name_pick_from = SubResource("Resource_wphms")
-sprite_neutral = ExtResource("4_2gpo2")
-sprite_happy = ExtResource("6_kfb2t")
-sprite_angry = ExtResource("4_2gpo2")
-sprite_back = ExtResource("5_ptc8i")
-sprite_sad = ExtResource("4_2gpo2")
+sprite_neutral = ExtResource("7_j6dpp")
+sprite_happy = ExtResource("6_7hxjh")
+sprite_angry = ExtResource("4_isbq6")
+sprite_back = ExtResource("5_87r22")
+sprite_sad = ExtResource("8_ptc8i")
 currency_map = ExtResource("1_2gpo2")
 inventory = Dictionary[String, int]({
 "death_weight": 1
