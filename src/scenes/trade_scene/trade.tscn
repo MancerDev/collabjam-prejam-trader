@@ -213,15 +213,17 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 
 [node name="Cage" type="RigidBody2D" parent="Physics"]
-position = Vector2(0, -10)
+texture_filter = 1
+position = Vector2(40, 0)
 script = ExtResource("9_k3s8h")
 
 [node name="Sprite2D" type="Sprite2D" parent="Physics/Cage"]
-position = Vector2(39, 43)
+texture_filter = 1
+position = Vector2(0, 40)
 texture = ExtResource("9_fxeet")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Physics/Cage"]
-position = Vector2(39, 46)
+position = Vector2(0, 43)
 shape = SubResource("RectangleShape2D_fxeet")
 
 [node name="PinJoint2D" type="PinJoint2D" parent="Physics"]
