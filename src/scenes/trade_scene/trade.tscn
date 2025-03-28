@@ -1,8 +1,7 @@
-[gd_scene load_steps=25 format=3 uid="uid://ddmo4bwcojgyl"]
+[gd_scene load_steps=34 format=3 uid="uid://ddmo4bwcojgyl"]
 
 [ext_resource type="Script" uid="uid://de6xbtotejkxl" path="res://src/scenes/trade_scene/trade.gd" id="1_08on2"]
 [ext_resource type="Texture2D" uid="uid://bkij7dlo2tjpg" path="res://assets/images/background/nighttime.png" id="2_xpqll"]
-[ext_resource type="PackedScene" uid="uid://dk6rqdlu8v6t5" path="res://src/scenes/trade_scene/floor/floor.tscn" id="3_cll2m"]
 [ext_resource type="Texture2D" uid="uid://dmb477udlwn16" path="res://assets/images/background/counternew.png" id="3_o0n50"]
 [ext_resource type="Texture2D" uid="uid://bv3b2jclo8867" path="res://assets/images/background/daytime.png" id="3_probq"]
 [ext_resource type="PackedScene" uid="uid://dthhbje3265yb" path="res://src/scenes/trade_scene/scale/scale.tscn" id="4_v15gx"]
@@ -11,11 +10,39 @@
 [ext_resource type="PackedScene" uid="uid://dq7rdwfgu5kqt" path="res://src/scenes/trade_scene/coin_pile/coin_pile.tscn" id="7_mucam"]
 [ext_resource type="Script" uid="uid://csk4fprcxo0ie" path="res://src/scenes/trade_scene/TimeControl.gd" id="8_probq"]
 [ext_resource type="Texture2D" uid="uid://ctfwqg0b3rper" path="res://assets/images/background/birdcage.png" id="9_fxeet"]
-[ext_resource type="Script" uid="uid://jxrcu0s47vn1" path="res://src/scenes/trade_scene/cage.gd" id="9_k3s8h"]
+[ext_resource type="Script" path="res://src/scenes/trade_scene/cage.gd" id="9_k3s8h"]
 [ext_resource type="PackedScene" uid="uid://dr1rflwqx1t50" path="res://src/scenes/trade_scene/food_token_pile/food_token_pile.tscn" id="9_q1ldy"]
 [ext_resource type="FontFile" uid="uid://dmdm5giq8dms4" path="res://assets/text/Old Dungeon Cursive.otf" id="9_xpqll"]
 [ext_resource type="PackedScene" uid="uid://bokyiq11qstg7" path="res://src/scenes/trade_scene/magic_token_pile/magic_token_pile.tscn" id="11_xpqll"]
 [ext_resource type="PackedScene" uid="uid://dju5m2j84oh21" path="res://src/scenes/trade_scene/metal_token_pile/metal_token_pile.tscn" id="12_probq"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fxeet"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8aeg8"]
+size = Vector2(24, 74)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_k3s8h"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_k3s8h"]
+distance = 2.5
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nnidl"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_fxeet"]
+normal = Vector2(0, 1)
+distance = 2.5
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3khi1"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_nnidl"]
+normal = Vector2(1, 0)
+distance = 2.5
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fwhpl"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_3khi1"]
+normal = Vector2(-1, 0)
+distance = 2.5
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_q1ldy"]
 normal = Vector2(2, 0)
@@ -84,6 +111,7 @@ texture = ExtResource("3_o0n50")
 
 [node name="Sprite2D" type="Sprite2D" parent="Uninterractables"]
 z_index = 10
+texture_filter = 1
 position = Vector2(194, 100)
 texture = ExtResource("5_83k6h")
 
@@ -100,25 +128,51 @@ position = Vector2(239, 149)
 
 [node name="Walls" type="Node2D" parent="Physics"]
 
-[node name="Floor" parent="Physics/Walls" instance=ExtResource("3_cll2m")]
-position = Vector2(47, 263)
-scale = Vector2(1.2, 1)
+[node name="hingeboard" type="StaticBody2D" parent="Physics/Walls"]
+position = Vector2(1, 6)
+collision_layer = 3
+collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_fxeet")
 
-[node name="Floor2" parent="Physics/Walls" instance=ExtResource("3_cll2m")]
-position = Vector2(53, 241)
-scale = Vector2(0.07, 0.7)
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Physics/Walls/hingeboard"]
+position = Vector2(60, 281)
+shape = SubResource("RectangleShape2D_8aeg8")
 
-[node name="SideWall" parent="Physics/Walls" instance=ExtResource("3_cll2m")]
-position = Vector2(-2, -60)
-rotation = 1.5708
+[node name="floor" type="StaticBody2D" parent="Physics/Walls"]
+collision_layer = 3
+collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_k3s8h")
 
-[node name="SideWall2" parent="Physics/Walls" instance=ExtResource("3_cll2m")]
-position = Vector2(439, -39)
-rotation = 1.5708
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Physics/Walls/floor"]
+position = Vector2(190, 265.5)
+shape = SubResource("WorldBoundaryShape2D_k3s8h")
 
-[node name="SideWall3" parent="Physics/Walls" instance=ExtResource("3_cll2m")]
-position = Vector2(34, -39)
-scale = Vector2(1.1, 1)
+[node name="ceiling" type="StaticBody2D" parent="Physics/Walls"]
+collision_layer = 3
+collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_nnidl")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Physics/Walls/ceiling"]
+position = Vector2(190, -4)
+shape = SubResource("WorldBoundaryShape2D_fxeet")
+
+[node name="left" type="StaticBody2D" parent="Physics/Walls"]
+collision_layer = 3
+collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_3khi1")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Physics/Walls/left"]
+position = Vector2(-4, 109)
+shape = SubResource("WorldBoundaryShape2D_nnidl")
+
+[node name="right" type="StaticBody2D" parent="Physics/Walls"]
+collision_layer = 3
+collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_fwhpl")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Physics/Walls/right"]
+position = Vector2(404, 184)
+shape = SubResource("WorldBoundaryShape2D_3khi1")
 
 [node name="CustomerItemsSeparator" type="RigidBody2D" parent="Physics/Walls"]
 unique_name_in_owner = true
@@ -173,7 +227,7 @@ shape = SubResource("RectangleShape2D_fxeet")
 [node name="PinJoint2D" type="PinJoint2D" parent="Physics"]
 position = Vector2(40, 0)
 node_a = NodePath("../Cage")
-node_b = NodePath("../Walls/SideWall3")
+node_b = NodePath("../Walls/ceiling")
 
 [node name="UI" type="Node2D" parent="."]
 
