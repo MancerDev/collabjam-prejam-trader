@@ -15,6 +15,7 @@ script = ExtResource("1_5ltgm")
 position = Vector2(-62, 48)
 can_sleep = false
 freeze = true
+playerSide = true
 
 [node name="ScalePlatformOther" parent="." instance=ExtResource("1_jnbmu")]
 position = Vector2(63, 48)

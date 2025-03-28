@@ -9,6 +9,7 @@ var scalePlatformOther_position_saved;
 func _ready(): 
 	SelfPlatform = $ScalePlatformSelf;
 	OtherPlatform = $ScalePlatformOther;
+	#SelfPlatform.playerSide = true;
 	
 	scalePlatformSelf_position_saved = $ScalePlatformSelf.position
 	scalePlatformOther_position_saved = $ScalePlatformOther.position

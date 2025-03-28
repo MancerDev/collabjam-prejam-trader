@@ -14,6 +14,12 @@ func _ready():
 #func _physics_process(delta: float) -> void:
 	#lock_rotation = true;
 
+func on_buy():
+	pass
+
+func _on_child_exiting_tree(node: Node) -> void:
+	pass # Replace with function body.
+
 func get_weight():
 	return 1;
 

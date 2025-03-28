@@ -16,7 +16,6 @@ z_index = 11
 collision_layer = 1026
 collision_mask = 1026
 input_pickable = true
-mass = 0.2
 physics_material_override = SubResource("PhysicsMaterial_68odj")
 can_sleep = false
 freeze_mode = 1

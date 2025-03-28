@@ -2,6 +2,8 @@ extends RigidBody2D
 
 var weight = 0;
 var currentCollidedBodies = [];
+#var playerSide = false;
+var playerSide
 
 func _physics_process(delta):
 	weight = 0;
@@ -30,7 +32,10 @@ func _physics_process(delta):
 				weight += body.get_weight();
 			else:
 				weight += round_to_dec(body.mass, 3)
-		
+	
+	if (playerSide):
+		weight += trade_scene.flat_bonus
+		weight = weight * trade_scene.multiplier_bonus
 	
 	weight = round_to_dec(weight, 3)
 	$Label.text = str(weight)+"KG"

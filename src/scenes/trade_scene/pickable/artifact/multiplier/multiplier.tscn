@@ -1,8 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://2tgqf31l6bip"]
+[gd_scene load_steps=8 format=3 uid="uid://dn5y77uwm0lij"]
 
-[ext_resource type="Script" uid="uid://c8rw6osf0wjaa" path="res://src/scenes/trade_scene/pickable/artifact/artifact.gd" id="1_s3ynj"]
-[ext_resource type="Texture2D" uid="uid://b27efnlb3cas" path="res://assets/draggable/resourceIcons/weight.png" id="2_s3ynj"]
-[ext_resource type="FontFile" uid="uid://dmdm5giq8dms4" path="res://assets/text/Old Dungeon Cursive.otf" id="3_tbyjm"]
+[ext_resource type="Script" uid="uid://db4kwt6435jio" path="res://src/scenes/trade_scene/pickable/artifact/multiplier/multiplier.gd" id="1_yjr46"]
+[ext_resource type="Texture2D" uid="uid://b27efnlb3cas" path="res://assets/draggable/resourceIcons/weight.png" id="2_k4yjq"]
+[ext_resource type="FontFile" uid="uid://dmdm5giq8dms4" path="res://assets/text/Old Dungeon Cursive.otf" id="3_heydy"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_68odj"]
 rough = true
@@ -10,15 +10,15 @@ rough = true
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5yhnk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tbyjm"]
-size = Vector2(29, 20)
+size = Vector2(7.74997, 9.875)
 
-[sub_resource type="LabelSettings" id="LabelSettings_t1o8q"]
-font = ExtResource("3_tbyjm")
+[sub_resource type="LabelSettings" id="LabelSettings_nhrt3"]
+font = ExtResource("3_heydy")
 font_size = 6
 outline_color = Color(0, 0, 0, 1)
 shadow_color = Color(0, 0, 0, 1)
 
-[node name="artifact" type="RigidBody2D" groups=["pickable"]]
+[node name="Magnet" type="RigidBody2D" groups=["pickable"]]
 z_index = 11
 collision_layer = 274
 collision_mask = 274
@@ -29,7 +29,8 @@ lock_rotation = true
 freeze_mode = 1
 contact_monitor = true
 max_contacts_reported = 10
-script = ExtResource("1_s3ynj")
+script = ExtResource("1_yjr46")
+description = "20% more weight"
 identifier = "artifact"
 
 [node name="Sprite" type="Sprite2D" parent="."]
@@ -37,11 +38,13 @@ z_index = 11
 texture_filter = 1
 texture_repeat = 1
 material = SubResource("ShaderMaterial_5yhnk")
-texture = ExtResource("2_s3ynj")
+position = Vector2(-1.49012e-08, 0)
+scale = Vector2(0.47619, 0.25)
+texture = ExtResource("2_k4yjq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 11
-position = Vector2(1, 0)
+position = Vector2(-0.0624995, -2.26248e-07)
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_tbyjm")
 
@@ -57,8 +60,7 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Short description 
 A lot of information"
-label_settings = SubResource("LabelSettings_t1o8q")
+label_settings = SubResource("LabelSettings_nhrt3")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]
 [connection signal="input_event" from="." to="." method="_on_input_event"]

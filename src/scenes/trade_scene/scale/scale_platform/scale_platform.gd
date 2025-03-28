@@ -6,10 +6,12 @@ var platform;
 var close_counter = 0  # Counter to track frames near the target
 var target_threshold = 0.1  # Distance threshold to consider close to the target
 var max_close_frames = 10  # The number of frames to be close to the target before setting it
+@export var playerSide : bool
 
 func _physics_process(delta):
 	weight = $Platform.weight
 	platform = $Platform
+	platform.playerSide = playerSide
 
 func slow_platform_movement(target_point):
 	var newPos = (target_point - position).normalized()

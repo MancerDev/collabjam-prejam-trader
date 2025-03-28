@@ -23,7 +23,7 @@ SfxSingleton="*res://src/singletons/sfx_singleton/sfx_singleton.tscn"
 
 [display]
 
-window/size/viewport_width=801
+window/size/viewport_width=800
 window/size/viewport_height=600
 window/size/sharp_corners=true
 window/stretch/mode="viewport"

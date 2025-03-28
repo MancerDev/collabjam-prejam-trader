@@ -101,7 +101,15 @@ var item_map: Dictionary = {
 	"magic_coin": preload("res://src/scenes/trade_scene/pickable/MagicToken/MagicToken.tscn"),
 	"weapon_coin": preload("res://src/scenes/trade_scene/pickable/WeaponToken/WeaponToken.tscn"),
 	
-	"death_weight": preload("res://src/scenes/trade_scene/pickable/weight/weight.tscn")
+	"death_weight": preload("res://src/scenes/trade_scene/pickable/weight/weight.tscn"),
+	
+	"pearl" : preload("res://src/scenes/trade_scene/pickable/artifact/pearl/pearl.tscn"),
+	"cushion" : preload("res://src/scenes/trade_scene/pickable/artifact/cushion/cushion_artifact.tscn"),
+	"collisioner" : preload("res://src/scenes/trade_scene/pickable/artifact/collisioner/collisioner.tscn"),
+	
+	
+	"magnet" : preload("res://src/scenes/trade_scene/pickable/artifact/magnet/Magnet.tscn"),
+	"multiplier" : preload("res://src/scenes/trade_scene/pickable/artifact/multiplier/multiplier.tscn")
 }
 
 var npc_scene = preload("res://src/scenes/npc_scene/npc.tscn")
@@ -110,6 +118,10 @@ var npc_scene = preload("res://src/scenes/npc_scene/npc.tscn")
 var current_day;
 var todays_customers_left;
 var todays_customers;
+
+var flat_bonus = 0;
+var multiplier_bonus = 1;
+
 
 func _ready():
 	$UI/banish_button.hide()
@@ -199,6 +211,7 @@ func _spawn_item(item, is_npc_side: bool = true):
 	scene.clicked.connect(_on_pickable_object_clicked)
 	if scene is coin:
 		scene.identifier = item
+	return scene
 
 func _tween_node_out(node: Node2D, duration: float = 1) -> void:
 	var tween = create_tween()
@@ -268,6 +281,15 @@ func _spawn_npc(npclist = [], rememberIndex = false):
 				new_item.WeightSetUp(12, 1)
 			_tween_node_in(new_item, 0.3)
 			
+	var artifacts = ["collisioner", "magnet", "multiplier", "cushion", "pearl"]
+	var a_index = floor(randf() * artifacts.size())
+	var item = _spawn_item(artifacts[a_index], true)
+	item.set_collision_mask_value(5, false)
+	item.set_collision_layer_value(5, false)
+	item.set_collision_mask_value(4, true)
+	item.set_collision_layer_value(4, true)
+	item.add_to_group("customer_items")
+	
 	return
 
 
@@ -335,6 +357,9 @@ func deal_execute():
 		elif (node.get_script() == weapon_token):
 			$weapon_token_pile.update_quantity($weapon_token_pile.quantity+1);
 			_tween_node_out(node, 0.4)
+		elif (node.identifier == "artifact"):
+			#_tween_node_out(node, 0.3)
+			node.on_buy()
 		#node.set_collision_mask_value(5, true);
 		#node.set_collision_layer_value(5, true);$CoinPile 
 		
