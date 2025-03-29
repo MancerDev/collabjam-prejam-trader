@@ -15,12 +15,12 @@ var scene_change_delay = 0.5
 var music_playing: MusicSelection
 var music_next: MusicSelection
 
-@export_range(10.0, 20500.0, 0, "exp") var lowpass_cutoff: float:
+@export_range(10.0, 20500.0, 0.1, "exp") var lowpass_cutoff: float:
 	set(value):
 		lowpass_cutoff = value
 		AudioServer.get_bus_effect(AudioServer.get_bus_index("Music"), 0).cutoff_hz = value
 
-@export_range(10.0, 20500.0, 0, "exp") var highpass_cutoff: float:
+@export_range(10.0, 20500.0, 0.1, "exp") var highpass_cutoff: float:
 	set(value):
 		highpass_cutoff = value
 		AudioServer.get_bus_effect(AudioServer.get_bus_index("Music"), 1).cutoff_hz = value
