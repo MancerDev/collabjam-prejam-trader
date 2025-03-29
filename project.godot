@@ -47,6 +47,7 @@ theme/custom_font="uid://dmdm5giq8dms4"
 
 [rendering]
 
+textures/vram_compression/import_etc2_astc=true
 textures/lossless_compression/force_png=true
 textures/default_filters/anisotropic_filtering_level=0
 anti_aliasing/screen_space_roughness_limiter/enabled=false
