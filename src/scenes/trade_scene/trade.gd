@@ -130,8 +130,11 @@ var todays_customers;
 var flat_bonus = 0;
 var multiplier_bonus = 1;
 
+var rng = RandomNumberGenerator.new()
+
 
 func _ready():
+	$UI/Name.text = ""
 	$UI/banish_button.hide()
 	$UI/deal_button.hide()
 	$UI/give_up_button.hide()
@@ -139,6 +142,7 @@ func _ready():
 	todays_customers = 4;
 	todays_customers_left = todays_customers;
 	$UI/Control.TimeUpdate(22-round(14*todays_customers_left/todays_customers), todays_customers_left, current_day)
+	rng.randomize()
 	
 	
 	#_spawn_npc()
@@ -253,6 +257,9 @@ func _despawn_npc(leave_attitude = "happy"):
 		await _tween_node_out(npc, 1)
 		return
 
+#func _name_pick_from_updated() -> void:
+	#name_pick_from.update_name_randomization()
+	#name = NpcNameGenerator.pickname_size_weighted_arrays(rng, name_pick_from.name_pick_sizes, name_pick_from.name_pick_indices)
 func _spawn_npc(npclist = [], rememberIndex = false, artifact_chance = 35):
 	# Remove any existing NPC first
 	var existing_npc = %Uninterractables.get_node_or_null("Npc")
@@ -267,8 +274,11 @@ func _spawn_npc(npclist = [], rememberIndex = false, artifact_chance = 35):
 	var npc = npc_scene.instantiate()
 	npc.resource = npc_resource
 	%Uninterractables.add_child(npc)
-	npc.name = "Npc"
-	npc.z_index = 5
+	if npc.resource.name_pick_from != null:
+		npc.resource.name_pick_from.update_name_randomization()
+		npc.resource.name = npc.resource.NpcNameGenerator.pickname_size_weighted_arrays(rng, npc.resource.name_pick_from.name_pick_sizes, npc.resource.name_pick_from.name_pick_indices)
+		$UI/Name.text = npc.resource.name
+	npc.z_index = -1
 	npc.position = %NPCPosition.position
 	SfxSingleton.play_sound("entry_walk")
 	await _tween_node_in(npc)

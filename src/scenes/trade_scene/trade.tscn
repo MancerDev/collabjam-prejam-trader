@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://ddmo4bwcojgyl"]
+[gd_scene load_steps=35 format=3 uid="uid://ddmo4bwcojgyl"]
 
 [ext_resource type="Script" uid="uid://de6xbtotejkxl" path="res://src/scenes/trade_scene/trade.gd" id="1_08on2"]
 [ext_resource type="Texture2D" uid="uid://bkij7dlo2tjpg" path="res://assets/images/background/nighttime.png" id="2_xpqll"]
@@ -10,9 +10,10 @@
 [ext_resource type="PackedScene" uid="uid://dq7rdwfgu5kqt" path="res://src/scenes/trade_scene/coin_pile/coin_pile.tscn" id="7_mucam"]
 [ext_resource type="Script" uid="uid://csk4fprcxo0ie" path="res://src/scenes/trade_scene/TimeControl.gd" id="8_probq"]
 [ext_resource type="Texture2D" uid="uid://ctfwqg0b3rper" path="res://assets/images/background/birdcage.png" id="9_fxeet"]
-[ext_resource type="Script" uid="uid://jxrcu0s47vn1" path="res://src/scenes/trade_scene/cage.gd" id="9_k3s8h"]
+[ext_resource type="Script" path="res://src/scenes/trade_scene/cage.gd" id="9_k3s8h"]
 [ext_resource type="PackedScene" uid="uid://dr1rflwqx1t50" path="res://src/scenes/trade_scene/food_token_pile/food_token_pile.tscn" id="9_q1ldy"]
 [ext_resource type="FontFile" uid="uid://dmdm5giq8dms4" path="res://assets/text/Old Dungeon Cursive.otf" id="9_xpqll"]
+[ext_resource type="Theme" uid="uid://di0us7rx1brkc" path="res://assets/themes/canterbury.tres" id="10_k3s8h"]
 [ext_resource type="PackedScene" uid="uid://bokyiq11qstg7" path="res://src/scenes/trade_scene/magic_token_pile/magic_token_pile.tscn" id="11_xpqll"]
 [ext_resource type="PackedScene" uid="uid://dju5m2j84oh21" path="res://src/scenes/trade_scene/metal_token_pile/metal_token_pile.tscn" id="12_probq"]
 
@@ -53,6 +54,12 @@ normal = Vector2(-2, 0)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fxeet"]
 size = Vector2(70, 80)
 
+[sub_resource type="LabelSettings" id="LabelSettings_k3s8h"]
+font = ExtResource("9_xpqll")
+font_size = 8
+outline_color = Color(0, 0, 0, 1)
+shadow_color = Color(0, 0, 0, 1)
+
 [sub_resource type="LabelSettings" id="LabelSettings_xpqll"]
 font = ExtResource("9_xpqll")
 font_size = 6
@@ -62,12 +69,6 @@ shadow_color = Color(0, 0, 0, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_fxeet"]
 font = ExtResource("9_xpqll")
 font_size = 8
-outline_color = Color(0, 0, 0, 1)
-shadow_color = Color(0, 0, 0, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_k3s8h"]
-font = ExtResource("9_xpqll")
-font_size = 7
 outline_color = Color(0, 0, 0, 1)
 shadow_color = Color(0, 0, 0, 1)
 
@@ -92,10 +93,12 @@ unique_name_in_owner = true
 position = Vector2(5, 50)
 
 [node name="NightBackground" type="Sprite2D" parent="Uninterractables"]
+z_index = -10
 position = Vector2(195, 100)
 texture = ExtResource("2_xpqll")
 
 [node name="DayBackground" type="Sprite2D" parent="Uninterractables"]
+z_index = -10
 position = Vector2(195, 100)
 texture = ExtResource("3_probq")
 
@@ -112,7 +115,7 @@ texture = ExtResource("3_o0n50")
 [node name="Sprite2D" type="Sprite2D" parent="Uninterractables"]
 z_as_relative = false
 texture_filter = 1
-position = Vector2(194, 100)
+position = Vector2(195, 100)
 texture = ExtResource("5_83k6h")
 
 [node name="Physics" type="Node2D" parent="."]
@@ -234,6 +237,30 @@ node_a = NodePath("../Cage")
 node_b = NodePath("../Walls/ceiling")
 
 [node name="UI" type="Node2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="UI"]
+visible = false
+offset_left = 296.0
+offset_top = 11.0
+offset_right = 400.0
+offset_bottom = 34.0
+color = Color(0.411765, 0.388235, 0.32549, 1)
+
+[node name="Name" type="Label" parent="UI"]
+z_index = 5
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 152.0
+offset_top = 16.0
+offset_right = 386.0
+offset_bottom = 30.0
+grow_horizontal = 0
+theme = ExtResource("10_k3s8h")
+text = "Name"
+label_settings = SubResource("LabelSettings_k3s8h")
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="banish_button" type="Button" parent="UI"]
 z_index = 25

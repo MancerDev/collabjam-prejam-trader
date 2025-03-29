@@ -139,6 +139,7 @@ text = "Credits
 
 [node name="Panel2" type="Panel" parent="Control"]
 visible = false
+layout_mode = 0
 offset_left = -99.0
 offset_top = -97.0
 offset_right = 223.0
