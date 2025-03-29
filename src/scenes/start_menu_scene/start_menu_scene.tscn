@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://brlipdhale5c6"]
+[gd_scene load_steps=19 format=3 uid="uid://brlipdhale5c6"]
 
 [ext_resource type="Texture2D" uid="uid://dr3evm4l831gb" path="res://assets/images/start_menu/titles_landscape.png" id="1_2erob"]
 [ext_resource type="Script" uid="uid://du3vj0o68gm0g" path="res://src/scenes/start_menu_scene/start_menu_scene.gd" id="1_qwx4o"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://k2wsxbr8lomo" path="res://assets/images/start_menu/cart/cartanim7.png" id="9_3rqih"]
 [ext_resource type="Texture2D" uid="uid://emt1vqrcsmy4" path="res://assets/images/start_menu/cart/cartanim8.png" id="10_6bmg4"]
 [ext_resource type="Texture2D" uid="uid://ip5tr32rdqn2" path="res://assets/images/start_menu/titles_landscape_overlay.png" id="12_wbf0q"]
+[ext_resource type="Script" uid="uid://cvwlytgqal65v" path="res://src/scenes/start_menu_scene/CreditPanel.gd" id="13_f6rxt"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2aekx"]
 animations = [{
@@ -44,6 +45,26 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wbf0q"]
+bg_color = Color(0, 0, 0, 0.858824)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.8, 0.8, 0.8, 0)
+border_blend = true
+corner_detail = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_f6rxt"]
+font_size = 11
+
+[sub_resource type="LabelSettings" id="LabelSettings_mj438"]
+font_size = 11
+
+[sub_resource type="LabelSettings" id="LabelSettings_dymvf"]
+line_spacing = 4.0
+font_size = 10
 
 [node name="StartMenuScene" type="Node2D"]
 script = ExtResource("1_qwx4o")
@@ -116,5 +137,155 @@ layout_mode = 2
 text = "Credits
 "
 
+[node name="Panel2" type="Panel" parent="Control"]
+visible = false
+offset_left = -99.0
+offset_top = -97.0
+offset_right = 223.0
+offset_bottom = 119.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_wbf0q")
+script = ExtResource("13_f6rxt")
+
+[node name="Label4" type="Label" parent="Control/Panel2"]
+layout_mode = 2
+offset_left = 9.0
+offset_top = 11.0
+offset_right = 145.0
+offset_bottom = 27.0
+text = "Devs:"
+label_settings = SubResource("LabelSettings_f6rxt")
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="Control/Panel2"]
+layout_mode = 2
+offset_left = 38.0
+offset_top = 33.0
+offset_right = 286.0
+offset_bottom = 239.0
+theme_override_constants/separation = 15
+
+[node name="Label3" type="Label" parent="Control/Panel2/VBoxContainer3"]
+layout_mode = 2
+text = "Berke Özdemir"
+label_settings = SubResource("LabelSettings_mj438")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Control/Panel2/VBoxContainer3"]
+layout_mode = 2
+text = "Morgan"
+label_settings = SubResource("LabelSettings_mj438")
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="Control/Panel2/VBoxContainer3"]
+layout_mode = 2
+text = "Jktulord"
+label_settings = SubResource("LabelSettings_mj438")
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="Control/Panel2/VBoxContainer3"]
+layout_mode = 2
+text = "AmberMechanic"
+label_settings = SubResource("LabelSettings_mj438")
+horizontal_alignment = 1
+
+[node name="Label6" type="Label" parent="Control/Panel2/VBoxContainer3"]
+layout_mode = 2
+text = "Henry"
+label_settings = SubResource("LabelSettings_mj438")
+horizontal_alignment = 1
+
+[node name="Label7" type="Label" parent="Control/Panel2/VBoxContainer3"]
+layout_mode = 2
+text = "Sunset"
+label_settings = SubResource("LabelSettings_mj438")
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="Control/Panel2"]
+layout_mode = 0
+offset_left = 116.0
+offset_top = 206.0
+offset_right = 208.0
+offset_bottom = 234.0
+text = "Close"
+
+[node name="Panel" type="Panel" parent="Control"]
+visible = false
+layout_mode = 2
+offset_left = -104.0
+offset_top = -97.0
+offset_right = 249.0
+offset_bottom = 119.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_wbf0q")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/Panel"]
+layout_mode = 2
+offset_left = 49.0
+offset_top = 165.0
+offset_right = 274.0
+offset_bottom = 204.0
+
+[node name="Label3" type="Label" parent="Control/Panel/HBoxContainer2"]
+layout_mode = 2
+text = "Sound:"
+
+[node name="Label4" type="Label" parent="Control/Panel/HBoxContainer2"]
+layout_mode = 2
+text = "SunSet"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Panel"]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 24.0
+offset_right = 319.0
+offset_bottom = 184.0
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="Control/Panel/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label4" type="Label" parent="Control/Panel/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+text = "Code:"
+
+[node name="Label3" type="Label" parent="Control/Panel/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+text = "Berke"
+
+[node name="Label2" type="Label" parent="Control/Panel/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+text = "Morgan"
+
+[node name="Label" type="Label" parent="Control/Panel/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+text = "Jktulord"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control/Panel/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label3" type="Label" parent="Control/Panel/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Visuals:"
+
+[node name="Label2" type="Label" parent="Control/Panel/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Amber
+Mechanic"
+label_settings = SubResource("LabelSettings_dymvf")
+
+[node name="Label" type="Label" parent="Control/Panel/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Henry"
+
+[node name="Button" type="Button" parent="Control/Panel"]
+layout_mode = 0
+offset_left = 116.0
+offset_top = 206.0
+offset_right = 208.0
+offset_bottom = 234.0
+text = "Close"
+
 [connection signal="pressed" from="Control/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="Control/VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="Control/Panel2/Button" to="." method="_on_button_pressed"]
