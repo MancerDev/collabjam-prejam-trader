@@ -12,12 +12,14 @@
 script = ExtResource("1_5ltgm")
 
 [node name="ScalePlatformSelf" parent="." instance=ExtResource("1_jnbmu")]
+z_index = 11
 position = Vector2(-62, 48)
 can_sleep = false
 freeze = true
 playerSide = true
 
 [node name="ScalePlatformOther" parent="." instance=ExtResource("1_jnbmu")]
+z_index = 11
 position = Vector2(63, 48)
 can_sleep = false
 freeze = true

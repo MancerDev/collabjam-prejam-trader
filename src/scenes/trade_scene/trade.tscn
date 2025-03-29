@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dq7rdwfgu5kqt" path="res://src/scenes/trade_scene/coin_pile/coin_pile.tscn" id="7_mucam"]
 [ext_resource type="Script" uid="uid://csk4fprcxo0ie" path="res://src/scenes/trade_scene/TimeControl.gd" id="8_probq"]
 [ext_resource type="Texture2D" uid="uid://ctfwqg0b3rper" path="res://assets/images/background/birdcage.png" id="9_fxeet"]
-[ext_resource type="Script" path="res://src/scenes/trade_scene/cage.gd" id="9_k3s8h"]
+[ext_resource type="Script" uid="uid://jxrcu0s47vn1" path="res://src/scenes/trade_scene/cage.gd" id="9_k3s8h"]
 [ext_resource type="PackedScene" uid="uid://dr1rflwqx1t50" path="res://src/scenes/trade_scene/food_token_pile/food_token_pile.tscn" id="9_q1ldy"]
 [ext_resource type="FontFile" uid="uid://dmdm5giq8dms4" path="res://assets/text/Old Dungeon Cursive.otf" id="9_xpqll"]
 [ext_resource type="PackedScene" uid="uid://bokyiq11qstg7" path="res://src/scenes/trade_scene/magic_token_pile/magic_token_pile.tscn" id="11_xpqll"]
@@ -110,7 +110,7 @@ position = Vector2(319, 7)
 texture = ExtResource("3_o0n50")
 
 [node name="Sprite2D" type="Sprite2D" parent="Uninterractables"]
-z_index = 10
+z_as_relative = false
 texture_filter = 1
 position = Vector2(194, 100)
 texture = ExtResource("5_83k6h")
@@ -124,6 +124,8 @@ position = Vector2(2, 133)
 
 [node name="Scale" parent="Physics" instance=ExtResource("4_v15gx")]
 unique_name_in_owner = true
+z_index = 11
+z_as_relative = false
 position = Vector2(239, 149)
 
 [node name="Walls" type="Node2D" parent="Physics"]
