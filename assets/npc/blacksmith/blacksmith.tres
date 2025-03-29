@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="NPC" load_steps=9 format=3 uid="uid://bk5ibndr732ew"]
+[gd_resource type="Resource" script_class="NPC" load_steps=11 format=3 uid="uid://bk5ibndr732ew"]
 
 [ext_resource type="Script" uid="uid://3glq0r2r8cjd" path="res://assets/npc/npc.gd" id="1_o74n8"]
 [ext_resource type="Script" uid="uid://cu1cq74uuc1n0" path="res://assets/item/currency_map.gd" id="1_wltd1"]
 [ext_resource type="Texture2D" uid="uid://ciueskosk6qrt" path="res://assets/npc/blacksmith/blacksmith_angry.png" id="2_uhcwh"]
+[ext_resource type="Script" uid="uid://cr8gu37376ika" path="res://assets/npc/name_pick_from.gd" id="2_xyx37"]
 [ext_resource type="Texture2D" uid="uid://c8n0y1uohnbx3" path="res://assets/npc/blacksmith/blacksmith_backview.png" id="3_il1ob"]
 [ext_resource type="Texture2D" uid="uid://diswkvlbuxmdm" path="res://assets/npc/blacksmith/blacksmith_happy.png" id="3_pxe27"]
 [ext_resource type="Texture2D" uid="uid://083u3tm6lsux" path="res://assets/npc/blacksmith/blacksmith_neutral.png" id="4_il1ob"]
@@ -18,8 +19,16 @@ currency_to_int_map = {
 }
 metadata/_custom_type_script = "uid://cu1cq74uuc1n0"
 
+[sub_resource type="Resource" id="Resource_iou4u"]
+script = ExtResource("2_xyx37")
+pick_from = 70
+use_female_names = false
+use_male_names = true
+metadata/_custom_type_script = "uid://cr8gu37376ika"
+
 [resource]
 script = ExtResource("1_o74n8")
+name_pick_from = SubResource("Resource_iou4u")
 sprite_neutral = ExtResource("4_il1ob")
 sprite_happy = ExtResource("3_pxe27")
 sprite_angry = ExtResource("2_uhcwh")

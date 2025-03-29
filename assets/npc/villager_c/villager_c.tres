@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="NPC" load_steps=11 format=3 uid="uid://c44e07wa2v0xv"]
 
 [ext_resource type="Script" uid="uid://cu1cq74uuc1n0" path="res://assets/item/currency_map.gd" id="1_6ltt1"]
-[ext_resource type="Script" path="res://assets/npc/name_pick_from.gd" id="2_63c4q"]
+[ext_resource type="Script" uid="uid://cr8gu37376ika" path="res://assets/npc/name_pick_from.gd" id="2_63c4q"]
 [ext_resource type="Script" uid="uid://3glq0r2r8cjd" path="res://assets/npc/npc.gd" id="3_7lubx"]
 [ext_resource type="Texture2D" uid="uid://bcwvl4tqqaadg" path="res://assets/npc/villager_c/villager_c_angry.png" id="4_6ltt1"]
 [ext_resource type="Texture2D" uid="uid://de86jwt5cljrc" path="res://assets/npc/villager_c/villager_c_back.png" id="5_vg3if"]
@@ -21,7 +21,7 @@ metadata/_custom_type_script = "uid://cu1cq74uuc1n0"
 
 [sub_resource type="Resource" id="Resource_wphms"]
 script = ExtResource("2_63c4q")
-pick_from = 20
+pick_from = 88
 use_female_names = false
 use_male_names = true
 metadata/_custom_type_script = "uid://cr8gu37376ika"

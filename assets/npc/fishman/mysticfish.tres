@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="NPC" load_steps=9 format=3 uid="uid://b0xufeovgnmex"]
+[gd_resource type="Resource" script_class="NPC" load_steps=11 format=3 uid="uid://b0xufeovgnmex"]
 
 [ext_resource type="Script" uid="uid://cu1cq74uuc1n0" path="res://assets/item/currency_map.gd" id="1_1o6ae"]
 [ext_resource type="Script" uid="uid://3glq0r2r8cjd" path="res://assets/npc/npc.gd" id="1_fj4j5"]
+[ext_resource type="Script" uid="uid://cr8gu37376ika" path="res://assets/npc/name_pick_from.gd" id="2_15ihu"]
 [ext_resource type="Texture2D" uid="uid://b5dwg6nxxs0nq" path="res://assets/npc/fishman/mysticfish_angry.png" id="2_hjfrp"]
 [ext_resource type="Texture2D" uid="uid://ccmkmsrokvhea" path="res://assets/npc/fishman/mysticfish_back.png" id="3_1o6ae"]
 [ext_resource type="Texture2D" uid="uid://cb3mabdwsn5f3" path="res://assets/npc/fishman/mysticfish_happy.png" id="4_15ihu"]
@@ -18,8 +19,16 @@ currency_to_int_map = {
 }
 metadata/_custom_type_script = "uid://cu1cq74uuc1n0"
 
+[sub_resource type="Resource" id="Resource_rs6yw"]
+script = ExtResource("2_15ihu")
+pick_from = 104
+use_female_names = true
+use_male_names = true
+metadata/_custom_type_script = "uid://cr8gu37376ika"
+
 [resource]
 script = ExtResource("1_fj4j5")
+name_pick_from = SubResource("Resource_rs6yw")
 sprite_neutral = ExtResource("5_rs6yw")
 sprite_happy = ExtResource("4_15ihu")
 sprite_angry = ExtResource("2_hjfrp")

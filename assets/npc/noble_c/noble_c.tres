@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="NPC" load_steps=11 format=3 uid="uid://cxbv78ixfv1ow"]
 
 [ext_resource type="Script" uid="uid://cu1cq74uuc1n0" path="res://assets/item/currency_map.gd" id="1_dekg4"]
-[ext_resource type="Script" path="res://assets/npc/name_pick_from.gd" id="2_fe41o"]
+[ext_resource type="Script" uid="uid://cr8gu37376ika" path="res://assets/npc/name_pick_from.gd" id="2_fe41o"]
 [ext_resource type="Script" uid="uid://3glq0r2r8cjd" path="res://assets/npc/npc.gd" id="3_yulfq"]
 [ext_resource type="Texture2D" uid="uid://b1suf4v7xhck4" path="res://assets/npc/noble_c/noble_c_angry.png" id="4_143p7"]
 [ext_resource type="Texture2D" uid="uid://bm2pgnyfncrql" path="res://assets/npc/noble_c/noble_c_back.png" id="5_rku3u"]
@@ -21,9 +21,9 @@ metadata/_custom_type_script = "uid://cu1cq74uuc1n0"
 
 [sub_resource type="Resource" id="Resource_wphms"]
 script = ExtResource("2_fe41o")
-pick_from = 20
-use_female_names = false
-use_male_names = true
+pick_from = 48
+use_female_names = true
+use_male_names = false
 metadata/_custom_type_script = "uid://cr8gu37376ika"
 
 [resource]

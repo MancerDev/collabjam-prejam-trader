@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="NPC" load_steps=10 format=3 uid="uid://cgtuh8oda33py"]
 
 [ext_resource type="Resource" uid="uid://cfklqvjjoo07c" path="res://CurrencyMaps/defaultCurrencyMap.tres" id="1_snprs"]
-[ext_resource type="Script" path="res://assets/npc/name_pick_from.gd" id="2_e7ia2"]
+[ext_resource type="Script" uid="uid://cr8gu37376ika" path="res://assets/npc/name_pick_from.gd" id="2_e7ia2"]
 [ext_resource type="Script" uid="uid://3glq0r2r8cjd" path="res://assets/npc/npc.gd" id="3_jimh5"]
 [ext_resource type="Texture2D" uid="uid://ddc2axa4thok7" path="res://assets/npc/headman/headman_angry.png" id="4_n20ng"]
 [ext_resource type="Texture2D" uid="uid://krk0gspuvb2j" path="res://assets/npc/headman/headman_back.png" id="5_ts6kk"]
@@ -9,16 +9,16 @@
 [ext_resource type="Texture2D" uid="uid://d3hp0rqj5f108" path="res://assets/npc/headman/headman_default.png" id="7_gbokn"]
 [ext_resource type="Texture2D" uid="uid://23wnjxnd0l43" path="res://assets/npc/headman/headman_sad.png" id="8_yc66m"]
 
-[sub_resource type="Resource" id="Resource_wphms"]
+[sub_resource type="Resource" id="Resource_snprs"]
 script = ExtResource("2_e7ia2")
-pick_from = 20
+pick_from = 6
 use_female_names = false
 use_male_names = true
 metadata/_custom_type_script = "uid://cr8gu37376ika"
 
 [resource]
 script = ExtResource("3_jimh5")
-name_pick_from = SubResource("Resource_wphms")
+name_pick_from = SubResource("Resource_snprs")
 sprite_neutral = ExtResource("7_gbokn")
 sprite_happy = ExtResource("6_vlbjh")
 sprite_angry = ExtResource("4_n20ng")
